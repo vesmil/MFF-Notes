@@ -4,9 +4,14 @@ Idc na co se vlastě budou ptát, jen jsem projel prezentace a vypsal pár věc�
 
 V druhým souboru jsou pak příklady
 
-EDIT: na zkoušce se prý ptají hlavně na dynamické programování, AVL stromy a virtuální metody (další věci v souboru priklady.md)
+EDIT: na zkoušce se prý ptají hlavně na dynamické programování, AVL stromy a virtuální metody
 
-## Ze zimního
+Takže se asi vyplatí si hodit ADSko před Programkem
+
+Jinak není špatné se podívat na nějaké příklady na [forum](http://forum.matfyz.info/viewtopic.php?f=247&t=11818) \
+A já napsal svoje zadání na konec tohohle souboru
+
+## Notes ze zimního
 
 Všechno je objekt, lze třeba i vracet funkce a nebo je přepsat
 
@@ -24,7 +29,7 @@ Strom hry, minimax, negamax, heuristika
 
 …
 
-## Z letího
+## Notes z letího
 
 Some basic stuff
 
@@ -186,7 +191,3 @@ Navíc když vezmu setřízenou strukturu jako AVL strom, tak můžu odřezávat
 *Stačílo jen zmínit, že neznám konstanty, protože jsem AVL ještě nikdy neimpletoval a měl jsem to jako otázku v druhé části xdddd* \
 To 3D pole pak procházím po sloupcích, kde pro každou buňku projdu obsahy všech buněk v předchozím slupci a pokud možno, tak k nim přičtu pohodu a odečtu vzdálenost \
 Nakonec z posledního dne vypíšu max čas
-
----
-
-Jinak není špatné se podívat na nějaké příklady na [forum](http://forum.matfyz.info/viewtopic.php?f=247&t=11818)
