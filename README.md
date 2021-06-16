@@ -8,4 +8,4 @@ Jo a třeba časem budu svoje zápisky dávat [sem](http://www.ms.mff.cuni.cz/~v
 
 ---
 
-*Méně aktualizovana kopie mého repozitáře ochuzená o řešení úkolů*
+*Je to jen méně aktualizovana kopie mého repozitáře ochuzená o řešení úkolů*
