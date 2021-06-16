@@ -1,3 +1,5 @@
+# INCOMPLETE
+
 # C a C++
 
 Známe z cvika a u zkoušky nebude
