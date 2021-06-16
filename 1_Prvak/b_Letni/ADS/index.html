@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>ADS souhrn</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #cfcfcf;
+      background-color: #1e1e1e;
+    }
+    .katex { font-size: 1em !important; } 
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1ef;
+      font-style: italic; }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #b8b8b8;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      background: #313131;
+      padding: 18px;
+      color: #efefef;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #626262;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   var macros = [];
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      macros: macros,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">ADS souhrn</h1>
+</header>
+<h1 id="úvod">Úvod</h1>
+<blockquote>
+<ol type="1">
+<li>Přednáška 4.3.2021</li>
+</ol>
+</blockquote>
+<p><strong>Příklad na začátek</strong>: Najděte nejdelší rostoucí podposloupnost</p>
+<p>To ale přeskočím, protože se ještě k tomu vrátíme detailněji na konci</p>
+<h1 id="ram-random-access-machine">RAM (Random Access Machine)</h1>
+<p>Nadefinujeme si nějaký abstraktní stroj (výpočetní model)</p>
+<p>Ty stroje jsou stejně silné… vysvětlení někdy jindy (hádám, že je tím myšleno Turing complete)</p>
+<p>Zpátky k RAMu:</p>
+<ul>
+<li>počítá s celými čísly</li>
+<li>nekonečná paměť indexovaná čísly (reálně ale bude konečná, protože bude počítat konečně dlouho)</li>
+<li>instrukce
+<ul>
+<li>přiřazení</li>
+<li>aritmetika (+, -, *, /, mod a bitové AND, OR, XOR, RSHIFT a LSHIFT)</li>
+</ul></li>
+<li>operandy
+<ul>
+<li>literál (např: 42)</li>
+<li>buňka paměti (např [42]) (konvence <span class="math inline">A := [-1]</span>…)</li>
+<li>nepřímá adresace (např [[42]])</li>
+</ul></li>
+</ul>
+<p>Výpočet: v paměti dostaneme vstup, provádíme instrukce, v paměti odevzdáme výstup</p>
+<blockquote>
+<ol start="2" type="1">
+<li>Přednáška 11.3.2021</li>
+</ol>
+</blockquote>
+<p>Cena Instrukce?</p>
+<ol type="1">
+<li>Jednotková velikost
+<ul>
+<li>pozor na velká čísla (vede to k paradoxům) a například umím dělat součet <span class="math inline">n</span> čísel konstantně</li>
+</ul></li>
+<li>Jednotková, ale omezíme čísla šířkou slova <span class="math inline">W</span> (bitů)
+<ul>
+<li>Potřebujeme <span class="math inline">W \geq \log n</span> kvůli čtení vstupu a tedy všechna čísla jsou menší než <span class="math inline">2^{c\cdot \log n}</span></li>
+<li>Omezili jsme tedy polynomem nejen velikost čísel, ale i adresovatelný prostor</li>
+</ul></li>
+<li>Logaritmická cena instrukce - cena je počet bitů se kterými pracujeme
+<ul>
+<li>Je to hodně nepohodlné</li>
+</ul></li>
+<li>Relativní logaritmická
+<ul>
+<li><span class="math inline">\lceil \frac{\text{počet bitů čísel}}{\log n} \rceil</span></li>
+<li>kombinuje výhody předchozích (neomezený prostor a pohodlí)</li>
+</ul></li>
+</ol>
+<h2 id="čas-a-prostor-výpočtu">Čas a prostor výpočtu</h2>
+<h4 id="definice-pro-program-o-vstupu-x-je">Definice Pro program o vstupu <span class="math inline">x</span> je</h4>
+<p><strong>Čas běhu:</strong> <span class="math inline">t(x) :=</span> součet cen provedených instrukcí</p>
+<p><strong>Prostor běhu:</strong> <span class="math inline">s(x) :=</span> max. použitá adresa - min. použitá adresa (obvykle počítáme i vstup)</p>
+<p>Zavádí se pak i nekonstantní cena buněk</p>
+<p>Mohou ale být i nekonečné, ale nebudeme se jim zabývat</p>
+<p><strong>Časová složitost:</strong> <span class="math inline">T(n) :=</span> max{<span class="math inline">t(x)</span> | <span class="math inline">x</span> je vstup velikosti <span class="math inline">n</span>}</p>
+<blockquote>
+<p>Co to je ale vstup velikosti <span class="math inline">n</span>? Je to např. počet čísel, bitů, znaků řetězce, vrcholů a hran…</p>
+</blockquote>
+<p><strong>Prostorová složitost:</strong> Analogicky maximální z prostoru běhů pro všechny vstupy velikost <span class="math inline">n</span></p>
+<h3 id="příklad-algoritmu">Příklad algoritmu</h3>
+<p><strong>Bublinkové třídění:</strong></p>
+<pre><code>ZNOVU:
+P ← 0    # indikátor toho, zda se něco přesunulo
+I ← 1   
+
+DALSI:   # zkouším vyměnit dva prvky vedle sebe
+J ← I + 1
+if  $[I] ≤ [J] then goto OK
+T ← [I]
+[I] ← [J]
+[J] ← T
+P ← 1
+  
+OK:
+I ← I + 1
+if I &lt; [0] then goto DALSI   # v nule mám celkovou délku, takže tohle je for cyklus
+if P=1 then goto ZNOVU       # tohle je zase vnější for cyklus
+
+halt</code></pre>
+<p><strong>Analýza</strong></p>
+<p>Vnitřní je 4-8 instrukcí a proběhne až <span class="math inline">n - 1</span>krát</p>
+<p>V tom vnějším jsou navíc 3 instrukce, takže má <span class="math inline">4n-1</span> až <span class="math inline">8n-5</span> instrukcí a proběhne <span class="math inline">1</span> až <span class="math inline">n</span> cyklů</p>
+<p>Z toho je časová složitost mezi <span class="math inline">4n</span> a <span class="math inline">8n^2 - 5n + 1</span> (Toho se ale reálně nedá dosáhnout)</p>
+<p>Nejhorší případ ale určitě bude v rozmezí</p>
+<p><span class="math display"> 4n^2 - n + 1\leq T(n) \leq 8n^2 - 5n + 1 </span></p>
+<p>A asymptoticky je to <span class="math inline">\Theta(n^2)</span></p>
+<p><strong>Proč asymptotika</strong></p>
+<ul>
+<li>Je to snazší</li>
+<li>Konstanty jsou strojově závislé</li>
+<li>Pro velké vstupy stejně rozhoduje hlavně právě asymptotika</li>
+</ul>
+<blockquote>
+<p>Typicky vezmeme asymptoticky nejrychlejší algoritmus a pak ladíme konstanty</p>
+</blockquote>
+<hr />
+<h1 id="grafové-algoritmy">Grafové algoritmy</h1>
+<blockquote>
+<p>Již bychom měli znát BFS a DFS</p>
+</blockquote>
+<p><strong>Standardní notace</strong> je graf <span class="math inline">G = (V,E)</span>, kde <span class="math inline">V</span> jsou vrcholy a <span class="math inline">E</span> hrany a jejich počty: <span class="math inline">n := |V|</span>, <span class="math inline">m := |E|</span></p>
+<p>Také budeme typicky implicitně uvažovat orientované grafy</p>
+<h2 id="reprezentace-grafu">Reprezentace grafu</h2>
+<ol type="1">
+<li>Matice sousednosti <span class="math inline">n \times n</span></li>
+<li>Seznamu sousedů (seznam vrcholů a v každém nějaký list)</li>
+</ol>
+<h1 id="dfs---mosty-cykly-souvislost">DFS - mosty, cykly, souvislost</h1>
+<p>Zavedeme si DFS trochu jinak než známe (budeme používat stavy otevřený, zavřený a nenalezen)</p>
+<p>DFSv2(v):</p>
+<ol type="1">
+<li><span class="math inline">stav(v) \gets</span> otevřený</li>
+<li>Pro hrany <span class="math inline">vw</span>:</li>
+<li>  Pokud <span class="math inline">stav(w) =</span> nenalezen:</li>
+<li>    DSFv2(w)</li>
+<li>  <span class="math inline">stav(w) \gets</span> zavřený</li>
+</ol>
+<p>Navíc si ještě přidám hodinky (zavedu si dvě pole <span class="math inline">in(v)</span> a <span class="math inline">out(v)</span> - inicializovaná nulami)<br />
+Implementace je mimochodem velmi jednoduchá, protože stačí po 1.kroku zvětšit <span class="math inline">T</span> a uložit ho do <span class="math inline">in</span> (to stejné pak pro po 5. pro <span class="math inline">out</span>)</p>
+<p>Lemma: DFS se zastaví v čase <span class="math inline">O(n+m)</span></p>
+<p><em>Dva způsoby důkazu:</em></p>
+<ol type="1">
+<li><span class="math inline">O(n + \sum_{v \in V} \deg^{out}(v)) = O(n+m)</span> (vrchol otevřen max. 1 a DFS max. 1 na <span class="math inline">v</span>)</li>
+<li>Pozorování, že na všechny hrany sáhnu jen jednou a jednu hranu dám konstantně</li>
+</ol>
+<p>Lemma: Po DFS je <span class="math inline">\forall v</span> <span class="math inline">stav(v)</span> nenalezený a nebo zavřený a zavřený znamená, že <span class="math inline">v</span> je dosažitelný z <span class="math inline">v_0</span></p>
+<p><em>Důkaz</em>:</p>
+<p><span class="math inline">\implies</span> indukcí podle běhu algoritmu (pokud vrchol zavřeme, tak je dosažitelný, protože jsme ho předtím otevřeli a tedy existuje hrana)</p>
+<p><span class="math inline">\impliedby</span> důkaz sporem - kdyby existoval, dosažitelný vrchol, který nebyl nalezen, tak zvolíme nejbližší takový vrchol z <span class="math inline">v_0</span>. Potom můžeme zvolit předposlední vrchol z nejkratší cesty mezi těmi dvěma vrcholy a tím dostaneme spor.</p>
+<blockquote>
+<ol start="3" type="1">
+<li>Přednáška 18.3.2021</li>
+</ol>
+</blockquote>
+<p>Na procházení se můžeme dívat jako na uzávorkování (otevření a zavření jsou krajní)</p>
+<p>Zároveň se dá i představit takzvaný DFS strom (strom ve kterém jsou jen hrany, které byly v DFS) a podle toho můžeme hrany i klasifikovat. x</p>
+<!-- **TODO… třeba** obrázek DFS stromu -->
+<p>Můžeme totiž rozdělit hrany k vrcholům ve kterých už jsem byl na <strong>zpětné</strong>, <strong>dopředné</strong> a <strong>příčné</strong> podle toho, zda je vrchol předkem, potomkem a nebo ani jedno z toho již navštíveného vrcholu</p>
+<p>To, že to jsou jediné možnosti dokážu pomocí již zmíněného uzávorkování</p>
+<p>Když je <span class="math inline">xy \in E</span>, tak uzávorkování může být:</p>
+<ol type="1">
+<li><span class="math inline">(_x \cdots (_y \cdots )_y \cdots )_x</span> – buď stromová nebo dopředná (záleží kde mezi závorkami jsem)</li>
+<li><span class="math inline">(_y \cdots (_x \cdots )_x \cdots )_y</span> – zpětná hrana</li>
+<li><span class="math inline">(_y \cdots )_y \cdots (_x \cdots )_x</span> – příčná hrana</li>
+<li>!<span class="math inline">\sout{(_x \cdots )_x \cdots (_y \cdots )_y}</span> – nemůže nastat</li>
+</ol>
+<p>Jak to je v neorientovaných grafech? Podle toho kdy hranu objevím</p>
+<table>
+<thead>
+<tr class="header">
+<th>poprvé</th>
+<th>podruhé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>stromová</td>
+<td>zpětná</td>
+</tr>
+<tr class="even">
+<td>zpětná</td>
+<td>dopředná</td>
+</tr>
+</tbody>
+</table>
+<p>Klasifikovat hranu zvládneme konstantně - protože stačí znát vzájemnou polohu závorek a to je v <span class="math inline">in</span> a <span class="math inline">out</span></p>
+<p>Věta: DFS v čase <span class="math inline">\Theta(n+m)</span> a prostoru <span class="math inline">\Theta(n+m)</span> najde dosažitelné vrcholy a klasifikuje hrany</p>
+<h2 id="mosty">Mosty</h2>
+<h3 id="v-neorientovaných-grafech">V neorientovaných grafech</h3>
+<p>Hrana je most, když jejím odebráním má graf více komponent</p>
+<p>Lemma: Hrana není most <span class="math inline">\iff</span> leží na nějaké kružnici</p>
+<p>Je to skoro až pozorování teda<br />
+Kdykoliv mám hranu na kružnici, tak rozpojením se nic nestane, protože to můžu obejít<br />
+A naopak když to pak zůstane stále souvislé, tak pořád existuje cesta a přidáním vznikne kružnice</p>
+<p>Pozorování: Zpětná leží na kružnici <span class="math inline">\implies</span> nikdy není most, protože kružnice<br />
+Musíme vyšetřovat jenom stromové (příčné v neorientovaných neexistují)</p>
+<p>Platí <span class="math inline">uv</span> leží na kružnici <span class="math inline">\iff</span> <span class="math inline">\exists xy \in E</span> zpětná t.ž. <span class="math inline">x</span> je potomkem <span class="math inline">v</span> a <span class="math inline">y</span> je předkem <span class="math inline">v</span></p>
+<p>V podstatě tedy pak pro každou hranu zkoumáme, jestli je pod ní nějaký vrchol, ze kterého vede hrana nad tu hranu</p>
+<p>To, že je něco předek se testuje snadno porovnáním obou <span class="math inline">in</span>, protože cestou dolů rostou<br />
+Využití toho je ale pomalé, protože musíme pro každou hranu projít podstrom pod ní</p>
+<p>Definujeme tedy <span class="math inline">low(v) := \min \{ in(y) | xy</span> je zpětná hrana &amp; <span class="math inline">x</span> je neostře pod <span class="math inline">v \}</span><br />
+Neboli jak vysoko dosáhnu z pod <span class="math inline">v</span> zpětnou hranou</p>
+<p>Z toho je naše původní podmínka pro zpětnou hranu ekvivalentní tomu, že <span class="math inline">low(v) &lt; in(v)</span></p>
+<p>Jak spočítat <span class="math inline">low(v)</span>? - vezmu minimum z <span class="math inline">low</span> synů a zároveň zpětných hran z <span class="math inline">v</span> a to trvá <span class="math inline">O(\deg(v))</span></p>
+<p>Asymptoticky to tedy nezpomalím</p>
+<p>Dokázali jsme větu: Alg. nalezne všechny mosty v čase a prostoru <span class="math inline">\Theta(n+m)</span></p>
+<h2 id="acyklické-oritentované-grafy-dag">Acyklické Oritentované Grafy (DAG)</h2>
+<p>Některé problémy se na DAGu řeší lépe</p>
+<h4 id="je-graf-dag">1. Je graf DAG?</h4>
+<p>Lemma: <span class="math inline">\exists</span> dosažitelný cyklus <span class="math inline">\iff</span> DFS najde zpětnou hranu</p>
+<p><span class="math inline">\implies</span> je celkem triviální, protože každý cyklus musí mít zpětnou (příčná nic neznamená)</p>
+<p><span class="math inline">\impliedby</span> nechť existuje cyklus, pak zvolíme vrchol <span class="math inline">v</span> z toho cyklu s min. out a jeho následníka na cykly vrchol <span class="math inline">w</span> - na hraně <span class="math inline">vw</span> tedy roste <span class="math inline">out</span> a <span class="math inline">out</span> a je to tedy zpětná hrana</p>
+<p>Dosažitelnost vyřešíme opakováním z neobjevených vrcholů a nebo přidám zdroj<br />
+To budu dále nazývat jako opakované DFS</p>
+<h4 id="topologické-uspořádání">2. Topologické uspořádání</h4>
+<p>To znamená najít uspořádání těch vrcholů tak, že hrany vedou jen zleva doprava</p>
+<p>Nebo-li lineární uspořádání <span class="math inline">\preceq</span> na <span class="math inline">V(G)</span>, kde <span class="math inline">\forall xy \in E(G) : x \preceq y</span><br />
+Resp. pohled jako na očíslování vrcholů…</p>
+<p>Pozorování: kružnice nemá TU (a dokážeme, že je to jediné co může bránit)</p>
+<p>Věta: <span class="math inline">G</span> má topologické uspořádání <span class="math inline">\iff</span> <span class="math inline">G</span> je DAG</p>
+<p>Df. <span class="math inline">v \in V</span> je zdroj <span class="math inline">\equiv \deg^{in}(v)=0</span> a symetricky stoky s <span class="math inline">deg^{out}</span></p>
+<p>Lemma: každý DAG má zdroj i stok (jdu proti hranám a nikdy nevstoupím do stejného vrcholu)</p>
+<p>Takže nám jako důkaz stačí odtrhávat zdroje (A jde to v <span class="math inline">O(n+m)</span>)</p>
+<p>Věta: Pořadí v němž DFS opouští vrcholy je opačné topologickému</p>
+<h4 id="topologická-indukce">3. Topologická indukce</h4>
+<p>Příklad: zvolíme si <span class="math inline">u</span> a chceme <span class="math inline">c(v) :=</span> # cest z <span class="math inline">u</span> do <span class="math inline">v</span></p>
+<p>Nechť <span class="math inline">v_1, \cdots, v_n</span> je top. pořadí a tedy <span class="math inline">u =</span> nějaké <span class="math inline">v_i</span></p>
+<ul>
+<li>Pro <span class="math inline">j&lt;i : v_j = 0</span> - jsou před vrcholem, takže do nich nemůže vést cesta</li>
+<li><span class="math inline">v_i = 1</span></li>
+<li>pro <span class="math inline">j &gt; i</span> induktivně</li>
+</ul>
+<p>Dá se všimnout, že:<br />
+<span class="math display"> c(v_j) = \sum_{p:pv_j \in E} c(p) </span></p>
+<p>Protože to počítáme induktivně tak to, co potřebujeme už máme a čas je tedy <span class="math inline">\Theta(n+m)</span></p>
+<h4 id="plánování">4. Plánování</h4>
+<p>Máme nějaký graf činností závislostí mezi činnostmi pak topologické uspořádání je možný způsob, jak tyto činnosti provést ve správném pořadí</p>
+<h4 id="silná-souvislost">5. Silná souvislost</h4>
+<p>Definuje se pomocí relace dosažitelnosti</p>
+<p><span class="math inline">u</span> je v relaci s <span class="math inline">v</span>, pokud existuje sled z <span class="math inline">u</span> do <span class="math inline">v</span></p>
+<p>Zavedu si ještě jednu relaci mezi <span class="math inline">u</span> a <span class="math inline">v</span> a ta nastane, pokud sled existuje oboustranně</p>
+<p>Pozorování: druhá zmíněná relace je ekvivalence a třídám této ekvivalence se říká komponenty silné souvislosti</p>
+<p>Graf je silně souvislý pokud je tato komponenta pouze jedna</p>
+<p>Nadefinujeme si ještě graf komponent <span class="math inline">C(G)</span> nebo-li kondenzaci, který má za vrcholy komponenty grafu <span class="math inline">G</span> a hrany jsou mezi vrcholy pokud se z jedné komponenty lze dostat do druhé</p>
+<p>Lemma: <span class="math inline">C(G)</span> je DAG</p>
+<p><em>Důkaz</em>: kdyby existoval cyklus, tak existuje cyklus v původním grafu a ty vrcholy jsou ve stejné komponentě</p>
+<blockquote>
+<ol start="4" type="1">
+<li>Přednáška 25.3.2021</li>
+</ol>
+</blockquote>
+<p>Graf komponent <span class="math inline">C(G)</span></p>
+<ol type="1">
+<li>je DAG</li>
+<li><span class="math inline">\exists</span> alespoň jedna stoková a jedna zdrojová komponenta</li>
+<li>Je-li <span class="math inline">C</span> stoková a <span class="math inline">v \in C</span>, pak DFS(<span class="math inline">v</span>) navštíví právě <span class="math inline">C</span></li>
+<li>Pokud spustíme opakované DFS, pak vrchol s max. outem leží ve zdrojové</li>
+<li>Zavedeme transpozici grafu, neboli opačý graf <span class="math inline">G^T := (V(G), \{ vu\ |\ uv \in E(G)\}</span><br />
+<span class="math inline">G</span> je DAG <span class="math inline">\iff</span> <span class="math inline">G^T</span> je DAG<br />
+Mají stejné ekvivalentní třídy a zdroj se prohodí se stokem, takže jsou izomorfní</li>
+<li>Najdeme <span class="math inline">v</span> ve zdrojové komponentě v <span class="math inline">G^T</span></li>
+<li>Odebereme stokovou komponentu a opakujeme <span class="math inline">\rightarrow</span> korektní, ale pomalé</li>
+<li>Procházíme vrcholy v pořadí klesajících outů v <span class="math inline">G^T</span>, pokud ještě nemají přiřazenou komponentu, tak spouštím DFS v <span class="math inline">G</span> a označuji komponenty</li>
+</ol>
+<p>To poslední odpovídá tomu, že odeberu stokovou komponentu a najdu další a stojí to na následujícím lemma:</p>
+<p>Pokud <span class="math inline">C_1, C_2</span> jsou komponenty t.ž. <span class="math inline">C_1C_2 \in E(C(G))</span>, pak <span class="math inline">\max out(u) &gt; \max out(v)</span> pro <span class="math inline">u\in C_1</span>, <span class="math inline">v \in C_2</span></p>
+<p>Jinými slovy, že pokud je z <span class="math inline">C_1</span> do <span class="math inline">C_2</span> hrana, tak <span class="math inline">C_1</span> v DFS opustím později než <span class="math inline">C_2</span></p>
+<p><em>Důkaz:</em> Rozbor případů</p>
+<ol type="1">
+<li>DFS vstoupí do <span class="math inline">C_1</span> před <span class="math inline">C_2</span> - z <span class="math inline">C_1</span> vstoupím do <span class="math inline">C_2</span> a kompletně ji projde</li>
+<li>Dřív vstoupím do <span class="math inline">C_2</span> - kompletně projdu <span class="math inline">C_2</span> před tím než se dotknu <span class="math inline">C_1</span></li>
+</ol>
+<p>Aplikujeme to na neDAG</p>
+<h4 id="algoritmus">Algoritmus</h4>
+<ol type="1">
+<li>Sestrojíme <span class="math inline">G^T</span></li>
+<li><span class="math inline">Z \gets</span> prázdný zásobník</li>
+<li>Opakované DFS v <span class="math inline">G^T</span> a při opuštění vrcholu přidáme do <span class="math inline">Z</span></li>
+<li><span class="math inline">\forall v</span> komp(<span class="math inline">v</span>) <span class="math inline">\gets \emptyset</span></li>
+<li>Postupně odebíráme vrcholy ze <span class="math inline">Z</span></li>
+<li>  Pokud komp(<span class="math inline">v</span>) <span class="math inline">= \emptyset</span></li>
+<li>    Spustíme DFS v <span class="math inline">G</span> z vrcholu <span class="math inline">v</span><br />
+    Chodíme do vrcholů s komp <span class="math inline">= \emptyset</span> a nastavíme je na <span class="math inline">V</span></li>
+</ol>
+<p>Algoritmus najde komponenty silné souvislosti v čase a prostoru <span class="math inline">\Theta(n+m)</span></p>
+<h1 id="nejkratší-cesty">Nejkratší cesty</h1>
+<p>Nadefinujeme si orientovaný graf <span class="math inline">G=(V,E)</span> s délkami hran <span class="math inline">l: E \mapsto \mathbb{R}_0^+</span><br />
+  (l je prostě zobrazení, které hranám přiřadí <em>pro začátek</em> nezápornou hodnotu)</p>
+<p>Délka cesty z <span class="math inline">u</span> do <span class="math inline">v</span> (<span class="math inline">uv</span>-cesty <span class="math inline">P</span>) je prostě jen součet hran na té cestě <span class="math inline">l(P) := \sum_{e\in P} l(e)</span></p>
+<p>Vzdálenost je nejkratší cesta <span class="math inline">d(u,v) := \text{min} \{\ l(P) \ | \ P \text{ je } uv\text{ cesta } \}</span></p>
+<p>Lemma: Pokud <span class="math inline">S</span> je <span class="math inline">uv</span>-sled pak <span class="math inline">\exists P \ uv\text{-cesta}</span> t.ž. <span class="math inline">l(P) \leq l(S)</span>i<br />
+<em>Důkaz</em>: můžu vystřihávat cykly</p>
+<p>Z toho lze vidět, že sledy vzdálenost neovlivní a tedy <span class="math inline">d(u,v) := \min \{\ l(P) \ | \ P \text{ je } uv\text{ sled } \}</span></p>
+<p>Další pozorování je, že platí trojúhelníková nerovnost <span class="math inline">\forall u, v, w: d(u,v) \leq d(u,w) + d(w,v)</span><br />
+Opět se v podstatě ukáže z předchozího lemma</p>
+<p>Záporné hrany to ale celé rozbijí</p>
+<p>Nejkratší sled neexistuje a nejkratší cesta je těžká</p>
+<p>Opatrný kompromis: zakážeme záporné cykly</p>
+<h4 id="případ-kdy-mají-všechny-hrany-jednotkovou-délku">Případ, kdy mají všechny hrany jednotkovou délku</h4>
+<p>Dá se přes BFS ve kterém “vrstvy” odpovídají vzdálenostem v lineárním čase - vytvoří se strom nejkratších cest</p>
+<p>Cestu samotnou si pak můžu poznamenávat do vrcholů a nebo udělat zpětný chod</p>
+<p>Definice: Strom nejkratších cest</p>
+<ul>
+<li>strom na (dosažitelných částí) <span class="math inline">V</span></li>
+<li>podgraf <span class="math inline">G</span></li>
+<li>orientovaný od kořene, kterým je vrchol ve kterém začínáme <span class="math inline">(u)</span></li>
+<li>cesta ve stromu do jakéhokoliv vrcholu z <span class="math inline">u</span> je jednou z nejkratších cest v <span class="math inline">G</span></li>
+</ul>
+<p>Je to tedy kompaktní reprezentace nejkratších cest z <span class="math inline">u</span> kamkoliv</p>
+<p>Lemma: Strom cesty existuje i v ohodnocených grafech</p>
+<p><em>Důkaz</em>:<br />
+  Postupně budujeme a při přidávání nového vrcholu existuje nějaký poslední vrchol ve stromu<br />
+  To funguje především proto, že prefix nejkratší cesty je opět nejkratší cesta</p>
+<h4 id="délky-hran-jsou-přirozená-čísla">Délky hran jsou přirozená čísla</h4>
+<p>Dá se líně rozdělit hrany na jednotkové, ale to je hodně pomalé</p>
+<p>Ale my si zavedeme “budíky” pro vrcholy, které uchovávají, kdy se poprvé dostaneme do vrcholu<br />
+Spíme než nás budík probudí a přenastavím okolní budíky</p>
+<p>Je to v podstatě diskrétní simulace jako na programování a také základ Dijkstrova algoritmu</p>
+<blockquote>
+<ol start="5" type="1">
+<li>Přednáška 1.4.2021</li>
+</ol>
+</blockquote>
+<h2 id="dijkstra">Dijkstra</h2>
+<p>Z předchozí úvahy můžeme napsat algoritmus</p>
+<ol type="1">
+<li><span class="math inline">\forall v \ h(v) \gets + \infty, s(v) \ gets \ neviděný</span></li>
+<li><span class="math inline">h(u) \gets 0, s(u)\gets</span> otevřený      # počáteční vrchol</li>
+<li>Dokud existují otevřené vrcholy:</li>
+<li>  <span class="math inline">v \gets</span> otevřeý s <span class="math inline">min. h(v)</span>         # vzít si s nejmenším časem (budíkem)</li>
+<li>  Pro všechny hrany <span class="math inline">vw</span>:             # okolní se pokusím zlepšit</li>
+<li>    Pokud <span class="math inline">h(v) + l(v,w) &lt; h(w)</span></li>
+<li>      <span class="math inline">h(w)\gets h(v) + l(v,w)</span></li>
+<li>      <span class="math inline">s(w) \gets</span> otevřený</li>
+<li>  <span class="math inline">s(v) \gets</span> zavřený</li>
+</ol>
+<p>Na základě naší předchozí úvahy víme, že to funguje alespoň pro přirozená čísla</p>
+<p>Časová složitost - projdu všechny vrcholy max. jednou a pro něj všechny hrany - to je <span class="math inline">O(n^2)</span> plus hledání min.</p>
+<p>Takový odhad se nám ale až tolik nehodí, protože v řídkých grafech se hodí znát i odhad k počtu hran<br />
+Navíc si můžeme všimnout, že hledáme minimum zbytečně, protože se toho nemohlo moc změnit</p>
+<p>Potřebuji tedy datovou strukturu s ExtractMin, Insert a Decrease</p>
+<p>A dá se všimnout, že provedeme<br />
+<span class="math inline">O(n\cdot T_{Insert} + n\cdot T\cdot T_{ExtMin} + m\cdot T_{Decrease})</span></p>
+<h4 id="v-poli">V poli</h4>
+<p>ExtractMin je v poli lineární (ostatní konst.), dosazením dostaneme <span class="math inline">O(n^2)</span>, takže se nám to potvrdilo</p>
+<h4 id="v-haldě-binární">V haldě (binární)</h4>
+<blockquote>
+<p>Definici haldy už známe… btw v haldě se vyplatí číslovat od jedničky, kvůli synům</p>
+</blockquote>
+<p>Insert je <span class="math inline">O(\log n)</span>, minimum najdeme v kořeni a smažeme ho v <span class="math inline">O(\log n)</span> no a decrease <span class="math inline">O(\log n)</span>, protože bude probublávat nahoru<br />
+Ale je tam háček, že si musíme pamatovat, kde se vrchol v haldě nachází</p>
+<p>Dosazením podobně dostaneme <span class="math inline">O((n + m)\log n)</span> a je to tedy mezi <span class="math inline">n \log n</span> a <span class="math inline">n^2 \log n</span></p>
+<p><strong>Finoacciho halda</strong> je <span class="math inline">O(n \log n + m)</span></p>
+<h4 id="zpátky-ke-korektnostii">Zpátky ke korektnostii</h4>
+<p>Vezmeme to obklikou a budeme se dívat na něco obecnějšího</p>
+<h3 id="relaxační-algoritmus">Relaxační algoritmus</h3>
+<p>Ty jsou založené na tom, že:</p>
+<ol type="1">
+<li>Všechny vrcholy mají nějaké zpočátku vysoké ohodnocení (kromě počátku)</li>
+<li>Snažím se vylepšit hodnocení okolních vrcholů - relaxace</li>
+<li>Mám stavy, abych se nazacyklil (otevřený - od předchozí relaxace se <span class="math inline">h(v)</span> změnilo)</li>
+</ol>
+<p>A jejich průběh bude:</p>
+<ol type="1">
+<li><span class="math inline">\forall v</span> <span class="math inline">h(v) \gets \infty</span>, <span class="math inline">s(v) \gets</span> neviděný <span class="math inline">h(u) \gets 0</span>,<span class="math inline">s(u) \gets otevřený</span></li>
+<li>Dokud <span class="math inline">\exists v</span> otevřený:</li>
+<li>  Relaxuj <span class="math inline">v</span></li>
+</ol>
+<blockquote>
+<p>Dijkstra ve druhém kroku otvírá vrchol s min. <span class="math inline">h(v)</span>, dá se to ale i jinak</p>
+</blockquote>
+<h4 id="co-platí-i-pro-záporné-hrany-bez-záporných-cyklů">Co platí i pro záporné hrany (bez záporných cyklů)</h4>
+<p>Invariant O: <span class="math inline">\forall v \ h(v)</span> nikdy neroste a pokud je <span class="math inline">h(v)</span> konečné, tak je rovno délce nějakého <span class="math inline">uv</span>-sledu</p>
+<p><em>Dúkaz</em> indukcí (podle běhu algoritmu):<br />
+První část je zřejmá z toho, že algoritmus jenom snižuje<br />
+Druhá část se dokáže tím, že začneme v nule a při relaxaci vždy přičteme délku hrany</p>
+<p>Lemma D (dosažitelnost): Pokud se algoritmus zastaví, pak pro každý <span class="math inline">v \in V</span> platí:</p>
+<ul>
+<li><span class="math inline">v</span> je dosažitelný z <span class="math inline">u</span></li>
+<li><span class="math inline">v</span> je zavřený</li>
+<li><span class="math inline">h(v)</span> je konečné</li>
+</ul>
+<blockquote>
+<p>Viz. korektnost DFS/BFS</p>
+</blockquote>
+<p>Lemma V (vzdálenost): Pokud se alg. zastaví, pak <span class="math inline">\forall v \in V : h(v) = d(u,v)</span></p>
+<p><em>Důkaz</em>: Pokud není dosažitelný, tak <span class="math inline">h(v)</span> je nekonečno a to je ta vzdálenost, jinak je vše konečné<br />
+  Díky inv. O. je <span class="math inline">h(v) \geq d(u,v)</span>, my ale musíme ukázat, že ostře větší nenastane<br />
+  Vyberu tedy vrchol <span class="math inline">v</span>, pro který je to ostře větší, t.ž. <span class="math inline">uv</span>-cesta má nejméně hran (co do <span class="math inline">l</span>) a vezmu nějakého předchůdce pro kterého to sedí a z něj jsme se museli pokoušet snížit ohodnocení dalšího vrcholu (chtělo by to asi detailněji - otevřít, zavřít, relaxovat, …)</p>
+<h5 id="co-platí-konkrétně-pro-dijsktru-graf-bez-záporných-hran">Co platí konkrétně pro Dijsktru (graf bez záporných hran)</h5>
+<p>  Invariant M (Monotonie): Kdykoliv je <span class="math inline">o</span> otevřený vrchol a <span class="math inline">z</span> zavřený, tak <span class="math inline">h(z) \leq h(o)</span> a <span class="math inline">h(z)</span> se už nezmění<br />
+<em>Důkaz</em>: klasicky indukcí podle výpočtu<br />
+  a) zpočátku (vakuově pravdivé)<br />
+  b) při relaxaci - z IP platí <span class="math inline">h(z) \leq h(v) \leq h(o)</span> a rozborem pokusů změnit zavřené, otevřené i neviděné vrcholy invariant bude platit (buď se vrcholy nezmění a nebo budou <span class="math inline">\geq v</span></p>
+<p>Věta: Dijkstrův algoritmus zavírá vrcholy v pořadí vzdálenosti od <span class="math inline">u</span>, každý dosažitelný právě jendou a <span class="math inline">h(v)</span> v okamžiku uzavření je rovno <span class="math inline">d(u,v)</span></p>
+<p>Dostaneme kombinací předchozích</p>
+<h2 id="bellman-ford">Bellman-Ford</h2>
+<p>Další způsob jak udělat relaxaci je mít otevřené vrcholy má ve frontě (a tedy zavírat nejstarší z otevřených)</p>
+<p>V čase <span class="math inline">O(n \cdot m)</span></p>
+<p>Funguje i na záporné hrany bez záporných cyklů</p>
+<p>Definujeme si fázi výpočtu jako <span class="math inline">F_0 :=</span> otevření <span class="math inline">u</span> a <span class="math inline">F_i :=</span> zavření otevřených v <span class="math inline">F_{i-1}</span> a otevření jejich následníků</p>
+<p>Díky tomu můžeme uvažovat následující invariant:</p>
+<p>  Na konci fáze <span class="math inline">F_i</span> <span class="math inline">\forall v \in V \leq</span> délka nejkratšího <span class="math inline">uv</span>-sledu o max. <span class="math inline">i</span> hranách (to může být i <span class="math inline">\infty</span>)</p>
+<p>Z toho plyne, že po nejvýše <span class="math inline">n-1</span> fází platí <span class="math inline">h(v) \leq d(u,v)</span> a <span class="math inline">n</span>-tá fáze to zavře</p>
+<p><em>Důkaz invariantu</em>: Indukcí podle <span class="math inline">i</span><br />
+  a) <span class="math inline">i = 0</span> triviálně<br />
+  b) Na konci <span class="math inline">(i+1)</span>-té fáze - pokud <span class="math inline">S</span> má méně než <span class="math inline">i</span> hran, tak to platilo z IP, zajímavé je tedy <span class="math inline">S</span> má právě <span class="math inline">i</span> hran, v takovém případě, ale platilo, že do předchozího vrcholu vede nejkratší sled a my jenom přidáme délku hrany a vrchol zavřeme nejpozději v <span class="math inline">i+1</span> fázi</p>
+<blockquote>
+<ol start="6" type="1">
+<li>Přednáška 8.4.2021</li>
+</ol>
+</blockquote>
+<h1 id="minimální-kostry">Minimální kostry</h1>
+<p>Je dán souvislý neorientovaný graf s <span class="math inline">\mathbb{R}</span> váhami hran (<em>BÚNO</em> unikátními) a chceme najít kostru <span class="math inline">T</span> t.ž. <span class="math inline">w(T)</span> je min.</p>
+<p><span class="math inline">w(T) := \sum_{e\in T} w(e)</span> - váha kostry je prostě součet vah hran</p>
+<h2 id="jarníkův-algoritmus">Jarníkův algoritmus</h2>
+<p>Je to hladový algoritmus</p>
+<p>Pěstujeme si strom <span class="math inline">T</span> tak, že opakujeme jeden krok</p>
+<ul>
+<li>Vybereme si nejlehčí z hran mezi <span class="math inline">T</span> a zbytkem a přidáme ji</li>
+</ul>
+<p>Lemmátko: Po <span class="math inline">n</span> krocích se Jarník zastaví a dám nám kostru<br />
+<em>Důkazík</em>: Přidávám jen listy, takže pořád strom a kdyby nějaký vrchol chyběl, tak tu hranu musí přidat</p>
+<p>Definice: Množina <span class="math inline">R \subseteq E</span> je elementární řez <span class="math inline">\equiv \exists A \subseteq V, B=V \backslash A, A,B \neq 0</span> t.ž. <span class="math inline">R = E(A,B)</span><br />
+Jinými slovy je to množina hran vedoucí mezi <span class="math inline">A,B</span>, kde <span class="math inline">A,B</span> vznikne rozdělením grafu na neprázdné části</p>
+<p>Řezové lemma: nechť</p>
+<ul>
+<li><span class="math inline">G</span> je graf s unikátními vahamami</li>
+<li><span class="math inline">R</span> elementární řez v <span class="math inline">G</span>,</li>
+<li><span class="math inline">e</span> nejlehčí hrana v <span class="math inline">R</span>,</li>
+<li><span class="math inline">T</span> nějaká min. kostra v <span class="math inline">G</span></li>
+</ul>
+<p>Pak <span class="math inline">e \in T</span> (nejlehčí hrana každého elementárního řezu leží v kostře)</p>
+<p><em>Důkaz</em>:<br />
+  Nechť <span class="math inline">T</span> je kostra <span class="math inline">e\notin T</span> (a dokážeme, že ta kostra není minimální)<br />
+  <span class="math inline">R = E(A,B)</span> pro <span class="math inline">A,B</span> a <span class="math inline">e = \{ a,b \}</span> pro nějaké <span class="math inline">a\in A</span> a <span class="math inline">b\in B</span><br />
+  <span class="math inline">\exists C</span> cesta v <span class="math inline">T</span> mezi <span class="math inline">a, b</span><br />
+  <span class="math inline">\exists f \in C \cap R</span> (nějaká další hrana mezi <span class="math inline">a,b</span> v řezu)<br />
+  <span class="math inline">T - f</span> má 2 komponenty v jedné je <span class="math inline">a</span> a v druhé <span class="math inline">b</span>   $Ť = <span class="math inline">T - f + e</span> a to je také kostra<br />
+  <span class="math inline">w(Ť) &lt; w(T)</span>, protože <span class="math inline">e</span> byla v řezu nejlehčí</p>
+<p>Z toho plyne</p>
+<ol type="1">
+<li>JA najde min. kostru (hrany mezi <span class="math inline">T</span> a zbytkem je elementární řez)</li>
+<li>existuje jediná min. kostra (k tomu jsou potřeba unikátní váhy)</li>
+<li>min. kostra je jednoznačně určena pořadím hran podle vah (z toho je např. nepotřebujeme sčítat)</li>
+</ol>
+<p>Časová složitost: <span class="math inline">O(n\cdot m)</span><br />
+Pro každý vrchol vybíráme asymptoticky až všechny hrany</p>
+<h4 id="odbočka-k-neukinátním-vahám">Odbočka k neukinátním vahám</h4>
+<p>I tak by Jarník našel minimální kostru</p>
+<p>V takovém případě lze doporovnat stejné váhy a vyrobit lin. uspořádání, které využijeme ke kostře viz. 3.</p>
+<h3 id="verze-podle-dijkstry">Verze podle Dijkstry</h3>
+<p>Pro sousedy vrcholů v <span class="math inline">T</span> si pamatuji nejlehčí hranu do <span class="math inline">T</span></p>
+<p>Najdu vrchol s nejlehčí hranou, přidám ji přepočítám vrcholy, které mohla změnit<br />
+Mohla změnit hrany mezi nově přidaným vrcholem a již dřívějšími sousedy</p>
+<p>Opět mám stavy vrcholů (otevřený - sousedé <span class="math inline">T</span>, zavřený - už v <span class="math inline">T</span>, neviděný)</p>
+<p><span class="math inline">n \times</span> Insert<br />
+<span class="math inline">n \times</span> ExtractMin<br />
+<span class="math inline">m \times Decrease</span></p>
+<p>V závislosti na implementaci se dostanu na <span class="math inline">O(n^2)</span> nebo <span class="math inline">O((n+m)\log n</span></p>
+<h2 id="borůvkův-algoritmus">Borůvkův algoritmus</h2>
+<p>Místo stromku si pěstujeme les a v každém kroku přidáme min. hranu ze všech stromků</p>
+<p>Složitost <span class="math inline">\Theta(m \cdot \log n)</span>, protože mám <span class="math inline">\leq \log n</span> fází a každá je <span class="math inline">O(m)</span></p>
+<p><em>Důkaz</em> počtu fází a zastavení:</p>
+<ul>
+<li>Na konci <span class="math inline">k</span>-té fáze mají všechny stromky <span class="math inline">2^k</span> vrcholů a indukcí
+<ul>
+<li>Pro <span class="math inline">k = 0</span> platí <span class="math inline">1= 2^0</span></li>
+<li><span class="math inline">k+1</span> fáze<br />
+srůst alespoň 2 původních stromků a to znamená, že má alespoň <span class="math inline">2^{k+1}</span></li>
+</ul></li>
+</ul>
+<p>Lemma: Výstup je min. kostra<br />
+  <em>Důkaz</em>: Každá přidaná hrana je nejlehčí v elementárním řezu mezi stromkem a zbytkem</p>
+<p>Je ale výborný pro paralelizaci a jsou na něm postavené další algoritmy</p>
+<h2 id="kruskalův-algoritmus">Kruskalův algoritmus</h2>
+<p>Setřídíme hrany od nejlehčí k nejtěžší</p>
+<p>Postupně přidáváme do podgrafu podle toho, jestli vznikne cyklus</p>
+<p>Lemma: Alg. najde min. kostru</p>
+<p><em>Důkaz</em>:</p>
+<ul>
+<li>očividně se zastaví, protože každou hranu vezme jednou</li>
+<li>podgraf je vždy les (nemohl vzniknout cyklus)</li>
+<li>na konci strom</li>
+<li>je min. díky řez. lemmatu (řez mezi jedním stromkem a zbytkem grafu a opravdu nejlehčí)</li>
+</ul>
+<p>Se složitostí je to komplikovanější, protože pro efektivní postup si zavedeme Union-Find</p>
+<p><span class="math inline">m \times</span> Find<br />
+<span class="math inline">n \times</span> Union</p>
+<p>Musíme ale i třídit a to je <span class="math inline">O(m \log n)</span></p>
+<p>Spoiler z Union-Findu:<br />
+  V poli je to <span class="math inline">O(m \log n + n^2)</span><br />
+  Se lepší implementací DFU to zvládneme <span class="math inline">O(m \log n)</span></p>
+<h2 id="union-find-dfu">Union-Find (DFU)</h2>
+<p>Udržujeme komponenty souvislosti</p>
+<p>Operace Find (jsou <span class="math inline">u,v</span> ve stejné komponentě) a Union (přidat <span class="math inline">uv</span>)</p>
+<p><strong>Pole</strong><br />
+Find v <span class="math inline">O(1)</span> a Union v <span class="math inline">O(n)</span> a Kruskal pak <span class="math inline">O(m \log n + n^2)</span></p>
+<p><strong>Keříky</strong><br />
+strom orientovaný ke kořeni (každý vrchol si pamatuje otce) a jeho vrcholy reprezentují komponentu</p>
+<p>Find se dělá tak, že z <span class="math inline">u</span> i <span class="math inline">v</span> jdu do jejich kořene a pak porovnám kořeny a je to <span class="math inline">O(\text{hlouka keříku})</span><br />
+Union se dělá opět nalezením kořenů a potom se spojí, opět v <span class="math inline">O(\text{hloubka keříku})</span></p>
+<p>Takhle to ale může degenerovat</p>
+<p>Vylepšení: Udržuji si v kořenech hloubky keříků a vždy připojuji ty menší pod větší</p>
+<p>Lemma: Keřík hloubky <span class="math inline">h</span> má alespoň <span class="math inline">2^h</span> vrcholů<br />
+<em>Důkaz</em> indukcí podobně jak u borůvky: spojím dva <span class="math inline">2^h</span> na jeden <span class="math inline">2^{h+1}</span></p>
+<p>Důsledek:<br />
+  Union a Find trvají <span class="math inline">O(\log n)</span><br />
+  Kruskal trvá <span class="math inline">O(m \log n + m \log n + n \log n) = O(m \log n)</span></p>
+<p>Co se umí? &gt; Nebude se zkoušet, ale je to cool</p>
+<ul>
+<li><span class="math inline">O(m)</span> pro rovinné grafy</li>
+<li><span class="math inline">O(m)</span> pro alespoň trochu husté - to znamená, že už pro <span class="math inline">m \geq n \cdot \log \log \log n)</span></li>
+<li><span class="math inline">O(m)</span> pro celočíselné váhy</li>
+<li><span class="math inline">O(m)</span> průměrně</li>
+<li><span class="math inline">O(m)</span> pro seřazené hrany</li>
+<li><span class="math inline">O(m \cdot log^* n)</span> obecně, kde <span class="math inline">log^*</span> je inverzní k <span class="math inline">2^{{2^2}^{\cdots}}</span>, kde 2 je <span class="math inline">k</span></li>
+<li><span class="math inline">O(m \cdot \alpha(n))</span> obecně, kde <span class="math inline">\alpha</span> je Achermannova funkce (ta roste ještě pomaleji)</li>
+</ul>
+<blockquote>
+<ol start="7" type="1">
+<li>Přednáška 15.4.2021</li>
+</ol>
+</blockquote>
+<h1 id="datové-struktury">Datové struktury</h1>
+<p>Způsob ukládání dat</p>
+<p>Nějaký blackbox s rozhraním a implementací</p>
+<h3 id="rozhraní">Rozhraní</h3>
+<ul>
+<li>fronta, zásobník, posloupnost</li>
+<li>prioritní fronta (halda)</li>
+<li>množina (konečná podmnožina univerza), která má Find(<span class="math inline">x</span>), Inset(<span class="math inline">x</span>) a Delete(<span class="math inline">x</span>)</li>
+<li>slovník (částečně zobrazení, kde z klíčů máme hodnotu)</li>
+<li>uspořádaná množina (nebo slovník) umí i Min, Max, Pred(<span class="math inline">x</span>) a Succ(<span class="math inline">x</span>)</li>
+</ul>
+<p>Statické x dynamické podle toho, jestli data můžeme průběžně přidávat</p>
+<h3 id="implementace">Implementace</h3>
+<ul>
+<li>pole</li>
+<li>spojový seznam</li>
+<li>binární halda</li>
+<li>binární vyhledávací strom</li>
+<li>…</li>
+</ul>
+<h3 id="operace-v-množině-podle-implementace">Operace v množině podle implementace</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Struktura</th>
+<th>Find</th>
+<th>Insert</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pole</td>
+<td><span class="math inline">\Theta(n)</span></td>
+<td><span class="math inline">\Theta(1)</span>/<span class="math inline">\Theta(n)</span>*</td>
+<td><span class="math inline">\Theta(n)</span></td>
+</tr>
+<tr class="even">
+<td>Seznam</td>
+<td><span class="math inline">\Theta(n)</span></td>
+<td><span class="math inline">\Theta(1)</span>/<span class="math inline">\Theta(n)</span>*</td>
+<td><span class="math inline">\Theta(n)</span></td>
+</tr>
+<tr class="odd">
+<td>Vyhledávací strom</td>
+<td><span class="math inline">\Theta(\log n)</span></td>
+<td><span class="math inline">\Theta(\log n)</span></td>
+<td><span class="math inline">\Theta(\log n)</span></td>
+</tr>
+<tr class="even">
+<td>Hešovací tabulky - průměrně</td>
+<td><span class="math inline">\Theta(1)</span></td>
+<td><span class="math inline">\Theta(1)</span></td>
+<td><span class="math inline">\Theta(1)</span></td>
+</tr>
+</tbody>
+</table>
+<p>*) záleží, jestli musím kontrolovat, zda už tam je</p>
+<h2 id="binání-strom">Binání strom</h2>
+<p>Má nějaký kořen a pak respektive levý a pravý podstrom</p>
+<h3 id="značení">Značení</h3>
+<p>vrchol <span class="math inline">v</span></p>
+<ul>
+<li>levý a pravý syn <span class="math inline">l(v)</span> a &amp;r(v)$</li>
+<li>levý a pravý podstrom <span class="math inline">L(v)</span> a <span class="math inline">R(v)</span></li>
+<li>všechny potomky <span class="math inline">T(v)</span></li>
+<li><span class="math inline">h(v) :=</span> maximální počet hran mezi <span class="math inline">v</span> a listem</li>
+<li><span class="math inline">n :=</span> celkový počet vrcholů</li>
+</ul>
+<p>Pokud chybí syn, tak <span class="math inline">l(v)</span> nebo <span class="math inline">r(v) = \emptyset</span><br />
+a dodefinujeme <span class="math inline">T(\emptyset) = \emptyset</span> a <span class="math inline">h(\emptyset) = -1</span></p>
+<h3 id="binární-vyhledávací-strom">Binární vyhledávací strom</h3>
+<p>Vrcholy obsahují klíče <span class="math inline">k(v) \in \mathcal{U}</span> (musí být z univerza a různé)</p>
+<p>A navíc platí, že <span class="math inline">\forall v : \forall l \in L(v): k(l) &lt; k(v)\ \wedge \forall r \in R(v) k(r)&gt;k(v)</span> a z toho právě plyne, že klíče různé</p>
+<h3 id="operace">Operace</h3>
+<p><strong>Show (enumerate)</strong> – <span class="math inline">\Theta(n)</span><br />
+  Rekurzivně se volám na oba podstromy a vypíšu je</p>
+<p><strong>Find</strong> – <span class="math inline">\Theta(\text{hloubka stromu})</span><br />
+  Podle toho, co hledám, tak jdu do <span class="math inline">l(v)</span> a nebo <span class="math inline">r(v)</span>…</p>
+<p><strong>Insert</strong> – <span class="math inline">\Theta(\text{hloubka stromu})</span><br />
+  Začnu hledat a buď najdu nebo najdu prázdné místo a přidám ho</p>
+<p><strong>Delete</strong> – <span class="math inline">\Theta(\text{hloubka stromu})</span><br />
+  Buď je to list, má jednoho syna a nebo 2 syny<br />
+  Když jeden, tak přepojím a když dva, tak najdu např. min. z pravého podstromu (btw může mít pravého syna)</p>
+<p>Chceme tedy relativně mělké stromy<br />
+Můžeme totiž dostat takzvaně degenerovaný strom nebo-li liánu s lineární hloubkou</p>
+<h3 id="dokonale-vyvážený-bvs">Dokonale vyvážený BVS</h3>
+<p>Rozdíl mezi počty prvků levého a pravého podstromu je vždy nejvýše jedna</p>
+<p>Dokážeme to algoritmem, který takový strom vyrobí</p>
+<p>Vezmu setříděnou posloupnost, prostřední prvek je kořen a rekurzivně se zavoláme na l. a p.polovinu (podstromy)<br />
+Ten je mimochodem <span class="math inline">\Theta(n)</span>, alespoň když si ve funkci budeme předávat akorát indexy</p>
+<p>Pozorování: Hloubka d.v. BVS <span class="math inline">\leq \log_2 n</span>, protože na nejdelší cestě se při kroku dolů velikost <span class="math inline">T(v)</span> zmenší alespoň dvakrát (takže po <span class="math inline">\log n</span> dojdou vrcholy) a s rozdílem 1 nás zachrání to, že do <span class="math inline">T(v)</span> se počítá i <span class="math inline">v</span></p>
+<p>Má to ale nevýhodu, že je dokonalá vyváženost těžká udržovat, a v algoritmizaci celkem výjimečně to jde i dokázat</p>
+<p>Věta: V každé implementaci operací Insert, Delete, v d.v. BVS má alespoň 1 z operací složitost <span class="math inline">\Omega(n)</span> pro nekonečně mnoho hodnot <span class="math inline">n</span> (šlo by to pro všechna <span class="math inline">n</span>, ale to je složitější)</p>
+<p><em>Důkaz</em>:<br />
+  Zvolíme <span class="math inline">n=2^k - 1</span> a pro ten je tvar stromu určen jednoznačně<br />
+  Já provedu Inser(<span class="math inline">n+1</span>) a Delte(1)<br />
+  To je opět určeno jednoznačně, ale všechny vrcholy jsou posunuté a tedy <span class="math inline">\Omega(n)</span> vrcholů změnilo, zda jsou listy<br />
+  V každém z nich změna min. 1 ukazatele <span class="math inline">\rightarrow \Omega(n)</span> změn ukazatelů<br />
+  Pak ještě provedeme Insetr(<span class="math inline">n+2</span>) a Delte(2) a budeme to dál opakovat, aby se to nemohlo amortizovat<br />
+  Čas na dvojici je <span class="math inline">\Omega(n)</span> a tedy alespoň jedna operace to mít musí taky</p>
+<h3 id="avl-strom">AVL strom</h3>
+<p>Definice strom je hloubkově vyvážený <span class="math inline">\equiv</span> rozdíl výšek levého a pravého podstromu je vždy nejvýše jedna</p>
+<p>Díky dodefinování hloubky prázdného podstromu to funguje<br />
+např. pokud má vrchol jednoho syna, tak to musí být list</p>
+<p>Dokonale je i hloubkově, ale obráceně to být nemusí</p>
+<p>Věta: Hloubka AVL stromu je <span class="math inline">\Theta(\log n)</span></p>
+<p><em>Důkaz</em>:</p>
+<p>  <strong>Horní odhad hloubky</strong><br />
+    Budeme počítat <span class="math inline">A_n :=</span> min. #vrcholů AVL stromu hloubky <span class="math inline">h</span> (nejprázdnější strom)<br />
+    Můžeme si všimnout, že to je <span class="math inline">A_h = 1 + A_{h-1} + A_{h-2}</span> (vrcholu plus dva podstromy rozdílné výšky)<br />
+    Můžeme použít Fibonacciho, ale to my ještě nevíme, takže indukce, že <span class="math inline">A_h \geq 2^{h/2}</span></p>
+<ul>
+<li>Pro <span class="math inline">h=0</span>: <span class="math inline">A_0 = 1 \geq 2^0</span><br />
+Pro <span class="math inline">h=1</span>: <span class="math inline">A_1 = 2 \geq 2^{\frac{1}{2}} \approx 1.414</span></li>
+<li>Pro <span class="math inline">h\geq 2</span>: <span class="math inline">A_h \geq A_{h-1} + A_{h-2} = 2^{\frac{h}{2}}(\frac{\sqrt{2}}{2} + \frac{1}{2} \geq 2^{h/2})</span> a to v závorce je větší než 1, takže to vychází</li>
+</ul>
+<p>    <span class="math inline">\implies \exists c&gt;1: A_h \geq c^h</span> a v našem případě <span class="math inline">c=\sqrt{2}</span><br />
+    A z toho už musí platit, že strom na <span class="math inline">n</span> vrcholech má hloubku <span class="math inline">\leq \log_c n</span>, protože jinak by <span class="math inline">A_h \geq c^{\geq \log_c n} &gt; n</span><br />
+    A <span class="math inline">\log_c n \in O(\log n)</span></p>
+<p>  <strong>Dolní odhad hloubky</strong><br />
+    Analogicky si zavedeme <span class="math inline">B_n :=</span> max. # vrcholů na stromu hloubky <span class="math inline">h</span><br />
+    <span class="math inline">B_h = 2^{h+1}-1</span> pro úplný strom<br />
+    <span class="math inline">h\geq \log_2 n + 1 \implies</span> hloubka <span class="math inline">\in \Omega(\log n)</span></p>
+<blockquote>
+<ol start="8" type="1">
+<li>Přednáška 22.4.2021</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Btw je to skoro celý jen rozbor případů</p>
+</blockquote>
+<h4 id="vyvažování-avl-stromů">Vyvažování AVL stromů</h4>
+<!-- TODO as usual -->
+<p>Hodí se vidět <a href="https://kam.mff.cuni.cz/~mares/video/ls2021/ads1/08-avl.pdf">tabuli z hodiny</a></p>
+<p>Po Insert a Delete se bude strom opravovat</p>
+<p>V každém vrcholu si budeme udržovat <span class="math inline">\delta(v) = h(r(v)) - h(l(v))</span> neboli znaménko vrcholu</p>
+<ul>
+<li>pravý je hlubší <span class="math inline">\delta(v) = 1</span> značíme <span class="math inline">+</span></li>
+<li><span class="math inline">-1</span> značíme <span class="math inline">-</span></li>
+<li><span class="math inline">0</span> značíme <span class="math inline">0</span></li>
+</ul>
+<h5 id="rotace">Rotace</h5>
+<p>Prostě prohodíme dva vrcholy mezi sebou a jejich podstromy, tak aby to sedělo</p>
+<!-- TODO: udělat svoje obrázky, každopádně v HTML komentu nějaký jsou -->
+<!-- <center><img src="https://ksp.mff.cuni.cz/kucharky/vyhledavaci-stromy/vyhledavaci_stromy_04.png"></center> -->
+<h5 id="dvojitá-rotace">Dvojitá rotace</h5>
+<p>Prostě akorát provedeme dvakrát, chtělo by to ale obrázek</p>
+<!-- <center><img src="https://ksp.mff.cuni.cz/kucharky/vyhledavaci-stromy/vyhledavaci_stromy_05.png"></center> -->
+<h4 id="vyvažování-insert">Vyvažování Insert</h4>
+<p>Obecně do vrcholu přijde zdola signál, že podstrom se prohloubil</p>
+<p>Jestli zprava nebo zleva je symetrické, takže budeme rozebírat třeba jenom zleva</p>
+<ol type="1">
+<li>Pokud byl pravý hlubší (<span class="math inline">+</span>), tak se to srovná na <span class="math inline">0</span> a hloubka se nezmění</li>
+<li>Pokud přišla informace do <span class="math inline">0</span>, tak se dostaneme na <span class="math inline">-</span> a posíláme informaci dál</li>
+<li>V případě, že byl vrchol <span class="math inline">-</span>, tak se dostaneme na <span class="math inline">-2</span> a musíme zasáhnout
+<ul>
+<li>Byl <span class="math inline">-</span> zrotujeme syna a vrchol do kterého informace přišla a celková hloubka stejná</li>
+<li>Byl <span class="math inline">0</span> nenastane, protože se z nuly nešíří signál… skoro (kromě začátku insertu)</li>
+<li>Byl <span class="math inline">+</span> provedeme dvojitou rotaci a vyneseme do kořene pravý podstrom levého syna a hloubka stejná</li>
+</ul></li>
+</ol>
+<p><strong>Jak se to tedy chová celkově?</strong></p>
+<ul>
+<li>buď oprava znaménka a pak možná pokračovat</li>
+<li>nebo nějaká rotace a skončíme</li>
+</ul>
+<h4 id="vyvažování-delete">Vyvažování Delete</h4>
+<p>Převedeme na smazání buď listu nebo vrcholu s 1 synem a v obou případech klesne hloubka o 1</p>
+<p>Oebceně tedy do vrcholu přijde signál, že hloubka podstromu klesla o jedna (opět BÚNO zleva)</p>
+<ol type="1">
+<li>Přijde do <span class="math inline">-</span>, znaménko jde na nulu a hloubka klesla</li>
+<li>Přijde do <span class="math inline">0</span>, znaménko jde na <span class="math inline">+</span> a končíme</li>
+<li>Přijde do <span class="math inline">+</span> musíme opět opravit a zase rozdělujeme znaménka synů
+<ul>
+<li><span class="math inline">+</span> opět opravíme rotací a dál posíláme signál, že se to snížilo</li>
+<li><span class="math inline">0</span> zrotujeme, dáme to na <span class="math inline">-</span> a nic neposíláme</li>
+<li><span class="math inline">-</span> dvojitá rotace, znaménko na 0 a posílám dál</li>
+</ul></li>
+</ol>
+<p>Jak se to tedy chová celkově?</p>
+<ul>
+<li>buď změna znaménka nebo nějaká rotace</li>
+<li>možná pokračujeme</li>
+</ul>
+<h4 id="závěr">Závěr</h4>
+<p>Insert, Delete i Find v AVL stromu mají časovou složitost <span class="math inline">\Theta(\log n)</span></p>
+<h3 id="odbočka---externí-vrcholy">Odbočka - externí vrcholy</h3>
+<p>Pokud vrcholu chybí nějaký ze synů, tak ho nahradíme externími vrcholu (NULL)</p>
+<p>Zjednoduší to formalismus a má to nějaké výhody i v praxi</p>
+<ul>
+<li>Ext. vrcholy odpovídají intervalům mezi klíči</li>
+<li>Každý interní vrchol má právě dva syny</li>
+<li>Listy jsou externí vrcholy</li>
+</ul>
+<h2 id="vícecestný-vyhledávací-strom">Vícecestný vyhledávací strom</h2>
+<ul>
+<li>zakořeněný strom</li>
+<li>má interní a externí vrcholy</li>
+<li>synové vrcholu mají pořadí</li>
+<li>v inter. vrcholech jsou sestupně seřazené klíče a na kraje dáme <span class="math inline">\pm \infty</span></li>
+<li>#synů je #klíčů <span class="math inline">+ 1</span></li>
+</ul>
+<p>Budu vyžadovat aby externí vrcholy byly na stejné hladině<br />
+Sice je to podstatně striktnější než jsme doteď měli, ale těch více klíčů to opraví</p>
+<h3 id="ab-strom"><span class="math inline">(a,b)</span> strom</h3>
+<p>Vícecestný vyhledávací strom s parametry <span class="math inline">a,b</span>, kde platí, že <span class="math inline">a\geq 2</span> a <span class="math inline">b\geq 2a-1</span></p>
+<ol type="1">
+<li>Všechny ext. vrcholy jsou stejně hluboko</li>
+<li>Int. vrcholy mají <span class="math inline">a</span> až <span class="math inline">b</span> synů (a tedy <span class="math inline">a-1</span> a <span class="math inline">b-1</span> klíčů)<br />
+Máme ale ještě výjimku pro kořen, ten jen <span class="math inline">1</span> až <span class="math inline">b</span></li>
+</ol>
+<blockquote>
+<ol start="9" type="1">
+<li>Přednáška 29.4.2021</li>
+</ol>
+</blockquote>
+<p>Lemma: <span class="math inline">(a,b)</span>-strom s <span class="math inline">n</span> klíči má hloubku <span class="math inline">\Theta(\log n)</span></p>
+<p><em>Důkaz</em>:</p>
+<p><strong>Horní mez</strong><br />
+  <span class="math inline">m_h :=</span> min. #klíčů ve stromu hloubky <span class="math inline">h</span><br />
+  Každý vrchol má min. možný # synů a tedy i klíčů<br />
+  Kořen má <span class="math inline">2</span> syny a <span class="math inline">1</span> klíč, vnitřní mají <span class="math inline">a</span> sunů a <span class="math inline">a-1</span> klíčů<br />
+  Obecně tedy dostaneme počet vrcholů na hladinách: <span class="math inline">1, 2a^0, 2a, 2a^2, 2a^3, ...</span><br />
+  Potřebujeme to sečíst, to je ale součet geometrické řady<br />
+  Sečte se to tedy na <span class="math inline">2a^{h-1}-1 \leftarrow</span> roste exponenciálně<br />
+  Když počet prvků roste exponenciálně, tak hloubka roste logaritmicky</p>
+<p><strong>Dolní mez</strong><br />
+  Dělá se to obdobně, takže zde jenom naznačení<br />
+  <span class="math inline">M_h :=</span> max. #klíčů ve stromě hloubky <span class="math inline">h</span><br />
+  … opět zde bude nějaká geometrická řada<br />
+  <span class="math inline">M_h \sim b^h \implies</span> min. hloubka roste logaritmicky</p>
+<h4 id="náročnost-operací">Náročnost operací</h4>
+<p><strong>Find</strong>: <span class="math inline">O(1)</span> na hladinu <span class="math inline">\implies \Theta(\log n)</span> celkem</p>
+<p><strong>Insert</strong>:<br />
+  nemůžu prostě přidat vrchol do listu, ale musím přidat klíč do vrcholu<br />
+  může ale nastat přetečení (a tedy měl předtím <span class="math inline">b-1</span> klíčů)<br />
+  To udělám tak, že prostřední klíč zatřídím do otce a na otce připojím dvě poloviny<br />
+  To může zkaskádovat až do kořene, ale nakonec prostě rozštěpím kořen (založím nový)</p>
+<p>  Potenciální problém je s tím, že když vrchol rozpůlíme, tak by mohl mít málo klíčů<br />
+  Tedy <span class="math inline">\frac{b-1}{2} &lt; a-1</span>, to nám ale definice zakázala</p>
+<p><strong>Delete</strong>:<br />
+  Převedeme to na Delete z nejnižší vnitřní hladiny<br />
+  Nahradíme ho minimem z podstromu, ale může nastat podtečení<br />
+  Můžeme to řešit tak, že to slepíme se sourozencem, ale ten by dost často přetekl<br />
+  Takže si budeme půjčovat od bratra (levý a pravý jsou symetrický), BÚNO levého<br />
+  Rozlišíme dva případy</p>
+<ol type="1">
+<li>Bratr má <span class="math inline">&gt; a-1</span> klíčů
+<ul>
+<li>Budu si půjčovat z bratra</li>
+<li>Musím to udělat tak, že přesunu maximum z levého do otce a klíč z otce do vrcholu</li>
+</ul></li>
+<li>Bratr má právě <span class="math inline">a-1</span> klíčů
+<ul>
+<li>Budeme se spojovat s bratrem</li>
+<li>Přidám k dvěma vrcholům klíč z otce a spojíme to do jednoho (takže <span class="math inline">2a-2</span>) ✓</li>
+<li>Podtékání může opět pokračovat až do kořene a v takovém případě kořen smažeme</li>
+</ul></li>
+</ol>
+<p>Časová složitost: <span class="math inline">O(1)</span> na hladinu, <span class="math inline">\Theta(\log n)</span> hladin, takže celkem <span class="math inline">\Theta(\log n)</span></p>
+<h4 id="volba-ab">Volba <span class="math inline">a,b</span></h4>
+<p>S rostoucím <span class="math inline">b</span> se to zpomaluje a typicky chceme buď <span class="math inline">2a-1</span> nebo <span class="math inline">2a</span></p>
+<p>Nechceme ani velké <span class="math inline">a</span></p>
+<p>Optimální jsou <span class="math inline">(2,3)</span> nebo <span class="math inline">(2,4)</span>… or are they?   ♬ <em>Moon men stars playing</em> ♬</p>
+<p>Na reálných počítačích se na disku spíše používá <span class="math inline">(256,512)</span>-strom kvůli blokům disku a přístupu do paměti</p>
+<p>A na keši jsou bloky po 64B, takže si vyberu (4,8) strom</p>
+<h4 id="na-okraj">Na okraj</h4>
+<ul>
+<li>varianta, která má data jen v listech (a v ostatních klíče)</li>
+<li>občas se jim také říká B-stromy</li>
+</ul>
+<h3 id="červeno-černý-strom">Červeno-černý strom</h3>
+<h4 id="překlad-24-stromu-na-bvs">Překlad (2,4)-stromu na BVS</h4>
+<p>Můžu mít <span class="math inline">2</span>-vrchol, <span class="math inline">3</span>-vrchol a <span class="math inline">4</span>-vrchol <!-- , které vypadají TODO: obrázek --></p>
+<p>Definice: Left-Leaning Red-Black Tree (LLRB) je BVS s ext. vrcholy a hranami obarvenými <span style="color:#FF6666">červeně</span> a <span style="color:#707070">černě</span> t.ž.</p>
+<ol type="1">
+<li>Nejsou 2<span style="color:#FF6666">R</span> těsně za sebou</li>
+<li>Když z vrcholu dolů vede jen 1<span style="color:#FF6666">R</span> hrana, potom vede doleva</li>
+<li>Hrany do listů jsou jen <span style="color:#707070">B</span></li>
+<li>Na <span class="math inline">\forall</span> cestách kořen-list je stejný #<span style="color:#707070">B</span> hran</li>
+</ol>
+<p>Lemma: <span class="math inline">\exists</span> bijekce mezi (2,4)-stromy a LLRB stromy<br />
+Plyne to z axiomů - pokryje to všechny možné počty synů, listy jsou na stejně hladině, …</p>
+<p>Jak vypadají operace?</p>
+<p>  <strong>Rotace červené hrany</strong><br />
+    Zachová černé axiomy (3.-4.), ale může to rozbít červené (1.-2.)<br />
+      Protože nic nedělá s černými hranami, ale může vyrobit třeba <span class="math inline">4</span>-vrchol</p>
+<p>  <strong>Přebarvení <span class="math inline">4</span>-vrcholu</strong><br />
+    Opět zachová černé axiomy, ale může to rozbít červené<br />
+      Černé hrany do listů zůstanou, ale jedna se ubere a pak přidá, ale opět může vzniknout např. <span class="math inline">5</span>-vrchol</p>
+<p>  <strong>Insert</strong>:<br />
+    Směrem dolů přebarvujeme <span class="math inline">4</span>-vrcholy (vzniká červená spoušť)<br />
+    Nahradíme externí vrchol za vnitřní a to připojíme červenou hranou (opět červené problémy)<br />
+    Směrem nahoru R opravujeme – rotujeme right-leaning nebo červené za sebou<br />
+    Opět to trvá <span class="math inline">\Theta(\log n)</span> a mimochodem hodí se ty barvy pamatovat třeba v listech</p>
+<blockquote>
+<ol start="10" type="1">
+<li>Přednáška 6.5.2021</li>
+</ol>
+</blockquote>
+<h3 id="trie">Trie</h3>
+<p>Reprezentace množiny řetězců nad abecedou <span class="math inline">\Sigma</span> (např. <span class="math inline">\{0,1\},\{0,\cdots,9\}</span>, …)</p>
+<p>Pokud bychom v tom chtěli hledat přes BVS, tak <span class="math inline">\Theta(\log n \cdot \text{délka řetězce})</span> (protože porovnáváme celou délku)</p>
+<p>Podíváme se ale na něco, co má lepší vlastnosti</p>
+<p>Písmenkový strom (trie - ze slov tree a retrieval) je zakořeněný vyhledávací strom s vrcholy, jejichž synové můžou být až všechny prvky abecedy</p>
+<p>Hladiny odpovídají pořadí písmen ve slovech</p>
+<p>Vrcholy odpovídají prefixům slov v množině</p>
+<p>Protože ale i prefixy můžou být slova, tak nemůžeme spoléhat na to, že slova jsou jen v listech, ale musíme si ve vrcholech pamatovat, zda se jedná o slovo</p>
+<p>  Member(<span class="math inline">y</span>) – <span class="math inline">\Theta(|y|)</span></p>
+<p>  Insert(<span class="math inline">y</span>) – <span class="math inline">\Theta(|y|)</span> – buď slovo označím a nebo přidávám vrcholy</p>
+<p>  Delte(<span class="math inline">y</span>) – <span class="math inline">\Theta(|y|)</span> – pokud nemá syny, tak postupně maže hrany nahoru</p>
+<p>  paměť je <span class="math inline">\Theta(\sum_i |x_i|)</span> – suma délek řetězců</p>
+<p>Co když je abeceda velká? Lineárně s počtem znaků se zvětší paměť a zpomalí Delete s Insertem</p>
+<p>Když pole nahradíme vyhl. stromem, tak dostaneme paměť <span class="math inline">\Theta(|x_i|)</span> a všechny operace <span class="math inline">\Theta ( |y| \cdot \log | \Epsilon | )</span></p>
+<p>Číslicový strom - radix trie<br />
+základ <span class="math inline">z</span> a <span class="math inline">n</span> čísel z rozsahu <span class="math inline">\{ 0, \cdots , L-1 \}</span><br />
+<span class="math inline">n</span> číslic <span class="math inline">\sim \log_z L \rightarrow</span> čas na operaci <span class="math inline">\Theta(\log_z L)</span></p>
+<p>Vyhledávací strom vs číslicový strom<br />
+To se špatně porovnává, protože závisí na počtu čísel vs rozsahu čísel<br />
+Ale je to hodně podobné, pokud jsou čísla různá, tak <span class="math inline">L\geq n</span></p>
+<h1 id="hešování">Hešování</h1>
+<p>Myšlenka je taková, že každý prvek z univerza <span class="math inline">\mathcal{U}</span> se snažíme pomocí hešovací funkcí zařadit do jedné z <span class="math inline">m</span> přihrádek</p>
+<p>Může ale nastat kolize a proto máme v přihrádce seznam</p>
+<p>Například můžu roky zahešovat podle toho jakým číslem končí</p>
+<p>Je představa, že máme rovnoměrné rozložení <span class="math inline">n</span> prvků do přihrádek<br />
+typicky <span class="math inline">\frac{n}{m}</span> prvků v přihrádce a to můžeme dostat na konstantu</p>
+<p>Find, Insert a Delete tedy v čase <span class="math inline">O(1)</span></p>
+<h2 id="volba-hešovací-funkce">Volba hešovací funkce</h2>
+<p>Ideální neexistuje, ale zde je pár praktických</p>
+<ul>
+<li><p>Lineární kongruence<br />
+<span class="math inline">x\mapsto ax \mod m</span>, kde <span class="math inline">m</span> je prvočíslo a <span class="math inline">a</span> je nesoudělné s <span class="math inline">m</span> (typicky <span class="math inline">a \approx 0.618m</span>)</p></li>
+<li><p>Multiply-shift – pro <span class="math inline">\mathcal{U}=[2^W]</span> (<span class="math inline">W</span> bitů), <span class="math inline">m = 2^k</span><br />
+<span class="math inline">x\mapsto (ax \mod 2^W) &gt;&gt; W-k</span></p></li>
+<li><p>Skalární součin<br />
+<span class="math inline">x_0, \cdots, x_{d-1} \mapsto (\sum_i a_i x_i) \mod m</span>       (parametry <span class="math inline">A_0, \cdots, a_{d-1}</span>)</p></li>
+<li><p>Polynom<br />
+<span class="math inline">x_0, \cdots, x_{d-1} \mapsto (\sum_i a^i x_i) \mod m</span>       (nemusím si pak pamatovat tolik různých parametrů)</p></li>
+<li><p>Toleranční hešování<br />
+Rozdělím číslo na části, každou částí indexuju tabulku a to, co z nich dostanu, přiXORuju</p></li>
+</ul>
+<h2 id="nafukovací-hešovací-tabulka">Nafukovací hešovací tabulka</h2>
+<p>Na začátku si udělám nějakou tabulku, sleduji faktor naplnění (<span class="math inline">\alpha := \frac{n}{m}</span>) a vzroste-li <span class="math inline">\alpha</span> příliš, tak přehešujeme (kompletně vybudujeme novou strukturu s více přihrádkami)</p>
+<p>Můžeme si všimnou, že nemůžeme přidat konstantní počet přihrádek, ale potřebujeme je znásobit</p>
+<p>Přehešovat z <span class="math inline">2^i</span> do <span class="math inline">2^{i+1}</span> trvá <span class="math inline">\Theta(n + 2^{i+1})</span>, ale <span class="math inline">2^i</span> je <span class="math inline">\Theta(n)</span></p>
+<p>Například<br />
+  Zjednodušeně budeme uvažovat konstantu jako 1 a tedy <span class="math inline">\alpha \leq 1</span><br />
+  Počty přihrádek jsou postupně <span class="math inline">1,2,4,8, \cdots</span><br />
+  V každém intervalu přibude $2^{i-1} prvků, ale tolik jsme těch prvků museli přidat<br />
+  Časová složitost je tedy konstantní amortizovaně</p>
+<h2 id="c-univerzální-systém">C-univerzální systém</h2>
+<p>Hešování je nebezpečné pokud vstup není náhodný, ale úmyslně špatný</p>
+<p>Budeme tedy chtít volit hešovací funkcí náhodně z nějaké množiny funkcí… neboli systému<br />
+A funkce v něm ještě nějak parametrizujeme (například máme funkci <span class="math inline">f_a(x) = (ax) \mod m</span> a <span class="math inline">a</span> je parametr</p>
+<p>Definice: Systém funkcí <span class="math inline">\mathcal{H}</span> z <span class="math inline">\mathcal{U}</span> do <span class="math inline">[m]</span> (přihrádky) je potom <span class="math inline">c</span>-univerzální pro <span class="math inline">c &gt; 0</span> <span class="math inline">\equiv</span><br />
+Když si vyberu nějaké prvky <span class="math inline">x,y</span> z <span class="math inline">\mathcal{U}</span>, tak pravděpodobnost, že zkolidují je malá, formálně<br />
+<span class="math inline">\forall x,y \in \mathcal{U}, x\neq y: Pr_{h\in\mathcal{H}}[h(x)=h(y)] \leq \frac{c}{m}</span></p>
+<p>Příklad systému - skalární součin nad tělesem <span class="math inline">\mathbb{Z}_p</span><br />
+Univerzum jsou uspořádané <span class="math inline">d</span>-tice toho tělesa a parametr patří do toho univerza  <span class="math inline">\mathcal{U}=\mathbb{Z}^d_p</span>, <span class="math inline">a\in \mathbb{Z}^d_p</span>, přihrádky: <span class="math inline">\mathbb{Z}_p</span></p>
+<p>Věta: Tento systém je <span class="math inline">1</span>-univerzální</p>
+<p><em>Důkaz</em>: pro <span class="math inline">x \neq y</span></p>
+<p><span class="math display"> Pr_{h\in \mathcal{H}} [h(x) = h(y)] = Pr_a [ax = ay] </span></p>
+<p><span class="math display"> \sum_{i=1}^d a_i (x_i - y_i) = 0 </span></p>
+<p>BÚNO předpokládejme, že se liší v první souřadnici (<span class="math inline">x_1 \neq y_1</span>)</p>
+<p>Nechť zafiuxji <span class="math inline">a_2, \cdots, a_d</span></p>
+<p><span class="math display"> a_1(x_1 - y_1) +  \sum_{i=2}^d a_i (x_i - y_i) = 0 </span></p>
+<p>Lineární rovnice s právě jedním řešením (a <span class="math inline">a_1</span> můžu zvolit podle přihrádek)</p>
+<p><span class="math display"> Pr[a_1 \text{ je řešení}] = \frac{1}{p} </span></p>
+<blockquote>
+<ol start="11" type="1">
+<li>Přednáška 13.5.2021</li>
+</ol>
+</blockquote>
+<p>Víme, že <span class="math inline">\exists 1</span>-univerzální systém</p>
+<p>Lemma: Nechť <span class="math inline">\mathcal{H}</span> je <span class="math inline">c</span>-univerzální systém fcí z <span class="math inline">\mathcal{U}</span> do <span class="math inline">[m]</span>, <span class="math inline">x_1, \cdots, x_n \in \mathcal{U}</span> navzájem různé a <span class="math inline">y \in \mathcal{U}</span>. Potom</p>
+<p><span class="math display">\mathbb{E}_{h\in \mathcal{H}} [\# i:h(x_i)=h(y) \leq c \cdot \frac{n}{m} + 1]</span></p>
+<p>V podstatě to říká, že obsazení přihrádky kam padlo <span class="math inline">y</span> je ve střední hodnotě celkem malé podle obsazenosti</p>
+<p><em>Důkaz</em>:<br />
+  Předpokládejme, že <span class="math inline">\forall y\neq x</span> (případ <span class="math inline">y=x</span> zařídí <span class="math inline">+1</span> na konci<br />
+  Zavedeme indikátory <span class="math inline">I_1, \cdots, I_n</span> a <span class="math inline">I_i</span> je 1, pokud se prvek <span class="math inline">i</span> zahešoval do stejné přihrádky jako <span class="math inline">y</span><br />
+  Obsazení přihrádky kam padlo <span class="math inline">y</span> je potom součet všech indikátorů<br />
+  Použijeme linearitu střední hodnoty a tedy, že střední hodnota součtu je součet středních hodnot<br />
+  Střední hodnota indikátoru je pravděpodobnost, že <span class="math inline">x_i</span> se zahešovalo stejně jako <span class="math inline">y</span> a to je menší nebo rovno <span class="math inline">\frac{c}{m}</span><br />
+  A na závěr ty střední hodnoty sečteme na <span class="math inline">\frac{cn}{m}+1</span> a máme hotovo</p>
+<p>Důsledek: <span class="math inline">\mathbb{E}</span> časové složitosti operací Find, Insert, Delete je <span class="math inline">O(\frac{n}{m})</span>, což je díky přehešování konstantní</p>
+<h2 id="otevřená-adresace">Otevřená adresace</h2>
+<p>V každém prvku může být jenom jeden prvek a když je při hešování plná, tak zkusíme jinou</p>
+<p>Definice: Každému <span class="math inline">x \in \mathcal{U}</span> přiřadíme vyhledávací posloupnost <span class="math inline">h(x,0), h(x,1), \cdots, h(x, m-1)</span><br />
+Dá se představit, že to hešovací funkce se dvěma parametry<br />
+A také musí platit, že je to permutace na <span class="math inline">[m]</span> - nechceme, aby se to nezahešovalo, když bude pole plné</p>
+<p>Operace:</p>
+<p>  Insert(<span class="math inline">x</span>) – prostě opakujeme hešování dokud nenajdeme prázdnou přihrádku</p>
+<p>  Find(<span class="math inline">x</span>) – zastaví se o prázdnou přehrádku</p>
+<p>  Delete(<span class="math inline">x</span>) – nemůžeme jenom mazat, ale můžeme třeba přidávat pomníčky o které se find nezastaví<br />
+    Časem to stejně budeme potřebovat přehešovat</p>
+<p>Příklady:</p>
+<ul>
+<li>lineární přidávání <span class="math inline">h(x,i) = (f(x) + i)\mod m</span>, kde <span class="math inline">f(x)</span> je nějaká hešovací funkce
+<ul>
+<li>na přednášce byl příklad, že může snadno degenerovat a vznikat ostrůvky</li>
+</ul></li>
+<li>dvojité hešování – <span class="math inline">h(x,i) = (f(x) + i \cdot g(x)) \mod m</span></li>
+</ul>
+<p>Věta: Pokud vyhl. posloupnosti jsou nezávislé plně náhodné permutace, pak:</p>
+<p><span class="math display">\mathbb{E}\ [\ \# \text{ přihrádek navštívených při neúspěšném Findu }] \leq \frac{1}{1-\alpha}</span></p>
+<p>Důkaz:<br />
+  Nechť <span class="math inline">y\in \mathcal{U}</span> hledáme <span class="math inline">h_1, \cdots, h_m</span> je jeho vyhled. posl.<br />
+  <span class="math inline">P_i := \text{Pr}[\text{projdeme alespoň }i \text{ přihrádek}]</span><br />
+  <span class="math inline">P_1 = 1</span> – alespoň jednu přihrádku projdu vždycky<br />
+  <span class="math inline">P_2 = \frac{n}{m} = \alpha</span> – pravděpodobnost, že první byla obsazená<br />
+  <span class="math inline">P_i = \frac{n}{m} \cdot \frac{n - 1}{m - 1} \cdots \frac{n-i+1}{m-i+1}</span> a jednotlivé zlomky jsou menší rovno <span class="math inline">\frac{n}{m}</span> a to celé je tedy <span class="math inline">\leq \alpha^{i-1}</span><br />
+</p>
+<p><span class="math display">\mathbb{E}[\# \text{ navštívených přihrádek}] = \sum_{i\geq 1} i \cdot Pr[\text{navštíveno právě } i] </span></p>
+<p>  To je nějaká lineární kombinace <span class="math inline">P_i</span>, takže my zkusíme zjistit kolikrát se <span class="math inline">P_j</span> započítalo</p>
+<p>  Ale <span class="math inline">Pr[\text{navštíveno právě } i]</span> je <span class="math inline">P_i - P_{i+1}</span></p>
+<p><span class="math display"> \sum_{j\geq 1} P_j (j-(j-1)) \leq \sum_{j \geq 1} \alpha^{j-1} = \sum_{j \geq 0} \alpha^j = \frac{1}{1-\alpha}  </span></p>
+<p>Dvojité hešování mimochodem <span class="math inline">O\left(\frac{3}{1-\alpha}\right)</span> a lineární přidávání <span class="math inline">O\left(\frac{2}{(1-\alpha)^2}\right)</span></p>
+<h1 id="rozděl-a-panuj-divide-et-impera">Rozděl a panuj (Divide et impera)</h1>
+<h2 id="mergesort-třídění-sléváním">Mergesort (třídění sléváním)</h2>
+<p>Rekurzivně se voláme na dvě poloviny a až je dostaneme, tak je slijeme – zastavíme se o blok velikosti jedna</p>
+<p>…však už to známe, takže pseudokód ani psát nebudu</p>
+<h3 id="anlýza-složitosti">Anlýza složitosti</h3>
+<p>BÚNO <span class="math inline">n=2^k</span>… prostě si to jen zjednodušíme</p>
+<p>Mám nějaký rekurzivní vzorec <span class="math inline">T(n)=2T(\frac{n}{2}) + n</span> a <span class="math inline">T(1)=1</span></p>
+<p>Paměť <span class="math inline">M(n) = M(\frac{n}{2}) + n</span> a to je očividně <span class="math inline">\Theta(n)</span>, protože <span class="math inline">M(n) = n + \frac{n}{2} + \frac{n}{4} + \cdots</span></p>
+<p>Jak ale řešit časovou složitost?</p>
+<ul>
+<li>Rozepsáním</li>
+</ul>
+<p><span class="math display"> T(n) = 2T \left(\frac{n}{2}\right) + n </span></p>
+<p><span class="math display"> T(n) = 4T\left(\frac{n}{4}\right) + 2n </span></p>
+<p><span class="math display"> \vdots </span></p>
+<p><span class="math display"> T(n) = 2^i \cdot T\left(\frac{n}{2^i}\right) + i\cdot n </span></p>
+<p>  <span class="math inline">T(1)</span> dostaneme pro <span class="math inline">\frac{n}{2^i}</span> a tedy <span class="math inline">i = \log n</span></p>
+<p><span class="math display"> T(n) = 2^{\log_2 n} \cdot T(1) + \log_2 n \cdot n </span></p>
+<p><span class="math display"> T(n) = n + \log n \cdot n </span></p>
+<p>  A tedy <span class="math inline">\Theta(n \log n)</span></p>
+<pre><code>Logaritmy bez základu jsou v algoritmizaci brány většinou jako dvojkové (kvůli bitům)</code></pre>
+<ul>
+<li>Strom rekurze</li>
+</ul>
+<p>  Alternativní způsob jak to řešit</p>
+<p>  Nakreslíme si strom a budeme počítat kolik má hladin, problémů na hladinu, jak je problém v hladině velký a tedy i čas na jednu hladinu</p>
+<p>  V našem případě bychom dostali <span class="math inline">\log_2 n</span> vysoký strom, jehož problémy na hladinu se vždy zdvojnásobí, ale velikost je poloviční<br />
+  Jedna hladina má tedy pořád velikost <span class="math inline">n</span> a to jenom vynásobíme počtem hladin</p>
+<blockquote>
+<ol start="12" type="1">
+<li>Přednáška 20.5.2021</li>
+</ol>
+</blockquote>
+<h2 id="násobení-n-ciferných-čísel">Násobení n-ciferných čísel</h2>
+<p>Klasické násobení, tak jsme se ho učili je <span class="math inline">O(n^2)</span></p>
+<p>Nápad rozdělit to na půl a zavolat se rekurzivně</p>
+<p>Chceme <span class="math inline">X \cdot Y</span> a máme</p>
+<p>  <span class="math inline">X = A \cdot 10^{10/2} + B</span><br />
+  <span class="math inline">Y = C \cdot 10^{10/2} + D</span></p>
+<p>BÚNO mocniny dvojky - dá se doplnit nulami</p>
+<p><span class="math inline">X \cdot Y = AC \cdot 10^n + (AD + BC) \cdot 10^{n/2} + BD</span></p>
+<p>To nám ale moc nepomůže, protože pak máme <span class="math inline">\log hloubku</span>, <span class="math inline">4^i</span> problémů na hladinu o velikosti <span class="math inline">\frac{n}{2^i}</span><br />
+…takže už jen v poslední hladině máme <span class="math inline">n^2</span></p>
+<p>Dá se ale všimnou triku, že vypočítám jen <span class="math inline">AC</span>, <span class="math inline">BD</span>, <span class="math inline">(A+B)(C+D)</span>, protože</p>
+<p><span class="math display"> (A+B)(C+D) = AC + AD + BC + BD </span></p>
+<p><span class="math display"> \cdots - AC - BD = AD + BC</span></p>
+<p>Stačí tedy <span class="math inline">3</span> násobení (rekurzivní volání) <span class="math inline">\frac{n}{2}</span> ciferných čísel</p>
+<p>Strom rekurze s <span class="math inline">\log_2 n</span> hloubkou, <span class="math inline">3^i</span> p. na hladinu o velikosti <span class="math inline">\frac{n}{2^i}</span></p>
+<p><span class="math display"> T(n) = \sum_{i=0}^{\log_2 n} 3^i \cdot \frac{n}{2^i} = n \sum_{i=0}^{\log_2 n} \left( \frac{3}{2} \right)^i </span></p>
+<p><span class="math display"> \frac{q^{k+1}-1}{q-1} = \Theta(q^k) = \Theta\left(\left(\frac{3}{2}\right)^{\log_2 n}\right) </span></p>
+<p><span class="math display"> T(n)=\Theta(n^{1.59}) </span></p>
+<p>Implementace:</p>
+<ul>
+<li>Pro dost malý vstup zastavíme rekurzi a dopočítáme to hrubou silou</li>
+<li>Vyšší základ soustavy… třeba <span class="math inline">2^{32}</span></li>
+</ul>
+<p>Umí se <span class="math inline">O^{1+\epsilon}</span> pro libovolně malé <span class="math inline">\epsilon</span>, <span class="math inline">O(n \log n)</span> a <span class="math inline">O(n)</span></p>
+<h2 id="rekurze-obecně-master-theorem">Rekurze obecně (Master theorem)</h2>
+<p>Také nazýváno jako Kuchařková věta</p>
+<p><span class="math display"> T(n) = a \cdot T(\frac{n}{b}) + \Theta(n^c),\ \ \ \ \ \ T(1) = 1</span></p>
+<p>Na <span class="math inline">i</span>-té hladině je <span class="math inline">a^i</span> podproblémů</p>
+<p>Hloubka je <span class="math inline">\log_b n</span></p>
+<p>Čas na podproblém je <span class="math inline">\left(\frac{n}{b^i}\right)^c \rightarrow</span> čas na hladinu <span class="math inline">a^i \cdot \left(\frac{n}{b^i}\right)^c</span></p>
+<p>Zavedeme si <span class="math inline">\frac{a}{b^c} = q</span></p>
+<p><span class="math display"> T(n)=\sum_{i=0}^{\log_b n} a^i \cdot \left(\frac{n}{b^i}\right)^c = n^c \sum_{i=0}^{\log_b n} q^i </span></p>
+<p>Rozbor případů podle velikosti <span class="math inline">q</span></p>
+<ol type="1">
+<li><span class="math inline">q=1</span></li>
+</ol>
+<p><span class="math display"> T(n) = n^c \cdot (\log_b n + 1) \cdot 1 = \Theta(n^c \cdot \log n)</span></p>
+<ol start="2" type="1">
+<li><span class="math inline">q &lt; 1</span></li>
+</ol>
+<p><span class="math display"> \sum_{i=0}^{\log_b n} q^i \leq \sum_{i\geq=0}^{\log_b n} q^i = \frac{1}{1-q} = \Theta(1) </span></p>
+<p><span class="math display"> T(n) = \Theta\left(n^c\right) </span></p>
+<ol start="3" type="1">
+<li><span class="math inline">q &gt; 1</span></li>
+</ol>
+<p><span class="math display"> \sum_{i=0}^{\log_b n} q^i = \frac{q^{\log_b n + 1}-1}{q-1} \approx q^{\log_b n} = \left(\frac{a}{b^c}\right)^{\log_b n} = \frac{n^{log_b a}}{n^c} </span></p>
+<p>To ještě vynásobíme vynechaným <span class="math inline">n^c</span></p>
+<p><span class="math display"> T(n) = \Theta(n^{\log_b a}) </span></p>
+<p>K důkazu zbývají případy, kdy <span class="math inline">n</span> není mocnina <span class="math inline">b</span><br />
+To ale udělám jednoduše tak, že vezmu nejbližší vyšší a nižší mocninu <span class="math inline">b</span> k <span class="math inline">n</span> a <span class="math inline">n</span> mezi ně sevřu<br />
+Ty mocniny se ale asymptoticky neliší</p>
+<h2 id="násobení-čtevrcových-matic-strasseův-algoritmus">Násobení čtevrcových matic (Strasseův algoritmus)</h2>
+<p>BÚNO <span class="math inline">n=2^k</span></p>
+<p>Rozdělím si matice na čtyři bloky</p>
+<p><span class="math display"> \begin{pmatrix} A &amp; C \\ B &amp; D \end{pmatrix} \cdot  \begin{pmatrix} P &amp; Q \\ R &amp; D \end{pmatrix} =  \begin{pmatrix} I &amp; J \\ K &amp; L \end{pmatrix} </span></p>
+<p><span class="math inline">I = AP + BR</span>, … podobně pro ostatní a tedy 8 součinů matic řádu <span class="math inline">\frac{n}{2}</span></p>
+<p><span class="math inline">T(n) = 8T\left(\frac{n}{2} + \Theta(n^2)\right)</span> a z kuchařky to je <span class="math inline">\Theta(n^{\log_2 8})</span></p>
+<p>Chytřejším násobením se ale dostaneme na <span class="math inline">\Theta(n^{\log_2 7})</span></p>
+<h2 id="selekce---k-tého-nejmenšího-prvku-z-x_1-cdots-x_n">Selekce - <span class="math inline">k</span>-tého nejmenšího prvku z <span class="math inline">x_1, \cdots, x_n</span></h2>
+<h3 id="quickselect">QuickSelect</h3>
+<h3 id="postup">Postup:</h3>
+<ol type="1">
+<li>vybereme pivota</li>
+<li>rozdělíme mi vstup na L, S, P částí podle provnání s pivotem</li>
+<li>rekurze do správné částí…</li>
+</ol>
+<p>Nemám ale pod kontrolu to, jak velké ty části jsou – jak dobrého pivota vyberu</p>
+<ol type="1">
+<li><p>V nejlepším případě <span class="math inline">p =</span> medián<br />
+  <span class="math inline">T(n) = T\left(\frac{n}{2}\right) + \Theta (n)\ \ \ \rightarrow \ \ \ T(n) = \Theta(n)</span></p></li>
+<li><p>V nejhorším případě oddělám jen jeden prvek<br />
+  <span class="math inline">T(n) = n + (n-1) + (n-2) + \cdots + 1 = \Theta(n^2)</span></p></li>
+<li><p>Nám ale stačí jakýsi skoro medián<br />
+  Když budu v prostředních dvou čtvrtinách, tak vždy jednu krajní čtvrtinu odstraní<br />
+  <span class="math inline">T(n) = T\left(\frac{3}{4}n\right) + \Theta(n) = n + \frac{3}{4}n + \left(\frac{3}{4}\right)^2 n + \cdots = \Theta(n)</span></p></li>
+<li><p>Randomizované hledání skoromediánu<br />
+      1. vyberu <span class="math inline">p</span> náhodně<br />
+      2. spočítám kolik je menších a větších než <span class="math inline">p</span><br />
+      3. pokud to není skoromedián, tak znovu</p></li>
+</ol>
+<p>  Věta: v takovém případě je <span class="math inline">\mathbb{E}[\text{čas. složitosti}] = \Theta(n)</span><br />
+    K tomu nám stačí aby <span class="math inline">\mathbb{E}[\# \text{ pokusů}] = \Theta(1)</span></p>
+<p>    Můžeme si všimnout, že pravděpodobnost toho, že pokus uspěje je <span class="math inline">\geq \frac{1}{2}</span></p>
+<p>    Lemma (o džbánu): pokud pokusu uspěje s pravděpodobností <span class="math inline">p</span> pak <span class="math inline">\mathbb{E}[\# \text{ pokusů do 1. úspěchu}] = \frac{1}{p}</span><br />
+    A z toho plyne, že <span class="math inline">\mathbb{E}[\# \text{ pokusů}] \leq 2</span></p>
+<p>Ještě dokážeme lemma o džbánu</p>
+<p><span class="math display">\mathbb{E} = \sum_n n \cdot Pr[\# \text{ pokusů} = n] = \sum_n n \cdot (1-p)^{n-1} \cdot p</span></p>
+<p>Pravděpodobnost, že je <span class="math inline">n</span> pokusů je to samé jako, že <span class="math inline">1-p</span> pokusů neuspělo a poslední uspěl</p>
+<p>Dá se všimnout, že</p>
+<p><span class="math display">\mathbb{E} = 1 + (1-p)\mathbb{E} </span></p>
+<p><span class="math display"> \mathbb{E} = \frac{1}{p} </span></p>
+<ol start="5" type="1">
+<li>Volíme pivota náhodně<br />
+  Rozdělíme běh na fáze, kde fáze končí výběrem skoromediánu</li>
+</ol>
+<p>  Můžeme si všimnou, že <span class="math inline">Pr[\text{fáze skončí}] \geq \frac{1}{2} \implies \mathbb{E}[\text{pokusů na fázi}] \leq 2</span></p>
+<p>  Další pozorování je, že fáze zmenší <span class="math inline">n</span> aspoň <span class="math inline">\frac{3}{4} \times</span>   Střední hodnota času na fázi je tedy lineární a když to sečteme přes všechny fáze, tak</p>
+<p><span class="math display"> \Theta\left(n + \frac{3}{4}n + \left(\frac{3}{4}\right)^2 n + \cdots \right) = \Theta(n) </span></p>
+<blockquote>
+<ol start="13" type="1">
+<li>Přednáška 27.5.2021</li>
+</ol>
+</blockquote>
+<h2 id="k-tý-nejmenší-prvek-randomizace"><span class="math inline">k</span>-tý nejmenší prvek, randomizace</h2>
+<h3 id="select-x_1-cdots-x_n-k">Select <span class="math inline">(x_1, \cdots, x_n; k)</span></h3>
+<ol type="1">
+<li>Rozdělíme <span class="math inline">x_1,\cdots, x_n</span> na pětice <span class="math inline">P_1, \cdots, P_t</span> <span class="math inline">\ (t=\lceil \frac{n}{5} \rceil)</span></li>
+<li>Najdeme mediány všech pětic</li>
+<li><span class="math inline">p</span> = select na mediány pětic</li>
+<li>dá se to jako pivot v již zmíněném algoritmu</li>
+</ol>
+<h4 id="věta---to-má-složitost-thetan">Věta - to má složitost <span class="math inline">\Theta(n)</span></h4>
+<p><strong><em>Důkaz</em></strong></p>
+<p>Z obrázku nerovností vím, že zahodím vždy alespoň <span class="math inline">3/10</span> prvků</p>
+<p><span class="math display"> T(n) = T(n/5) + T(7/10 n) + \Theta(n) </span></p>
+<p><span class="math display"> T(1) = 1 </span></p>
+<p>Uhodnu, že <span class="math inline">T(n) = c \cdot n</span> a pak:</p>
+<p><span class="math display"> cn = 1/5 cn + 7/10 cn + n </span></p>
+<p><span class="math display"> c = 10 </span></p>
+<h1 id="quicksort">QuickSort</h1>
+<p>Historicky první algoritmus, který <span class="math inline">n \log n</span> dal alespoň průměrně</p>
+<h2 id="pseudokód-vstup-je-x_1-cdots-x_n">Pseudokód (vstup je <span class="math inline">x_1, \cdots, x_n</span>)</h2>
+<ol type="1">
+<li>Pokud <span class="math inline">n\leq 1</span> vrátím vstup   # okrajová podmínka</li>
+<li>Zvolím pivot <span class="math inline">p</span></li>
+<li>Vezmu vstup a rozdělím si ho podle p na L, S, P části</li>
+<li>Rekurzivní volání do L a P</li>
+<li>Slepím to za sebe</li>
+</ol>
+<h3 id="složitost">Složitost</h3>
+<ul>
+<li>pokud <span class="math inline">p</span> bude medián</li>
+</ul>
+<p><span class="math display"> T(n) = 2T(n/2) + O(n) </span></p>
+<p><span class="math display"> T(n) = \Theta(n \log n) </span></p>
+<ul>
+<li>pokud <span class="math inline">p</span> bude min/max</li>
+</ul>
+<p><span class="math display"> T(n) = T(n-1) + T(0) + n </span> <span class="math display"> T(n) = \Theta (n^2) </span></p>
+<h4 id="věta---náhodná-volba-pivota-má-časovou-složitost-theta-n-log-n">Věta - náhodná volba pivota má časovou složitost <span class="math inline">\Theta (n \log n)</span></h4>
+<h5 id="důkaz">1. <em>Důkaz</em></h5>
+<p>  Budeme počítat počet porovnání pro každý prvek<br />
+  Porovnání účtujeme prvku, který nebyl pivotem<br />
+  Dostaneme z toho nějakou náhodnou veličinu <span class="math inline">P_i</span> a jejich suma bude pak celkový počet porovnání<br />
+  Střední hodnota počtu porovnání je suma středních hodnot porovnání pro jeden prvek</p>
+<p>  Mimochodem počet porovnání bude lineární k celkové složitosti</p>
+<p>  Sledujeme velikost podproblému ve kterém je <span class="math inline">x_i</span></p>
+<ul>
+<li>V případě pseudomediánu se za <span class="math inline">O(\log n)</span> fází dostaneme na konstantu, protože se fáze zmenší max. na <span class="math inline">3/4</span></li>
+<li>Střední hodnota počtu kroků pro jeden prvek na fázi je konstantní (<span class="math inline">\leq 2</span>)</li>
+</ul>
+<p>  Z toho <span class="math inline">O (n \log n)</span></p>
+<h5 id="důkaz---trochu-rigoróznější">2. <em>Důkaz</em> - trochu rigoróznější</h5>
+<p>  Nechť <span class="math inline">y_1, \cdots, y_n</span> je setříděné pořadí prvků<br />
+  Zavedu indikátory <span class="math inline">C_{ij}</span> podle toho, pokud jsme porovnali <span class="math inline">y_i</span> a <span class="math inline">y_j</span><br />
+    To se stane nejvýše jednou, protože jeden je pivot a ten pak nepokračuje<br />
+  Celkový počet porovnání je součet indikátorů</p>
+<p>  Střední hodnota počtu porovnání je suma středních hodnot indikátorů<br />
+  Střední hodnota E[C_{ij}] je pravděpodobnost, že <span class="math inline">y_i</span> a <span class="math inline">y_j</span> bylo porovnáno<br />
+  Co se ale k tomu muselo stát?</p>
+<ul>
+<li>Právě je <span class="math inline">y_i</span> nebo <span class="math inline">y_j</span> pivot</li>
+<li>Žádný z <span class="math inline">y_i</span> a <span class="math inline">y_j</span> ještě pivot nebyl (takže <span class="math inline">y_i</span> nebo <span class="math inline">y_j</span> se z prvků <span class="math inline">y_i, \cdots, y_j</span> stalo jako první)</li>
+<li>Ta pravděpodobnost je <span class="math inline">\frac{2}{j - i + 1}</span></li>
+</ul>
+<p>  Takže střední hodnota počtu porovnání je:</p>
+<p><span class="math display"> \sum_{1 \leq i &lt; j \leq n}\frac{2}{j - i + 1} = \sum_{1 \leq d \leq n} \frac{2}{d} \cdot (n - d + 1) \leq 2n \sum_{1 \leq i &lt; j \leq n} \frac{1}{d} </span></p>
+<p>To je <span class="math inline">n</span>-té harmonické číslo a to roste logaritmicky</p>
+<p>** Lemma: <span class="math inline">\ln n \leq H_n \ln n + 1</span>, kde <span class="math inline">H_n = \sum_{1 \leq i \leq n} 1/i</span> **</p>
+<p><em>Důkaz:</em></p>
+<p>  Dá se to představit na grafu paraboly body, které prochází čísly z harmonické sumy<br />
+  Nadefinuji si <span class="math inline">I_n</span> jako plochu pod tou křivkou a přes integrál to je <span class="math inline">\ln n</span><br />
+  Ta suma je potom obsah “schodiště”, kde u každého bodu přidáme úsečku doleva<br />
+  To schodiště je menší než, když tu křivku zintegrujeme<br />
+  Zároveň když nakreslím u schodiště úsečku doprava (přičtu 1), tak je to větší</p>
+<hr />
+<h1 id="dynamické-programování-memoizace">Dynamické programování (memoizace)</h1>
+<h2 id="klasický-příklad-s-rekurzivním-fibnoaccim">Klasický příklad s rekurzivním Fibnoaccim</h2>
+<p>      <span class="math inline">F(n) = 1\text{ pokud } n \leq 1 \text{ jinak } F(n) = F(n-1) + F(n-2)</span></p>
+<p>To je bez kešování pomalé, dá se to představit jako binární strom s hledaným číslem v kořenu a my projdeme celý strom místo cesty z levého listu</p>
+<ul>
+<li>Výsledná hodnota je totiž prostě suma hodnot v listech (a to jsou nejvýše jedničky)</li>
+</ul>
+<p>Už ale víme, že <span class="math inline">F_n \geq 2^{n/2}</span> a to znamená, že náš algoritmus je exponenciální</p>
+<p>Takže <strong>si budu pamatovat předchozí výsledky</strong></p>
+<p>Před zanořením se podíváme, jestli je v poli definované a pokud ho už budeme počítat, tak to ho zapíšeme do pole</p>
+<p>Každou hodnotu tedy počítáme jenom jednou a to v konstantním čase</p>
+<p>Celkem to tedy trvá <span class="math inline">O(n)</span></p>
+<p>Jiná možnost vyplňovat cyklem v poli <span class="math inline">P[0], \cdots ,P[n]</span></p>
+<h2 id="základní-principy-dp">Základní principy DP</h2>
+<ol type="1">
+<li>Začneme s exponenciálním algoritmem</li>
+<li>Všimneme si, že často počítáme to samé</li>
+<li>Zavedeme si proto paměť na známé výsledky</li>
+<li>Rekurzi nahradíme vyplňování keše ve správném pořadí</li>
+</ol>
+<h2 id="hledání-nejdelší-rostoucí-podposloupnosti-v-x_1-cdots-x_n">Hledání nejdelší rostoucí podposloupnosti v <span class="math inline">x_1, \cdots, x_n</span></h2>
+<p>BÚNO si přidám <span class="math inline">x_0=0</span> a <span class="math inline">x_{n+1}=\infty</span></p>
+<p>NRP(<span class="math inline">i</span>) je délka NRP vybrané z <span class="math inline">x_i</span> … <span class="math inline">x_{n+1}</span> začínající <span class="math inline">x_i</span></p>
+<ol type="1">
+<li><span class="math inline">d \gets 1</span></li>
+<li>Pro <span class="math inline">j=i+1, \cdots, n+1</span>:</li>
+<li>  Pokud <span class="math inline">x_i &lt; x_j</span></li>
+<li>    <span class="math inline">d = \text{max}\left(\text{NRP}(j) + 1, d\right)</span></li>
+<li>Vrátíme <span class="math inline">d</span></li>
+</ol>
+<p>To má zjevně exponenciální složitost (v případě rostoucí posloupnosti vyzkouším všechny podposloupnosti <span class="math inline">2^n</span>)</p>
+<p>Volání se ale opakují, takže přidáme keš</p>
+<p>Funkce se pak zavolá <span class="math inline">O(n)</span>-krát a pokaždé počítá v <span class="math inline">O(n)</span>, takže je to <span class="math inline">O(n^2)</span></p>
+<p>Abychom se nemuseli rekurzit, tak to uděláme ve správném pořadí zprava doleva</p>
+<p><strong>NRP(n)</strong></p>
+<ol type="1">
+<li><span class="math inline">P[n+1] = 1</span></li>
+<li>Pro <span class="math inline">i = n, \cdots, 0</span></li>
+<li>  <span class="math inline">d = 1</span></li>
+<li>  Pro <span class="math inline">j = i+1, \cdots, n + 1</span></li>
+<li>    Pokud <span class="math inline">x_i &lt; x_j</span></li>
+<li>      <span class="math inline">d =</span> max<span class="math inline">\left(P[j]+1,d\right)</span></li>
+<li>  <span class="math inline">P[i] = d</span></li>
+<li>Vrátíme <span class="math inline">P[0]</span></li>
+</ol>
+<p>I když teda to pořád není optimální a například vhodnou datovou strukturou jde v <span class="math inline">O(n \log n)</span></p>
+<p>Alternativně sestrojíme graf ve kterém vrcholy budou prvky posloupnosti a hrany povedou mezi vrcholy pro které platí, že vrchol směrem doprava je větší</p>
+<p>Potom hledáme nejdelší cestu v DAGu</p>
+<p>Má triviální topologické pořadí a cestu najdeme indukcí v <span class="math inline">O(n^2)</span></p>
+<h4 id="bonus---kouzelené-řešení-z-první-přednášky">Bonus - Kouzelené řešení z první přednášky</h4>
+<p>Postupně přidáváme <span class="math inline">x_1</span>, <span class="math inline">x_2</span>, …</p>
+<p>Udržujeme si <span class="math inline">m_i</span> := min. koncový prvek RPP délky <span class="math inline">i</span></p>
+<p>Platí</p>
+<ul>
+<li><span class="math inline">m = min (x_1, \cdots, x_m)</span></li>
+<li><span class="math inline">m_0 = -\infty</span></li>
+<li><span class="math inline">m_i \leq m_{i+1}</span></li>
+</ul>
+<p>Z toho je posloupnost s <span class="math inline">m</span> neklesající</p>
+<p>Co když přidáme prvek <span class="math inline">x_k</span>? (Jaké RPP vznikly?)</p>
+<p>Za každou RPP nějaké délky <span class="math inline">i</span>, která končí menším prvkem než jsme přidali přidáme ten prvek -&gt; RPP délky <span class="math inline">i + 1</span> končící tím prvkem</p>
+<p>V <span class="math inline">log n</span> najdeme binárně rozhraní mezi čísly menšími a většími než <span class="math inline">x_k</span> v posloupnost <span class="math inline">m</span></p>
+<p>Celkem <span class="math inline">O(n \log n)</span></p>
+<blockquote>
+<ol start="14" type="1">
+<li>Přednáška 3.6.2021</li>
+</ol>
+</blockquote>
+<h2 id="editační-vzdálenost">Editační vzdálenost</h2>
+<p>Editační operace jsou v podstatě překlepy (změna, vložení a smazání znaku)</p>
+<p>Editační vzdálenost je min. délka posloupnosti editačních operací, které z prvního řetězce udělají druhý</p>
+<ul>
+<li>Někdy také Levenštejnova vzdálenost</li>
+<li>Je to metrika</li>
+<li>Značí se <span class="math inline">L(\alpha, \beta)</span> pro řetězce <span class="math inline">\alpha,\beta</span></li>
+</ul>
+<p>Pozorování: operace jsou BÚNO prováděné z leva do prava v <span class="math inline">\Alpha</span></p>
+<p><strong>Jak vlastně vypadá první operace?</strong></p>
+<p>Představíme si <span class="math inline">\alpha</span> jako <span class="math inline">a_1, \cdots, a_n</span> a <span class="math inline">\beta</span> jako <span class="math inline">b_1, \cdots, b_n</span></p>
+<p>Možnosti jsou potom:</p>
+<ol type="1">
+<li>Smazat <span class="math inline">a_1</span> <span class="math inline">\mapsto L(a_2 \cdots a_n, b_1 \cdots b_n)</span></li>
+<li>Změnit <span class="math inline">a_1</span> na <span class="math inline">b_1</span> <span class="math inline">\mapsto L(a_2 \cdots a_n, b_2 \cdots b_n)</span></li>
+<li>Vložit <span class="math inline">b_1</span> před <span class="math inline">a_1</span> <span class="math inline">\mapsto L(a_1 \cdots a_n, b_2 \cdots b_n)</span></li>
+<li>Ponechat <span class="math inline">a_1</span> i <span class="math inline">b_1</span> <span class="math inline">\mapsto L(a_2 \cdots a_n, b_2 \cdots b_n)</span></li>
+</ol>
+<p>Počítáme pak, že zkusíme 1. - 4. a pak vyberme mininum</p>
+<p>Zavedeme si Edit<span class="math inline">(i,j)</span> s cílem spočítat <span class="math inline">L(a_1 \cdots a_n, b_1 \cdots b_n)</span></p>
+<p>Edit(i,j) 1. Pokud <span class="math inline">i&gt;n</span>: Vrátíme <span class="math inline">m-j+1</span> # to co zbylo z <span class="math inline">\beta</span><br />
+Pokud <span class="math inline">j&gt;m</span>: Vrátíme <span class="math inline">n-i+1</span> 2. <span class="math inline">l_v \gets 1 + Edit(i, j + 1)</span>             # vložit 3. <span class="math inline">l_s \gets 1 + Edit(i + 1, j)</span>             # smazat 4. <span class="math inline">l_z \gets 1 + Edit(i + 1, j + 1)</span>     # změnit 5. Pokud <span class="math inline">\Alpha \neq \Beta_j</span> : <span class="math inline">l_z \gets l_z + 1</span> 6. Vrátím min<span class="math inline">(l_v, l_s, l_z)</span></p>
+<p>Pozorování - je to dost pomalé (např. pro “aaaaa” a “aaaaa”) zbytečně zkouším kroky</p>
+<p>Druhé pozorování je, že <span class="math inline">i</span> a <span class="math inline">j</span> leží někde v řetězci (mezi <span class="math inline">1</span> a <span class="math inline">n+1</span>, resp. <span class="math inline">1</span> a <span class="math inline">m+1</span>)<br />
+Už kešeování by nás tedy dostalo na <span class="math inline">\Theta(n \cdot m)</span> různých volání</p>
+<h3 id="nerekurzivní-verze">Nerekurzivní verze</h3>
+<p>Představa s tabulkou, kterou vyplňujeme z pravého dolního rohu</p>
+<ol type="1">
+<li>Pro <span class="math inline">j = 1 \cdots m + 1</span>: <span class="math inline">T[n+1, j] \gets m-j+1</span><br />
+Pro <span class="math inline">i = 1 \cdots n</span>: <span class="math inline">T[i, m+1] \gets n-i+1</span></li>
+<li>Pro <span class="math inline">i=n \cdots 1</span>:</li>
+<li>  Pro $j = m  $:</li>
+<li>    <span class="math inline">\delta \gets</span> 0 nebo 1 podle toho, jestli <span class="math inline">a_i = b_j</span></li>
+<li>    <span class="math inline">T[i,j] = min(1 + T[i+1, j], 1 + T[i, j + 1], \delta + [i+1, j+1])</span></li>
+</ol>
+<p>Takže to máme časově v <span class="math inline">\Theta(n \cdot m)</span> a prostorově <span class="math inline">\Theta(n \cdot m)</span><br />
+(bez pamatování posloupnosti to jde i <span class="math inline">\Theta(n+m)</span></p>
+<h3 id="grafový-pohled">Grafový pohled</h3>
+<p>Na <span class="math inline">y</span> ose je pozice v <span class="math inline">\Alpha</span> a na <span class="math inline">x</span> ose je pozice v <span class="math inline">\Beta</span></p>
+<p>Z každého vrcholu pak máme tři cesty podle editačních operací</p>
+<p>Cesta z <span class="math inline">(1,1)</span> do <span class="math inline">(n,m)</span> je posloupnost editačních operací, které z <span class="math inline">\Alpha</span> udělá <span class="math inline">\Beta</span></p>
+<p>Plán tedy je vytvořit graf a spočítat nejkratší cestu</p>
+<p>Graf vytvoříme v <span class="math inline">\Theta(n \cdot m)</span> (protože je to počet vrcholů)</p>
+<p>Je to DAG, takže ho můžeme zpracovat v topologickém pořadí a tedy nejkratší cesta <span class="math inline">\Theta(n \cdot m)</span></p>
+<p>On je to ale vlastně úplně stejný algoritmus, jako ten předtím</p>
+<h2 id="optimalizace-vyhledávacích-stromů">Optimalizace vyhledávacích stromů</h2>
+<p><strong>Příklad</strong>:</p>
+<ul>
+<li>na 1 se ptáme 10x</li>
+<li>na 2 se ptáme 1x</li>
+<li>na 3 se ptáme 5x</li>
+</ul>
+<p>Ten strom může vypadat 5 způsoby</p>
+<p>Levá liána, … , dokonale vyvážený, … , pravá liána</p>
+<p>Když budeme počítat kolikrát se podíváme na všechny vrcholy, tak to vyjde 37, 28, 31, 23, 27</p>
+<!-- TODO *Třeba pak udělám obrázek* -->
+<p>Problém tedy je: máme klíče <span class="math inline">x_1 &lt; \cdots &lt; x_n</span> a váhy <span class="math inline">w_1 \cdots w_n \in \mathbb{N}</span></p>
+<p>Pro BVS T na <span class="math inline">x_1 \cdots x_n</span> definujeme hloubku <span class="math inline">h_1 \cdots h_n</span> jako <span class="math inline">h_i :=</span> počet vrcholů na cestě od kořene do <span class="math inline">x_i</span></p>
+<p>Cena stromu <span class="math inline">C(T) := \sum_i h_i \cdot w_i</span></p>
+<p>A chceme najít <span class="math inline">T</span> s minimálním <span class="math inline">C(T)</span></p>
+<p><em>Pozorování</em> Co kdyby v kořenu opt. stromu bylo <span class="math inline">x_i</span>?</p>
+<p><span class="math display"> OPT(x_1 \cdots x_n) = OPT(x_1 \cdots x_{i - 1}) + OPT(x_{i + 1} \cdots x_n) + \sum_{j=1}^n w_j </span></p>
+<p>(odebrali jsme hranu od kořene a tak to tou sumou kompenzujeme)</p>
+<p>My ale kořen neznáme a proto zkusíme všechny vrcholy jako kořeny</p>
+<p>Zavedeme si funkci, která si spočítá optimální cenu BVS pro klíče od <span class="math inline">x_l</span> do <span class="math inline">x_p</span></p>
+<p>OptBVS(l.p)</p>
+<ol type="1">
+<li>Pokud <span class="math inline">l&gt;p</span>: vrátíme 0</li>
+<li>Vrátíme <span class="math inline">\min(C_l \cdots C_p) + \sum_{i=l}^p w_i</span>,<br />
+kde <span class="math inline">C_i := OptBVS(l, i-1) + OptBVS(i+1,p)</span></li>
+</ol>
+<p>Klasický proces… je to pomalé a <span class="math inline">l, p</span> jsou někdy mezi <span class="math inline">1</span> a <span class="math inline">n+1</span>, takže je jen <span class="math inline">O(n^2)</span> podproblémů</p>
+<p>Kešováním tedy dostaneme <span class="math inline">O(n^2)</span> podproblémů, každý v čase <span class="math inline">O(n)\rightarrow</span> jsme na <span class="math inline">O(n^3)</span></p>
+<p>A při nahrazování cyklem jdu od nejkratších intervalů k nejdelším</p>
+<ol type="1">
+<li>Pro <span class="math inline">l = 1 \cdots n</span>: <span class="math inline">T[l, l-1]\gets 0</span></li>
+<li>Pro <span class="math inline">d = 1 \cdots n</span>:           # d je délka intervalu</li>
+<li>  Pro <span class="math inline">l = 1 \cdots n - d + 1</span>:     # <span class="math inline">l</span> je levý okraj</li>
+<li>    p l + d - 1           # pravý okraj</li>
+<li>    <span class="math inline">T[l,p] \gets \min(C_l \cdots C_p) + \sum_{i=l}^p w_i</span>,<br />
+    kde <span class="math inline">C_i := T[l, i-1] + T[i+1, p]</span></li>
+<li>Vrátíme <span class="math inline">T[1,n]</span></li>
+</ol>
+<p>Čas <span class="math inline">O(n^3)</span> a prostor <span class="math inline">O(n^2)</span></p>
+<p>Pokud chceme jak ten strom vypadá, tak si v 5. zapamatujeme optimální kořen (pro které <span class="math inline">C_i</span> bylo minimum)<br />
+  kořen opt. stromu pro daný inteval</p>
+<p>Z toho už dáme rekurzivní budování jako u dokonale vyváženého stromu (místo prostředku vezmeme zapamatované kořeny)</p>
+<p>Umí se to ale udělat i v <span class="math inline">O(n^2)</span> - hodí se na to nerovnost, že Kořen<span class="math inline">[l, p-1] \leq</span> Kořen<span class="math inline">[l,p] \leq</span> Kořen <span class="math inline">[l-1,p]</span></p>
+<h2 id="dynamické-programování-obecně">Dynamické programování obecně</h2>
+<p>Pěkný abstraktní pohled, že mám systém podproblémů (tzv. stavy DP) a ty mezi sebou mají nějaké závislosti, které tvoří DAG</p>
+<p>Princip DP je projít stavy v topologickém pořadí</p>
+<h2 id="vzdálenost-mezi-všemi-dvojcemi-bodů-v-ohodnoceném-orientovaném-grafu-floydův-warshallův-algoritmus">Vzdálenost mezi všemi dvojcemi bodů v ohodnoceném orientovaném grafu (Floydův-Warshallův algoritmus)</h2>
+<p>Orientovaných graf bez záporných cyklů s vrcholy <span class="math inline">1 \cdots n</span> a matici délek hran (buď délka, nekonečno nebo <span class="math inline">0</span>)</p>
+<p>Chceme matici vzdáleností (<span class="math inline">D_{ij}=</span> vzdálenost z <span class="math inline">i</span> do <span class="math inline">j</span>)</p>
+<p>Umíme už spustit <span class="math inline">n</span> Dijkstru (to je <span class="math inline">n^3</span>) a nebo <span class="math inline">n</span> Bellman-Ford$, to je ale v hustém grafu <span class="math inline">n^4</span></p>
+<p>Floyd-Warshall je sice taky kubický, ale zato je triviální</p>
+<p>Df: <span class="math inline">D_{ij}^k :=</span> délka nejkratšího sledu z <span class="math inline">i</span> do <span class="math inline">j</span>, jehož vnitřní vrcholy leží v <span class="math inline">{1 \cdots k}</span></p>
+<p><span class="math inline">D^0</span> je matice délek hran a <span class="math inline">D^n</span> je <span class="math inline">D</span></p>
+<p>Výpočet <span class="math inline">D^k</span> z <span class="math inline">D^{k-1}</span></p>
+<p><span class="math inline">D_{ij}^k</span> je buď <span class="math inline">D_{ij}^{k-1}</span> a k nepoužito nebo <span class="math inline">D_{ik}^{k-1} + D_{kj}^{k-1}</span> a k použito BÚNO 1x</p>
+<p>Opět si vybereme tu lepší variantu (a tedy minimum) - to zvládneme konstantně</p>
+<p>Celou matici tedy spočítám v <span class="math inline">\Theta(n^2)</span> a jdu z <span class="math inline">D^0</span> do <span class="math inline">D^k</span>, takže dohromady <span class="math inline">\Theta(n^3)</span></p>
+<p><strong>Nevýhoda</strong> má to i kubickou paměť, to je ale zbytečné, protože si vždy stačí pamatovat jen dvě matice</p>
+<p>A ještě lepší je přepisování na místě (musíme ale ukázat, že <span class="math inline">D_{ik}^{k-1} + D_{kj}^{k-1}</span> zůstalo stejné)</p>
+<ol type="1">
+<li>Pro <span class="math inline">k = 1 \cdots n</span>:</li>
+<li>  Pro <span class="math inline">i = 1 \cdots n</span>:</li>
+<li>    Pro <span class="math inline">j = 1 \cdots n</span>:</li>
+<li>      <span class="math inline">D_{ij} = min(D_{ij}, D_{ik} + D_{kj})</span></li>
+</ol>
+<p> </p>
+<hr />
+<p> </p>
+<h1 id="zkoušky">Zkoušky</h1>
+<p>Z fora jsou zadání na zkouškách:</p>
+<ol type="1">
+<li>AVL-stromy – Definice, důkaz logaritmické hloubky, postup Insertu nebo Deletu</li>
+<li>Most v neorientovaném grafu – Jak jej najít</li>
+<li><span class="math inline">S=\{3^i \cdot 5^j \cdot 5^k \ |\ i,j,k \in \mathbb{N}\}</span> Najít prvních n nejmenších prvků množiny S + složitosti, důkaz správnosti</li>
+<li>Je zadán strom, najděte v něm jako podgraf největší housenku. (Nejvíce vrcholů)<br />
+Housenka je to když máme cestu a v jakýkoliv vrcholech přidáme jakýkoliv počet listů + složitosti, důkaz správnosti</li>
+</ol>
+<hr />
+<ol type="1">
+<li>Násobení <span class="math inline">n</span>-ciferných čísel rychleji než <span class="math inline">n^2</span></li>
+<li>Minimální kostra + důkaz</li>
+<li>Vymyslet algoritmus na mazání vrcholů v grafu, který zachovává souvislost (když algoritmu dáme souvislý graf a budeme mazat podle toho, co nám řekne, tak v každém kroku bude graf souvislý)</li>
+<li>Okénkový medián <span class="math inline">k</span> prvků v nekonečné posloupnosti</li>
+</ol>
+<hr />
+<ol type="1">
+<li>Hledání topologického uspořádání</li>
+<li>Násobení <span class="math inline">n</span>-ciferných…</li>
+<li>Okénkový…</li>
+<li>Algoritmus na rozklad grafu na cesty délky 2</li>
+</ol>
+<hr />
+<ol type="1">
+<li>(a,b) strom</li>
+<li>Hledání minimální kostry</li>
+<li>Slovní žebřík - slovník <span class="math inline">n</span> slov délky až <span class="math inline">i</span>. najděte nejdelší posloupnost slov, které se jedno z druhého tvoří odebráním jednoho libovolného písmene, např Glass -&gt; Glas -&gt; Gas -&gt; as</li>
+<li>Knihovna - v knihovně je <span class="math inline">n</span> knih, z nichž <span class="math inline">k</span> je setřízeno špatně - dotřiďte knihovnu<br />
+</li>
+<li><strong>Bonus:</strong> V daném stromě zrušte co nejméně hran tak, aby vznikla alespoň jedna komponenta souvislosti obsahující právě <span class="math inline">k</span> vrcholů</li>
+</ol>
+<hr />
+<ol type="1">
+<li>Jarník a řezové lemma</li>
+<li>Třídění <span class="math inline">n</span> čísel z množiny <span class="math inline">\{ 1 \cdots n^4 \}</span></li>
+<li>Směnárna s <span class="math inline">n</span> měnami podle matice kurzů <span class="math inline">K</span> (<span class="math inline">K_{i,j} :=</span> kolik dostaneme <span class="math inline">j</span> za <span class="math inline">i</span>) Lze na směňování vydělat?</li>
+<li>Jak setřídit posloupnost, víme-li, že každý prvek se nachází ve vzdálenosti nejvýše <span class="math inline">k</span> od správné polohy?</li>
+<li>Bonus: Najít dvě funkce <span class="math inline">f,g</span>, tak aby neplatilo <span class="math inline">f=O(g)</span> ani <span class="math inline">g=O(f)</span></li>
+</ol>
+</body>
+</html>
