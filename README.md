@@ -1,4 +1,4 @@
-# Public MFF
+# MFF UK Notes
 
 Poznámky z oboru Infrmoatika na MFF UK od roku 2020
 
