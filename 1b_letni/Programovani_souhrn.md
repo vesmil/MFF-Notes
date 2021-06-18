@@ -168,11 +168,11 @@ Počet zpěváků <= 100
 Počet měst <= 20
 Na jednom koncerte <= 100 pesničiek
 
-### Řešení
+### Moje řešení
 
 *BTW Nebudeme používat stringy, ale čísla (názvy měst, kapel, ...)*
 
-1. Floyd-Warshall na cesty mezi všemi cesty
+1. Floyd-Warshall na cesty mezi všemi městy
 2. Hešovací tabulka s klíčem zpěvák a název a hodnotou její čas
 3. Slovník koncertů s hodnotami jejich celková doba
 4. Core problém
