@@ -162,11 +162,11 @@ Maximální délka hudby
 
 ### Omezení
 
-Počet písniček celkem <= 10 000
-Počet dní = 92
-Počet zpěváků <= 100
-Počet měst <= 20
-Na jednom koncerte <= 100 pesničiek
+Počet písniček celkem <= 10 000 \
+Počet dní = 92 \
+Počet zpěváků <= 100 \
+Počet měst <= 20 \
+Na jednom koncerte <= 100 pesničiek \
 
 ### Moje řešení
 
