@@ -26,7 +26,7 @@ Pro paměť je k CPU vlastní sběrnice -- dokonce více paměťových kanálů
 Grafika je buď přímo uvnitř procesoru a nebo přes PCIe
 
 Z procesoru vede sběrnice (někdy DMI) do South Bridge\
-V něm jsou perfiferie jako zvukovka, síťovka, …
+V něm jsou periferie jako zvukovka, síťovka, …
 
 Dřív býval i North bridge pro přístup k pamětím, ale ten se přesunul do procesoru
 
@@ -40,8 +40,9 @@ Zároveň jsou všechnu sběrnice peer to peer
 	&nbsp; &nbsp; Ta je údajně extrémně špatná
 * Hardwarová architektura - třeba Skylake, Coffee Lake  … je to to jak výrobce implementoval ISA
 
-> Debata na téma proč jsou nové instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak problém s portováním a pomalý emulátor \
-Na mobilu je větší prostor pro zlepšení kvůli překladu při instalaci a častěji se tam zavádí nová architektura
+> Debata na téma proč jsou nové instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak problém s portováním a pomalý emulátor
+> 
+> Na mobilu je větší prostor pro zlepšení kvůli překladu při instalaci a častěji se tam zavádí nová architektura
 
 Hlavní úkol procesoru je vykonávat jednoduché instrukce
 
@@ -49,7 +50,7 @@ Hlavní úkol procesoru je vykonávat jednoduché instrukce
 
 * Load
 * Store
-	* Dvě nejdůležitější druhy instrukcí, ale jsou dost pomalé
+	* Dva nejdůležitější druhy instrukcí, ale jsou dost pomalé
 	* Na rozumných architekturách to jsou jediné, které pracují s pamětí\
 &nbsp; &nbsp; Ale třeba i64 zvládne inkrementovat číslo i v paměti
 * Move -- mezi registry
@@ -184,8 +185,8 @@ Proud instrukcí je řízený program counterem
 
 Arm už není ani náhodou RISC 
 
-U x86 rovnou instrukce odpovídají mikroinstrukci, takže to vlastně není úplně CISC \
-ale teda pak tam jsou nějaké nepoužívané instrukce, které se překládají na mikro
+U x86 rovnou instrukce odpovídají mikroinstrukci, takže to není úplně CISC \
+teda pak tam jsou nějaké nepoužívané instrukce, které se překládají na mikro
 
 **Ortogonalita** \
 Už bylo -- to jestli jsou specializované registry a nebo jdou v instrukcích zaměnit
@@ -223,7 +224,7 @@ Po dekódoání operace spadnou do "bazénku" a pak čeká až bude moc jít na 
 
 #### Pipeline
 
-Rozdělit vykonávání na jednotlivé stages (reálně jich bývá 14-19)
+Rozdělit vykonávání na jednotlivé stages (reálně jich bývá 14-19)
 
 V jednom čase mám rozdělaných několik instrukcí a každá je v jiné fázi\
 &nbsp; Něco v instruction fetch, něco už se vykonává, něco práce s pamětí, …
@@ -326,11 +327,11 @@ Paměť je rozdělená do malých bloků abych si mohl pamatovat, co je zabrané
 
 Pamatovat si to po bytech by bylo nepraktické -- moc detailně a musel bych pak řešit zarovnání
 
-**Interní**
+**Interní** \
 Data v bloku jsou menší než ten blok. S tím ale nic neudělám
 
-**Externí**
-Pokud mám hodně volné místo rozdrobené do nesouvislých malých bloků
+**Externí** \
+Mám hodně volného místa rozdrobené do nesouvislých malých bloků
 
 #### Dynamická alokace paměti
 
@@ -394,7 +395,7 @@ Dále je to persistentní
 
 ## Cache
 
-	Datová struktura ve které mám data, které bych jinak musel znovu dlouho počítat
+	Datová struktura ve které mám data, které bych znovu dlouho počítal
 
 Hardware nebo software implementace
 
@@ -412,20 +413,20 @@ Koherence keší a stará se o to procesor
 ### Cache pojmy
 
 **Cache line** \
-&nbsp; Cache není organizovaná po bytech, ale po jednotkách zvaných cache line (entry), které mají běžně 64B
+Cache není organizovaná po bytech, ale po jednotkách zvaných cache line (entry), které mají běžně 64B
 
 **Cache hit** \
-&nbsp; Tak se nazývá, když jsem trefil data ve cache (úspěšnost prý 97 %)
+Tak se nazývá, když jsem trefil data ve cache (úspěšnost prý 97 %)
 
 **Cache miss** \
-&nbsp; Když se netrefím
+Když se netrefím
 
 **Cache line load** \
-&nbsp; Musím načíst data, když nejsou v cache \
-&nbsp; Pozor na to, že jsem do cache mohl i psát a proto pokud ji budu vyhazovat, tak se musí zapsat
+Musím načíst data, když nejsou v cache \
+Pozor na to, že jsem do cache mohl i psát a proto pokud ji budu vyhazovat, tak se musí zapsat
 
 **Cache line state** \
-&nbsp; používá se MESI protokol -- 4 stavy 
+Používá se MESI protokol -- takže 4 stavy 
 
 ## Asociativní paměť
 
@@ -446,7 +447,7 @@ Stojí to hromadu tranzistorů, takže to není moc velké
 &nbsp; Každý procesor má svoji RAM \
 &nbsp; Musí být ale dostupné mezi sebou\
 &nbsp; Jsou navzájem propojené (ale ne každý s každým, protože to stojí piny) \
-&nbsp; Takže přenos stojí nějaký čas -- *NUMA factor*
+&nbsp; Přenos logicky stojí nějaký čas -- *NUMA factor*\
 &nbsp; NUMA uzel je potom dvojice procesor a paměť
 
 Vlastě se ale všechny systémy chovají jako NUMA, i když jen s jedním procesorem
@@ -484,7 +485,7 @@ OS pak z programu udělá proces -- spuštění
 
 > 13.04.2021 - 7. Přednáška
 
-Spuštění programu znamená načtení do paměti určité struktury, ta má podle tradičního pohledu čtyři části
+Spuštění programu znamená načtení do paměti určité struktury:
 
 * Kód
 * Konstanty
@@ -504,7 +505,7 @@ Spuštění programu znamená načtení do paměti určité struktury, ta má po
 ## Linker
 
 **Knihovna** \
-Kolekce zkompilovaných kódů (modulů)\
+Kolekce zkompilovaných kódů (modulů)
 
 **Staické x dynamické knihovny** \
 Ve statické se to přímo nakopíruje \
@@ -519,7 +520,7 @@ Slepení výsledků různých překladů a knihoven do jednoho executable pro ur
 ### Co všechno linker dělá
 
 > V prezentaci je pak ukázka jak linkování vypadá… není vidět nic moc zajímavýho\
- snad jen to, že se berou jen potřebné věci a slepování není přímo za sebe, ale po segmentech
+ Snad jen to, že se berou jen potřebné věci a slepování není přímo za sebe, ale po segmentech
 
 Musí se také řešit to, že před linkování nevím, kam jaká adresa povede a proto používám v překladači jen relativní adresy od začátku segmentu (vytvořím relokaci v objektu)
 
@@ -548,12 +549,14 @@ A dynamickou podporu za běhu (běhové prostředí, volací konvence, knihovny)
 
 Každá funkce dostane aktivační záznam -- určitá datová struktura mimo kterou funkce nesahá
 
-Volající funkce v aktivačním záznamu připraví 
-* pokud je to něco velkýho, tak před tím ještě **return value**
+Volající funkce v aktivačním záznamu připraví
+
+* pokud je to něco velkého, tak před tím ještě **return value**
 	* pokud je to reference nebo malá hodnota, tak to být nemusí 
 * **parametry**
 
 Pak si tam sama funkce schová
+
 * kam se chce vrátit -- **return address**
 * aktivační záznam volající funkce -- **control link**
 * některé registry, které se musí zachovat -- **saved machine status**
@@ -582,6 +585,7 @@ Tady je **frame pointer** - ukazatel na aktivační záznam
 
 > V prezentaci příklady mandlování \
 (Hlavně se tam v Céčku přidává velikost parametru a C++ to znetvoří)
+
 
 > 20.04.2021 - 8. Přednáška
 
@@ -631,7 +635,7 @@ Je tam nějaká evidence volného místa
 
 První krok je alokace -- alokační algoritmy \
 &nbsp; Je to např. když zavoláme `new` (btw to vrátí ukazatel) \
-&nbsp; &nbsp; C# a podobně se ukazatele snaží schovat
+&nbsp; &nbsp; C# a podobně se ukazatele snaží před programátory schovat
 
 Naopak na konci musím dealokovat \
 &nbsp; V některých je to explicitně -- C a C++ \
@@ -669,7 +673,7 @@ Je potřeba si dávat pozor na:
 	* Například drobné syntaktické změny a knihovny -- naštěstí ISO 
 * OS
 	* Často potřebuji systémové volání, když něco nemám v knihovně (Linux x Windows, … )
-	* Používají podmíněné překlad
+	* Používají podmíněný překlad
 
 #### Binární přenositelnost
 
@@ -693,11 +697,11 @@ To bylo pořád nepříjemné a proto se např. na Androidech distribuje mezikó
 
 Nemá to úplně přesnou definici, ale je to definováno účelem
 
-V první řadě je to abstraktní stroj \
+V první řadě je to **abstraktní stroj** \
 &nbsp; Je to prezentováno přes API jádra -- systémové volání \
 &nbsp; V první řadě to schovává komplexitu HW (např. nabízí soubory, … )
 
-Dále musí řídit zdroje \
+Dále musí **řídit zdroje** \
 &nbsp; Na jednom Hw běží více aplkikací
 
 ## Dva režimy (CPU módy)
@@ -749,7 +753,7 @@ Kernel mód dělá user akce a nebo se přepne zpět triviálně, ale jak to ud�
 </center>
 <br>
 
-> Např vlastnost, že Windows není case sensitive je vlastnost Win32 knihovny a ne Windows
+> Např vlastnost, že Windows není case sensitive je vlastnost Win32 knihovny
 
 Windows microkernel už nezávisí na architektuře, protože o to se stará Hardware Abstraction
 
@@ -757,11 +761,10 @@ Windows microkernel už nezávisí na architektuře, protože o to se stará Har
 
 # Zařízení
 
-	"Věc vyrobneá za určitým účelem"
+	Věc vyrobneá za určitým účelem …
 
 Je k němu potřeba **device controller** (řadič) \
 &nbsp; Ten se stará o signály, A/D konverzi \
-&nbsp; Topologie zařízení…
 
 A softwarově potom **device driver** (ovladač) \
 &nbsp; Abstraktní interface
@@ -801,8 +804,7 @@ Většina kódu OS je nezávislá na ovladačích a řadičích
 
 > Na uživatelské úrovni neděláme přímo syscalls, ale používáme knihovnu kvůli přenositelnosti
 
-Rozhraní (ta knihovna) tedy zavolá syscall \
-Řekne, že chce např. otevřít file systém \
+Chci open file a rozhraní (ta knihovna) tedy zavolá syscall \
 Musím najít a pak otevřít a zapamatovat si handle (identifikaci) toho souboru \
 Až budu číst tak soubor znovu nehledám a nějak se moje žádost dostane až k ovladači\
 &nbsp; (Prochází to mimo jiné device independent mezivrstvou)
@@ -819,7 +821,7 @@ Nejnáročnější je domluva řadiče s ovladačem, že už je hotovo (navíc t
 	* Nevýhoda je, že musím aktivně něco dělat a má to zpoždění
 * **Interrupt**
 	* Zařízení dá signál procesoru, ten přestane dělat to co právě dělá a jde na ovladač přerušení
-* **DMA**
+* **DMA (Direct memory access)**
 	* Přesun bez pozornosti CPU pomocí DMA řadiče mezi dvěma místy a pak interrup
 	* Vůbec nic nepřesouval procesor
 	* Problém je když například prependuju hlavičku v TCP/IP -- opakovaně zbytečně kopíruju \
@@ -868,7 +870,7 @@ Je spravovaný OS - prostředky jako např. paměť (musí se evidovat a pak vr�
 Má paměť kterou jsme si již ukazovali (Code, Static data, … )
 
 **Vlákno (Thread)** \
-Jedna aktivita v procesu - proud instrukcí pro CPU \
+Jedna aktivita v procesu -- proud instrukcí pro CPU \
 Má v sobě tzv. **kontext** procesoru -- všechny registry abych mohl pokračovat počítat \
 Každé vlákno má svůj zásobník
 
@@ -1126,7 +1128,7 @@ Doba na access = seek time (posuny hlavy) + čas na rotaci + čas na transfer (z
 &nbsp; ukazují do něj HW části \
 &nbsp; Jednorozměrná sekvence očíslovaných bytů
 
-Překládá se to hardwarově přes MMU (Memory managment unit) \
+Překládá se to hardwarově přes MMU (Memory managment unit) \
 Je to zobrazení, které ale pro něco nemusí existovat (potom vyjímka)
 
 Pomocí semgnetace nebo stránkování
@@ -1171,7 +1173,7 @@ Co když dojde prostor? - vyhození **celého segmentu** na disk a pak ho příp
 #### Problémy
 
 * Velikost - u 32-bit adresování je 2^20 (milion) 4kB rámců (20b na adresu rámce, 12b na offset)
-	* Tím pádem bych potřeboval 4MB pro každý proces -- pokud každá entry potřebuje 4B
+	* Tím pádem bych potřeboval 4MB pro každý proces -- pokud každá entry potřebuje 1B
 &nbsp;
 * Rychlost
 
@@ -1283,7 +1285,9 @@ Problém s přidáváním dat (dostanu se za namapovaný stránky) a velikostí 
 
 > Přetížený pojem, teď se budeme bavit o plné virtualizaci (ne VM procesu)
 
-	V rámci OS umožníme vyrobit chráněné prostředí, které umožní spustit další OS (s iluzí, že to běží na reálném HW)
+	V rámci OS umožníme vyrobit chráněné prostředí, které umožní spustit další OS 
+	
+	Je tam iluze, že že to běží na reálném HW
 
 V případě problému ten problém vypadne a musí se o to postarat host (není to naštěstí příliš časté)
 
@@ -1381,7 +1385,7 @@ Na bariéře se počká až se sejde určitý počet vláken
 
 ### V programovacích jazycích
 
-**Monitor** -- v objektu je u instance i zámek
+**Monitor** -- v objektu je u instance zámek
 
 Java má keyword `synchronized`
 
@@ -1428,9 +1432,9 @@ Pořád běží, ale nenají se -- starvation
 
 <br>
 
-# Otázky u zkoušky z Discordu
-
 > Zkouška bude jedna otázka
+
+# Otázky u zkoušky z Discordu
 
 1. ISA, co si pod tím představit, co musíme mít, Call-Execute-Return, Ortogonalita
 
