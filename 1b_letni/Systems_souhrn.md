@@ -1,56 +1,37 @@
-# INCOMPLETE
-
 # C a C++
 
 Známe z cvika a u zkoušky nebude
 
 <br> 
 
-# CPU
-
 >16.3.2021 - 3. Přednáška
+
+# CPU
 
 ### Architektura
 
-#### Von Neumannova
-
-Jedna sdílená sběrnice a na ní CPU, Paměť a I/O
-
+**Von Neumannova**\
+Jedna sdílená sběrnice a na ní CPU, Paměť a I/O \
 Vždy jedna transakce na sběrnici
 
-```
-CPU <-----> Memory
-	   |
-	   v
-	  I/O
-```
-
-#### Harvardská
-
-Doteď se používá v nějakých mikrocontrolerech
-
-Je potřeba více adresových prostorů
-
-```
-Instruction <---> CPU <---> Memory
-  Memory	            | 
-	                    v
-	                   I/O
-```
+**Harvardská** \
+Instuction memmory je na CPU připojeno vlastní sběrnicí \
+Doteď se používá v některých mikrocontrolerech\
+Je potřeba více adresových prostorů na procesoru
 
 #### Reálná
 
-Vlastní sběrnice pro paměť - dokonce více paměťových kanálů
+Pro paměť je k CPU vlastní sběrnice -- dokonce více paměťových kanálů
 
-Buď přímo uvnitř procesoru a nebo přes PCIe grafa
+Grafika je buď přímo uvnitř procesoru a nebo přes PCIe
 
-Do procesoru vede sběrnice (někdy DMI) do South Bridge\
+Z procesoru vede sběrnice (někdy DMI) do South Bridge\
 V něm jsou perfiferie jako zvukovka, síťovka, …
 
 Dřív býval i North bridge pro přístup k pamětím, ale ten se přesunul do procesoru
- pro přístup k pamětím \
-Nyní jsou všechny sběrnice sériové, kvůli fyzikálním důvodům - PCIe, SATA, USB, … \
-Zároveň jsou všechnu sběrnice peer to peer, protože je to víc ez
+
+Nyní jsou všechny sběrnice sériové -- PCIe, SATA, USB, … \
+Zároveň jsou všechnu sběrnice peer to peer
 
 ### Co je ale architektura?
  
@@ -59,10 +40,10 @@ Zároveň jsou všechnu sběrnice peer to peer, protože je to víc ez
 	&nbsp; &nbsp; Ta je údajně extrémně špatná
 * Hardwarová architektura - třeba Skylake, Coffee Lake  … je to to jak výrobce implementoval ISA
 
-Debata na téma proč jsou nové instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak většina musela běžet na Itaniu\
-Na mobilu je větší prostor pro zlepšení kvůli pozdějšímu překladu a častěji se zavádí nová architektura
+> Debata na téma proč jsou nové instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak problém s portováním a pomalý emulátor \
+Na mobilu je větší prostor pro zlepšení kvůli překladu při instalaci a častěji se tam zavádí nová architektura
 
-> Hlavní úkol procesoru je vykonávat jednoduché instrukce
+Hlavní úkol procesoru je vykonávat jednoduché instrukce
 
 ### Třídy instrukcí
 
@@ -70,15 +51,15 @@ Na mobilu je větší prostor pro zlepšení kvůli pozdějšímu překladu a č
 * Store
 	* Dvě nejdůležitější druhy instrukcí, ale jsou dost pomalé
 	* Na rozumných architekturách to jsou jediné, které pracují s pamětí\
-&nbsp; &nbsp; Ale třeba i64 inkrementuje i v paměti
-* Move 
+&nbsp; &nbsp; Ale třeba i64 zvládne inkrementovat číslo i v paměti
+* Move -- mezi registry
 * Aritmetické
 * Jumps
-	* Nepodmíněné x podmíněné (ty dělají počítač počítačem)
-	* Přímé (přímo adresa kam) x nepřímé (kam je v proměnné) x relativní adresa (o kolik se posunout dál)
+	* Nepodmíněné x podmíněné 
+	* Přímé (přímo adresa kam) x nepřímé (adresa kam je na adrese) x relativní adresa (o kolik se posunout dál)
 * Call
 	* Při volání funkcí je potřeba nějaký zásobník s návratovou adresou\
-	&nbsp; &nbsp; Buď Hardwarově a na to jsou i procesrové instrukce a nebo na to použiju registry
+	&nbsp; &nbsp; Buď Hardwarový zásobník a nebo na to použiju registry
 
 > Ještě tam v podstatě chybí porovnání
 
@@ -88,7 +69,7 @@ Na mobilu je větší prostor pro zlepšení kvůli pozdějšímu překladu a č
 * Integer a float
 * Adresové
 * Branch registry - skokové registry
-* Příznakové registry
+* Příznakové registy
 * Predikátové registry - každá instrukce má bit podle toho, jestli se má provést (Nemusím skákat)
 * Aplikační
 * Systémové
@@ -105,7 +86,7 @@ Na mobilu je větší prostor pro zlepšení kvůli pozdějšímu překladu a č
 #### Aliasing
 
 Překrývání registrů - x86 to třeba má \
-&nbsp; Dost se tomu snaží vyhnout, protože je problém třeba udělat překladač nebo poznat změnu
+&nbsp; Dost se tomu snaží vyhnout, protože je pak problém třeba udělat překladač nebo poznat změnu
 
 32-bitový EAX má ještě 16b podregistr AX a ten je rozdělený ještě na AH a AL
 
@@ -121,7 +102,7 @@ Segmentové registry - Datový, Kódový, Stack ...
 
 Instruction pointer na aktuální vykonávanou instrukci
 
-Oproti x86 má Itanium (IA-64) několik set registrů
+Oproti x86 má Itanium (IA-64) několikset registrů
 
 ### MIPS
 
@@ -129,7 +110,7 @@ Oproti x86 má Itanium (IA-64) několik set registrů
 &nbsp; &nbsp; r0 je vždycky nula \
 &nbsp; &nbsp; r31 je link register na `jal` -- návratová adresa, používá se jako `call`
 
-Nemá stack (myšleno hardwarově), flagy
+Nemá HW stack ani flagy
 
 > 23.3.2021 - 4. Přednáška
 
@@ -139,10 +120,10 @@ Od MIPS je odvozená RISC-V
 
 x86 narozdíl od MIPS není schopná sečíst dvě věci a zapsat jinam
 
-Operace známe už z principů and, ro, xor, … (místo not je negace or), shift, …
+Operace známe už z principů and, ro, xor, … (místo not je negované or), shift, …
 
 Proměnlivé x pevné kódování\
-&nbsp; např. instrukce x86 jsou různě dlouhé a MIPS má 32bitů
+&nbsp; např. instrukce x86 jsou různě dlouhé, ale MIPS má pevně 32bitů
 
 Ještě celkem dlouhé porovnání, ale idc…
 
@@ -163,11 +144,11 @@ Mimo to je tam global pointer, frame pointer (místo od kterého se posouvá), �
 
 Mají je jenom některé ISA
 
-Zrada v tom, že každá instrukce se z hlediska změny příznaků chová úplně jinak
+Zrada v tom, že každá instrukce třeba na x86 se z hlediska změny příznaků chová úplně jinak
 
 Běžné flagy jsou zero, sign a carry
 
-Jsou systémové a uživatelské příznaky a x86 je zmastila dohromady - musí se schovávat
+Jsou systémové a uživatelské příznaky a x86 je zmastila dohromady - musí se složitě schovávat
 
 ### Co všechno je v procesoru?
 
@@ -176,26 +157,25 @@ Jsou systémové a uživatelské příznaky a x86 je zmastila dohromady - musí 
 * Jádra
 * Registry
 * Logický procesor
-	* uvnitř jader - víc proudů instrukcí (u Intelu hyperthreading)
-* Instrukce 
+	* uvnitř jádra -- víc proudů instrukcí (u Intelu hyperthreading)
 
 ### Instrukce
 
 Je to nějaký jednoduchý příkaz procesoru
 
-Musí být nějak zakódovaná - překlad přes assembler…  \
+Musí být nějak zakódovaná -- překlad přes assembler…  \
 Ale i textovému zápisu instrukcí se říká assembler
 
-Mají operandy - v podstatě argumentu (konstanty, adresy, registry)
+Mají operandy -- jakoby argumentu (konstanty, adresy, registry)
 
-Proud instrukcí - řízený PC (program counter)
+Proud instrukcí je řízený program counterem
 
 ### ISA
 
 **Klasifikace instrukční sady**
 
 * CISC - komplexní sada
-	* Dřív byl dopřeklad do mikrokódu	
+	* Někdy se musí mezipřekládat do mikrokódu	
 * RISC - redukovaná sada
 * VLIW - very long instruction word
 	* Třeba 128 bitová instrukce - bývá třeba ve switchích
@@ -204,10 +184,11 @@ Proud instrukcí - řízený PC (program counter)
 
 Arm už není ani náhodou RISC 
 
-U x86 rovnou instrukce odpovídají mikroinstrukci a pak tam jsou nějaké staré nepoužívané instrukce, které se ještě musí překládat, takže to není úplně CISC
+U x86 rovnou instrukce odpovídají mikroinstrukci, takže to vlastně není úplně CISC \
+ale teda pak tam jsou nějaké nepoužívané instrukce, které se překládají na mikro
 
 **Ortogonalita** \
-Už bylo - to jestli jsou specializované registry nebo jdou zaměnit
+Už bylo -- to jestli jsou specializované registry a nebo jdou v instrukcích zaměnit
 
 **Load-Execute-Store**\
 To, že se pracuje jen s registrama a nedělá se třeba aritmetika v paměti
@@ -221,7 +202,7 @@ Každé jádro má
 	* tři úrovně (L1 skoro stejně rychlá jako registr) 
 	* L1 je rozdělená na instrukce a data
 * vlákna
-	* více vláken sdílí jednu výpočetní jednotku, protže ta nebývá moc vytížená
+	* více vláken sdílí jednu výpočetní jednotku, protože běžně nebývá vytížená na 100%
 
 Každé jádro má u sebe kousek svojí L3 a berou si navzájem po oboustranným ringu
 
@@ -229,20 +210,20 @@ Dělá se prefetch - odhadování jaká data budou potřeba
 
 ### Schéma jednoho jádra
 
-Front end čte instrukce a dekóduje je\
+Front-end čte instrukce a dekóduje je\
 &nbsp; Coffee lake má 5-cestný dekodér, takže dékoduje 5 inst. v taktu \
 &nbsp; Jeden z nich je komplexní, který je právě na překlad na mikroinstrukce
 
 Po dekódoání operace spadnou do "bazénku" a pak čeká až bude moc jít na zpracování\
-&nbsp; Out of order execution - celkem chaotické provádění
-
-### Techniky pro zrychlení CPU
+&nbsp; Out of order execution - celkem chaotické
 
 > 30.3.2021 - 5. Přednáška
 
+### Techniky pro zrychlení CPU
+
 #### Pipeline
 
-Rozdělit vykonávání na jednotlivý stages (reálně jich bývá 14-19)
+Rozdělit vykonávání na jednotlivé stages (reálně jich bývá 14-19)
 
 V jednom čase mám rozdělaných několik instrukcí a každá je v jiné fázi\
 &nbsp; Něco v instruction fetch, něco už se vykonává, něco práce s pamětí, …
@@ -252,10 +233,8 @@ V jednom čase mám rozdělaných několik instrukcí a každá je v jiné fázi
 
 Když vypadne, tak musí znovu nabíhat \
 &nbsp; Například při podmíněném skoku musím při špatném odhadu veškerou práci zahodit \
-&nbsp; Cca. 95 % odhadne
 
-Technika pipeline se používá i jinde - zvuk, televlize, … \
-&nbsp; Příklad zpoždení digitální televize
+> Technika pipeline se používá i jinde - zvuk, televize, … (zmínka o latenci)
 
 Návrh je jednodušší a za jednotku času jsem schopný provést víc instrukcí \
 &nbsp; Vzniká ale latence
@@ -270,15 +249,15 @@ Dnešní procesory jsou dokonce 5-cestné
 
 Jsou také asymetrické (nemusí se stejná stage zpracovávat stejně - viz. simple a complex dekódování instrukcí)
 
-### Zpátky schéma
+### Zpátky k schéma
 
 Po dekódování jsou tedy v tom "bazénku" - Reservation station
 
-Každý port do kterého pak instrukce pokračují umí něco jiného
+Každý port do kterého pak instrukce z poolu pokračují umí něco jiného
 
-Pak to vejde do reorder buffer, který výsledky vrátí zpět do správného pořadí (musí se řešit konflitky… )
+Nakonec to vejde do reorder buffer, který výsledky vrátí zpět do správného pořadí (musí se řešit konflitky… )
 
-&nbsp; 
+<br>
 
 # Paměť
 
@@ -293,16 +272,16 @@ Dnes se používá 8-bit slovo nebo-li byte
 Očíslování slov v paměti
 
 Fyzicky je paměť jako dvourozměrný prostor \
-Adresované po řádcích a sloupcích
+Adresovaný po řádcích a sloupcích
 
-Měnit řadky trvá delší dobu než slupce, ale pokud přistupuji sekvenčně, tak adresa nejprve roste po sloupcích
+Měnit řadky trvá delší dobu než slupce (pokud přistupuji sekvenčně, tak adresa nejprve roste po sloupcích)
 
-Nejdůležitější u RAM je CAS - čas na přístup k sloupci\
+Nejdůležitější u RAM je CAS - čas na přístup k sloupci \
 Pak tam jsou i časy tRCD, tRP, RAS
 
 ### Reprezentace data
 
-* Bezznaménková čísla [0 - 2^N - 1]
+* Bezznaménková čísla (0 až 2^N -- 1)
 * Znaménková (dvojkový doplněk)
 * Float podle IEEE 754 - mantisa a exponent, …
 
@@ -313,7 +292,7 @@ Little endian - LSB first
 
 Skoro všechny procesory BE a nebo vybrat, Intel má LE
 
-V sítích jsou taky BE, takže Intel musí převracet
+Síťové protokoly jsou BE, takže Intel musí převracet
 
 ### Zarovnání dat
 
@@ -362,8 +341,6 @@ Pokud mám hodně volné místo rozdrobené do nesouvislých malých bloků
 
 ##### Alokační algoritmy
 
-> **Často to prý bude u zkoušky**
-
 * First fit
 	* Vezmu první volné místo
 	* Musím ho rozštípnout
@@ -390,9 +367,9 @@ Pokud je jen větší, tak ho rozštěpím
 
 Konstantní alokace
 
-Pokud má volnej bok kamaráda (volného souseda), tak je musím mergnout
+Pokud má volný blok kamaráda (volného souseda), tak je musím mergnout
 
-Má to velkou interní fragmentaci
+Má to velkou interní fragmentaci (bloky jsou o dost větsí než potřeba)
 
 > 6.4.2021 - 6. Přednáška
 
@@ -400,28 +377,28 @@ Má to velkou interní fragmentaci
 
 Sestupně podle rychlosti a zároveň vzestupně podle velikosti:
 
-* registry
-* cache
+* Registry
+* Cache
 * RAM (a rychlejší SRAM)
 
 Dále je to persistentní
 
-* persistent RAM
+* Persistent RAM
 	* Je trochu pomalejší než RAM a musí se kvůli tomu opravit OS a programy
 * SSD, flash
 	* SSD a dál už není přímo adresovatelné procesorem -- používá se sběrnice a řadič
 * HDD
 	* Nejdéle trvá mechanický pohyb hlavou
-* pásky
+* Pásky
 	* Běžně na zálohy
 
 ## Cache
 
-Datová struktura ve které mám data, které bych jinak musel znovu dlouho počítat
+	Datová struktura ve které mám data, které bych jinak musel znovu dlouho počítat
 
 Hardware nebo software implementace
 
-Pokud paměť dojde, tak použijeme stránkové algoritmy -- later
+Pokud cache paměť dojde, tak použijeme stránkové algoritmy -- later
 
 ### Cache na CPU
 
@@ -429,15 +406,13 @@ Spoléhá na lokalitu přístupu -- předpokládáme, že pokud něco čteme z p
 
 Již zmíněno L1 (doba přístupu 4 takty, desítky kB), L2, L3 (stovky taktů a jednotky MB)
 
-Musíme řešit problémy, když chceme data mezi jádry -- přesun přes L3 \
+Musíme řešit problémy, když chceme spolecčná data mezi jádry -- přesun mezi L3 \
 Koherence keší a stará se o to procesor
-
-Hot data musí být co nejblíže
 
 ### Cache pojmy
 
 **Cache line** \
-&nbsp; Keš není organizovaná po bytech, ale po jednotkách cache line (entry), která má dnes běžně 64B
+&nbsp; Cache není organizovaná po bytech, ale po jednotkách zvaných cache line (entry), které mají běžně 64B
 
 **Cache hit** \
 &nbsp; Tak se nazývá, když jsem trefil data ve cache (úspěšnost prý 97 %)
@@ -465,16 +440,16 @@ Stojí to hromadu tranzistorů, takže to není moc velké
 
 **Symmetric multiprocessing** \
 &nbsp; Jedna sběrnice mezi RAM a CPUs \
-&nbsp; Má limit pro kolik procesorů to jde 
+&nbsp; Má limit pro kolik procesorů to je použitelné
 
 **NUMA** (Non-uniform memory access) \
 &nbsp; Každý procesor má svoji RAM \
-&nbsp; Musí být ale dostupné mezi sebou… a taky že jsou \
+&nbsp; Musí být ale dostupné mezi sebou\
 &nbsp; Jsou navzájem propojené (ale ne každý s každým, protože to stojí piny) \
-&nbsp; To ale stojí nějaký čas -- *NUMA factor*
+&nbsp; Takže přenos stojí nějaký čas -- *NUMA factor*
 &nbsp; NUMA uzel je potom dvojice procesor a paměť
 
-Vlastě se ale všechny systémy chovají jako NUMA, ale tak to nevadí, když je jen jeden procesor
+Vlastě se ale všechny systémy chovají jako NUMA, i když jen s jedním procesorem
 
 <br>
 
@@ -512,18 +487,6 @@ OS pak z programu udělá proces -- spuštění
 Spuštění programu znamená načtení do paměti určité struktury, ta má podle tradičního pohledu čtyři části
 
 * Kód
-	* Sekce kódu s instrukcemi a občas i data
-* Statická data
-	* Globální proměnné
-* Stack (zásobník)
-	* Jsou v něm informace kam se vrátit z volání funkcí a lokální proměnné
-* Heap (Halda)
-	* Paměť určená na alokaci dat
-	* Je na konci a jde směrem proti stacku (nebo obráceně)
-
-Reálný detailnější pohled potom je
-
-* Kód
 * Konstanty
 	* Jenom read-only
 * Inicializovaná statická data
@@ -533,7 +496,10 @@ Reálný detailnější pohled potom je
 * …
 * Zásobník pro vlákno n
 	* Jak odhadnout jak velký má být zásobník? Několik mega a většinou nepřeteče
+	* Jsou v něm informace kam se vrátit z volání funkcí a lokální proměnné
 * Halda (společná pro všechny)
+	* Paměť určená na alokaci dat
+	* Je na konci a jde směrem proti stacku (nebo obráceně)
 
 ## Linker
 
@@ -552,16 +518,16 @@ Slepení výsledků různých překladů a knihoven do jednoho executable pro ur
 
 ### Co všechno linker dělá
 
-> V prezentaci je pak ukázka jak linkování vypadá… není vidět nic moc zajímavýho, snad jen to, že se berou jen potřebné věci a slepování není přímo za sebe, ale přímo za sebou jsou podsegmenty
+> V prezentaci je pak ukázka jak linkování vypadá… není vidět nic moc zajímavýho\
+ snad jen to, že se berou jen potřebné věci a slepování není přímo za sebe, ale po segmentech
 
 Musí se také řešit to, že před linkování nevím, kam jaká adresa povede a proto používám v překladači jen relativní adresy od začátku segmentu (vytvořím relokaci v objektu)
 
 V relokaci je i vůči jakém segmentu to je \
-&nbsp; Např. v případě, že ukazuji do statických dat a ty se posunou (dá se mezi to nějaká další data)
+Např. v případě, že ukazuji do statických dat a ty se posunou (dá se mezi to nějaká další data)
 
-Linker to musí po slepení opravit tak, že ke všem přičte absolutní adresu začátku zapsaného segmentu
-
-> Loader provádí další relokaci při spuštění -- počítal jsem, že začátek soubouru je nula, ale co když ne
+Linker to musí po slepení opravit tak, že ke všem přičte absolutní adresu začátku zapsaného segmentu \
+Loader provádí další relokaci při spuštění -- počítal jsem, že začátek soubouru je nula, ale co když ne
 
 Další věc je, že linker hledá entry point (to btw není main) a ten musí být jen jeden
 
@@ -584,7 +550,7 @@ Každá funkce dostane aktivační záznam -- určitá datová struktura mimo kt
 
 Volající funkce v aktivačním záznamu připraví 
 * pokud je to něco velkýho, tak před tím ještě **return value**
-	* pokud je to reference nebo malá hodnota, tak to být nemusí \
+	* pokud je to reference nebo malá hodnota, tak to být nemusí 
 * **parametry**
 
 Pak si tam sama funkce schová
@@ -607,16 +573,15 @@ Tady je **frame pointer** - ukazatel na aktivační záznam
 	* Takže musíme použít mangling na jméno, abychom funkci mohli například přetížit
 * Musí se domluvit kdo co uklízí (aktivační záznam na zásobníku, … ) -- Cal/return sekvence
 * Jak se předávají parametry
-	* Obvykle na zásobníku, ale jde to i registrama
+	* Obvykle na zásobníku, ale jde to i registry
 	* V jakém pořadí se to na zásobník dává
 * Návratová hodnota
 	* Jestli se to dá do registru
 	* Co dělat když je to nějaká velká struktura
 * Registry -- které jsou scratch a můžou se zkazit, které se musí zachovat -- preserved
 
-> V prezentaci příklady mandlování
-
-Hlavně se tam v Céčku přidává velikost parametru a C++ to znetvoří
+> V prezentaci příklady mandlování \
+(Hlavně se tam v Céčku přidává velikost parametru a C++ to znetvoří)
 
 > 20.04.2021 - 8. Přednáška
 
@@ -626,8 +591,8 @@ Hlavně se tam v Céčku přidává velikost parametru a C++ to znetvoří
 Každá funkce se stará o svoje linky, machine state a lokální data (smazání a obnova) \
 Naopak volající funkce se stará o parametry a return value
 
-Některé volací konvence ale dělají i to, že se smažou parametry -- některé procesory to mají jednou instrukcí \
-&nbsp; Jde to jen u funkcí s pevným počtem parametrů
+Některé volací konvence mají i to, že se volané smažou parametry -- některé procesory to dají jednou instrukcí \
+&nbsp; Jde to ale jen u funkcí s pevným počtem parametrů
 
 #### Předávání parametrů
 
@@ -645,7 +610,7 @@ Co jsou ale ukazatele? \
 
 ### Proměnné
 
-Pojmenovaný kousek paměti, který drží hodnotu
+	Pojmenovaný kousek paměti, který drží hodnotu
 
 Má nějaký typ 
 
@@ -662,10 +627,10 @@ Dynamická paměť ze které si při výpočtu můžu brát
 
 > Data v ní mají větší životnost než v zásobníku
 
-Je tam nějaká ta evidence volného místa
+Je tam nějaká evidence volného místa
 
-První krok je ale alokace -- alokační algoritmy \
-&nbsp; Je to např. když zavoláme `new`, btw to vrátí ukazatel \
+První krok je alokace -- alokační algoritmy \
+&nbsp; Je to např. když zavoláme `new` (btw to vrátí ukazatel) \
 &nbsp; &nbsp; C# a podobně se ukazatele snaží schovat
 
 Naopak na konci musím dealokovat \
@@ -678,7 +643,7 @@ Naopak na konci musím dealokovat \
 
 Automatické odstranění nepoužitých paměťových bloků
 
-Vyhneme se nechtěným memory leakum (zabraná paměť na kterou už nic neukazuje), je rychlá alokace, … \
+Vyhneme se nechtěným memory leakům (zabraná paměť na kterou už nic neukazuje), alokace je rychlá, … \
 Na druhou stranu je to nepředvídatelné (životní cyklus) a má to vliv na výkon
 
 #### GC strategie
@@ -796,7 +761,7 @@ Windows microkernel už nezávisí na architektuře, protože o to se stará Har
 
 Je k němu potřeba **device controller** (řadič) \
 &nbsp; Ten se stará o signály, A/D konverzi \
-&nbsp; Nějaká topologie zařízení…
+&nbsp; Topologie zařízení…
 
 A softwarově potom **device driver** (ovladač) \
 &nbsp; Abstraktní interface
@@ -813,7 +778,7 @@ Jeden drát z device controller na který se připojí ostatní zařízení \
 
 **Star** \
 Zařízení p2p na řadič
-&nbsp; Používá se dnes u disků\
+&nbsp; Používá se dnes u disků \
 &nbsp; Nevýhoda je složitější konstrukce řadiče (více vývodů, … )
 
 **Ring** \
@@ -838,13 +803,11 @@ Většina kódu OS je nezávislá na ovladačích a řadičích
 
 Rozhraní (ta knihovna) tedy zavolá syscall \
 Řekne, že chce např. otevřít file systém \
-
 Musím najít a pak otevřít a zapamatovat si handle (identifikaci) toho souboru \
-
 Až budu číst tak soubor znovu nehledám a nějak se moje žádost dostane až k ovladači\
 &nbsp; (Prochází to mimo jiné device independent mezivrstvou)
 
-Z ovladače to hde do řadiče, tam je nějaká HW komunikace podle protokolu a pak to jde zpět \
+Z ovladače to jde do řadiče, tam je nějaká HW komunikace podle protokolu a pak to jde zpět \
 &nbsp; HW komunikace může proběhnou několikrát než se ten požadavek vrátí
 
 > 04.05.2021 - 10. Přednáška
@@ -860,7 +823,7 @@ Nejnáročnější je domluva řadiče s ovladačem, že už je hotovo (navíc t
 	* Přesun bez pozornosti CPU pomocí DMA řadiče mezi dvěma místy a pak interrup
 	* Vůbec nic nepřesouval procesor
 	* Problém je když například prependuju hlavičku v TCP/IP -- opakovaně zbytečně kopíruju \
-&nbsp; Používá se scatter/gather -- DMA vezme data v paměti a vytvoří z nich blok nebo naopak to rozhází
+&nbsp; Používá se scatter/gather -- DMA vezme nesouvislá data a vytvoří z nich blok nebo naopak souvislý rozhází
 
 <br>
 
@@ -868,7 +831,7 @@ Nejnáročnější je domluva řadiče s ovladačem, že už je hotovo (navíc t
 
 **Externí** \
 Vyhrazené piny na CPU \
-Jde to ale zakázat a povolit (v případě choulostivých operací)
+Jde to ale zakázat a povolit (v případě choulostivých operací) -- jen v kernel módu
 
 **Exception (vyjímky)** \
 Neočekávaně vyvolané instrukcí -- nedefinovaná operace, …
@@ -879,7 +842,7 @@ Procesor starší generace tak může pomocí emulace použít novější instru
 Dva druhy -- trap (hlásí se až po vykonání) nebo fault (není schopna doběhnout a pak se to musí vrátit před)
 
 **Software** \
-Speciální instrukce, které mouhou být použité např. pro syscall
+Speciální instrukce, které mohou být použité např. pro syscall
 
 #### Jak se to řeší
 
@@ -890,7 +853,7 @@ CPU nějak musí určit zdroj interptu
 
 Na jakou adresu ale jít? Buď fixní a nebo hledá v interrupt table
 
-Pak se ale musím vrátit mezi instukce (nebo před) a tedy si schovat CPU state a pak ho načíst
+Pak se ale musím vrátit mezi instrukce (nebo před) a tedy si schovat CPU state a pak ho načíst
 
 <br> 
 
@@ -901,7 +864,7 @@ Něco, co jsem zkompiloval a leží to na disku
 
 **Proces** \
 Spuštěný program  - vykonává instrukce \
-Spravovaný OS - prostředky jako např. paměť (musí se evidovat a pak vrátit)\
+Je spravovaný OS - prostředky jako např. paměť (musí se evidovat a pak vrátit)\
 Má paměť kterou jsme si již ukazovali (Code, Static data, … )
 
 **Vlákno (Thread)** \
@@ -913,7 +876,7 @@ Každé vlákno má svůj zásobník
 
 **Fiber** \
 Menší jednotka než vlákno \
-Dá se dodělat pro aplikaci pomocí knihoven\
+Dá se dodělat pro aplikaci pomocí knihoven \
 Mívají kooperativní scheduling
 
 **Scheduler** \
@@ -986,8 +949,7 @@ Představa, že mám jen jedno jádro a chci střídat procesy, jak je ale stř�
 Statická x dynamická priorita
 
 Statická se přidělí na začátku a skoro se nemění \
-Dynamická funguje tak, že jednou za čas se u ready procesů zvedne priorita a až se počítají tak se vynuluje
-
+Dynamická funguje tak, že jednou za čas se u ready procesů zvedne priorita a až se počítají tak se vynuluje \
 Celková pak vznikne jako jejich součet
 
 ### Plánovací algoritmy
@@ -1015,7 +977,7 @@ Celková pak vznikne jako jejich součet
 &nbsp;
 * **Comletly fair scheduler (CFS)**
 	* Z Linux jádra
-	* Stručně vybírám procesy podle toho, jak moc běžely a nechám je podle toho, jak dlouho čekaly \
+	* Stručně: vybírám procesy podle toho, jak moc běžely a nechám je běžet podle toho, jak dlouho čekaly \
 &nbsp;
 	* Implementováno pomocí červeno-černého stromu indexovaného celkovým execution časem
 	* Vypočítám si ještě maximum execution time (čas čekání vydělený počtem procesů)
@@ -1026,7 +988,7 @@ Celková pak vznikne jako jejich součet
 
 # Soubory
 
-	Nějaký abstraktní proud dat
+	Abstraktní proud dat
 
 **Operace** 
 
@@ -1035,23 +997,22 @@ Celková pak vznikne jako jejich součet
 * Číst a psát
 * Seek -- dělá se abstrakce ukazovátka, kde právě jsem a seek to akorát posouvá
 
-Soubory mají název jen kvůli uživatelům -- převádí se to na nějakou binární identifikaci
+Soubory mají název jen kvůli uživatelům -- převádí se to na binární identifikaci
 
-Z důvodu bezpečnosti OS soubory přečíslovává (nějaké mapování) aby procesy nemohly sahat jinam
+Z důvodu bezpečnosti OS soubory přečíslovává (nějaké mapování), aby procesy nemohly sahat jinam
+
+> V procesech je to 1, 2, … a v OS random čísla
 
 > 18.05.2021 - 12. Přednáška
 
 **Přístup**
 
-* Sekvenční (jen se posouvat dopředu a nebo rewind)
-
+* Sekvenční (jen se posouvat dopředu a nebo rewind na začátek)
 * Náhodný
 
-**Typ**\
-&nbsp; Rozpoznává se přes extension (přípona)
+**Typ** -- Rozpoznává se přes extension (přípona)
 
-**Atributy** \
-&nbsp; Název, timestampy, velikost, access práva, …
+**Atributy** -- Název, timestampy, velikost, access práva, …
 
 ### Adresář
 
@@ -1065,230 +1026,401 @@ Nějaká hierarchie s kořenem
 
 Operace (hledání, vypsání, … )
 
-### File system
+## File system
+
+Datová struktura na úložišti
+
+Musí umět
+
+* Překládat jména souborů na binární reprezentaci -- rozkouskovává cestu a hledá pokračování v adresářích
+* Pamatovat si lokaci dat souboru
+* Management volných bloků (spoják, bitmapa)
+
+Jsou **lokální** (FAT, NFTS, ext… ) a **síťové** file systémy (NFS, Samba, … )
+
+Na disku můžu vyrobit různé partitions, klidně různých file systémů (to je v partition table)
+
+#### FAT (File Allocation Table)
+
+> Ještě z MS-DOSu, je celkem basic
+
+Jedna struktura se stará o volné bloky a pozici souborů
+
+Adresář je provozovaný jako speciální soubor \
+V něm sekvence položek s fixní velikostí a atributy -- v každé položce je uložený první blok souboru (pak spoják)
+
+Ten spoják mi ukazuje do pole (to začíná od dvojky) a v tom poli je kam dál (0 znamená prázdno a -1 konec)
+
+Na disku jsou tedy 
+
+* Boot record -- ani nemusí být využitý
+* FAT1 -- pevně danná velikost
+* FAT2 (backup kopie)
+* Root directory
+* Data
+
+Při hledání souboru musím lineárně projít celý adresář \
+Špatně se ve spojáku skáče \
+Jedna backup není úplně safe
+
+#### ext2
+
+> Původ Linux a taky celkem simple 
+
+Založený na inodes (index nodes) -- reprezentují soubory
+
+Opět adresář jako seznam fixních struktur -- je v tom jen název a odkaz na inode
+
+* Boot record
+* Skupina bloků 1
+* Skupina bloků 2
+* …
+* Skupina bloků 3
+
+V každé blockgrupě je
+
+* Superblock (společný pro všechny) -- Kde co je a podobný věci
+* Descriptor -- Jaká je to blockgrupa…
+* Datová bitmapa -- Kde je volno v data blocích
+* Inode bitmapa -- Kde je volno v inodech
+* Inode table
+	* V každe inode je info a odkazy na datové bloky
+	* Nepřímé odkazy (prostý, dvojitý a trojitý) 
+* Data block 
+
+## Mechanika hard disků
+
+Plotny na spindle a r/w hlavy na rameni \
+Stopa (track) a sektory \
+Blok -- stejný sektor na všech plotnách \
+Cluster -- stejná dráha na všech plotnách
+
+Pak se tam řeší výška hlavičky a rychlost rotace
+
+> Dřív bylo uvnitř vakuum a teď helium
+
+Největší bottleneck je mechanický pohyb hlavičky
+
+## Disk scheduling algoritmus
+
+Musíme nějak naplánovat zpracování žádostí k disku
+
+> Dřív to dělal OS, teď disk
+
+Doba na access = seek time (posuny hlavy) + čas na rotaci + čas na transfer (zanedbatelný)
+
+* **First Come First Served** -- vznikají velké seeky
+* **Shortest Seek Time First** -- jednou za čas velký seek, jediný problém je *vyhladovění* (žádost na kraji dlouho čeká)
+* **Scan (výtah)** -- Beru nejkratší ale pouze jedním směrem (na kraji otočím)
+	* CSCAN -- čte jen jeden směr a pak se jen vrátí na začátek
+* LOOK (bez konců disku), CLOOK, FSCAN (dvě fronty), …
 
 > 25.05.2021 - 13. Přednáška
 
 ## Virtuální paměť
 
-_VAS - virtuální adresový prostor a PAS - fyzický adresový prostor_
+**Virtuální adresový prostor (VAS)** \
+&nbsp; ukazují do něj instrukce
 
-### Základní koncepty
-* ...
-* ...
-* Hardwarové překládání adres (memory managment unit)
+**Fyzický adresový prostor (PAS)** \
+&nbsp; ukazují do něj HW části \
+&nbsp; Jednorozměrná sekvence očíslovaných bytů
+
+Překládá se to hardwarově přes MMU (Memory managment unit) \
+Je to zobrazení, které ale pro něco nemusí existovat (potom vyjímka)
+
+Pomocí semgnetace nebo stránkování
 
 ### Proč?
-* Hodí se větší adresový prostor (VAS je větší než PAS) - ale to už dneska tolik nepotřebujeme
-* Bezpečnost - oddělím adresové procesi jednotlivých procesů
+
+* Hodí se větší adresový prostor (VAS může být větší než PAS) - ale to už dneska tolik nepotřebujeme
+	* Přebytečnou virtuální paměť si totiž OS může oložit na disk
+* Bezpečnost -- oddělím adresové prostory jednotlivých procesů
 
 ### Segmentace
 
 #### Koncepty
-* Virtuální adresový prostor je rozdělný na logické segmenty
-* Virtuální adresa je tvořená dvojcí číslo segmentu a ofset
-* Operační systém se pak stará o semgentační tabulku (pole, které si pamatuje původní fyzickou adresu, délku a atributy každého segmentu)
-_atributy jsou například oprávnění (read only, ...), povelené instrukce, zda je to systémová paměť_
 
-Kontroluje se chyba hledání neexistujícího indexu.
+* Virtuální adresový prostor je rozdělný na logické segmenty (stejné segmenty jako v linkování)
+* Virtuální adresa je tvořená uspořádanou dvojcí číslo segmentu a offset
+* Operační systém se pak stará o semgentační tabulku (pole indexované segmenty ve kterém je deskriptor) \
+&nbsp; V deskriptoru je fyzická adresa, dělka a další atributy jako např. oprávnění, povolené instrukce, …
 
-Co když dojde prostor? - vyhození na fyzický disk _(To ale trvá celkem dlouho)_ ...pak ho ale zase znovu potřebuji a proto ho pak načítám
-* Hlavní důvod proč se dnes segmentace nepoužívá
+Kontroluje se chyba hledání neexistujícího indexu -- výpadek segmentu \
+Když ho najdu, tak pořád musím kontrolovat oprávnění a maximální offset
+
+Co když dojde prostor? - vyhození **celého segmentu** na disk a pak ho případně znovu načíst
+ 
+* Spolu se špatným managmentem fyzické paměti je to hlavní důvod proč se dnes segmentace nepoužívá
  
 ### Stránkování
+
 #### Koncepty
+
 * VAS je rozdělený do stejně velkých částí (stránek) velikosti mocniny dvou
 * PAS je opět rozdělených na stejně velké částí (rámce) se stejnou velikostí jako stránky
-  * celkem často se používají 4Kb
-* Někde bokem v paměti je pro každý proces stránkovací tabulka
-  * je indexovaná čísly stránek a každá položka obsahuje číslo rámce a atributy
-  * page fault
-* Jak vypadá virtuální adresa? První bity jsou číslo stránky a zbytek bitů je offset 
-  * překlad probíhá extrémně snadno - vezme několik vyšších $n$ bitů, zjistí podle nich rámec, dá horních $n$ bitů rámce před offset a to je hledaná fyzická adresa
-  * Pokud mapování neexistuje, nastane page fault (vápadek stránky)
-* Výhoda oproti segmentaci je, že rámce nemusí být ve fyzické paměti souvisle za sebou
+	* Celkem často se používají 4kB (na to je potřeba 12b)
+* Někde bokem v paměti je pro každý proces stránkovací tabulka * Je indexovaná čísly stránek a každá položka obsahuje číslo rámce, atributy a příznak P
+	* Page fault
+* Jak vypadá virtuální adresa? Je to jedno číslo -- první bity jsou číslo stránky a zbytek bitů je offset
+* Překlad díky tomu probíhá dost snadno 
+	* Vezmu několik vyšších bitů VA, zjistím podle nich rámec, dám horní bity rámce před offset a to je hledaná fyzická adresa
+	* Pokud mapování neexistuje, nastane page fault (výpadek stránky) 
+* Výhoda oproti segmentaci je, že rámce nemusí být ve fyzické paměti souvisle za sebou a nemusím vyhazovat celý segment
 
 #### Problémy
-* Velikost - u 32-bit je 20 miliónů (12 bitů) 4k rámců
-  * To se řeší více úrovněma
+
+* Velikost - u 32-bit adresování je 2^20 (milion) 4kB rámců (20b na adresu rámce, 12b na offset)
+	* Tím pádem bych potřeboval 4MB pro každý proces -- pokud každá entry potřebuje 4B
+&nbsp;
 * Rychlost
 
 Paměť řeší víceúrovňová stránkovací tabulka
 * Nepotřebujeme celý VAP
+* PTAR ukazuje do první úrovně tabulky a z té se dozvím fyzickou adresu další úrovně 
 * První úroveň je vždycky v paměti, ale ty ostatní můžou chybět
-* Paměti ale trpí ještě víc - jak to vyřešit?
+* Rychlost ale trpí ještě víc
 
 Řešení rychlosti
-* **Zakešovat to**
+* Zakešovat to
 * TLB (Translation Lookaside Buffer)
-  * Nemusím pak většinou prolézat celou tabulku (často používám byty u sebe)
+	* Nemusím pak většinou prolézat celou tabulku (často používám byty u sebe)
 
-> BTW: AMD zavedlo čtyřúrovňové adresování pro 64b a to ještě ne úplně xddd (jakože 48 bitů)
+> Fun fact N˚3: AMD zavedlo čtyřúrovňové adresování pro 64b a to ještě ne úplně xddd (jakože 48 bitů)
 
 #### Algoritmus překladu adresy u stránkování
-* rozdělit adresu na offset a stránků
-* zkontrolovat TLB, jestli nemá mapování
-  * jestli to tam je, tak nice, jinak...
-* projít celou stránkovací tabulku
-  * rozdelím číslo stránky na tolik částí kolik mám úrovní
-  * jdu do první úrovně, podívám se jestli je tam mapování pro další úroveň, jdu dál a takhle projdu všechny úrovně
-  * z poslední úrovně dostanu číslo rámce a to si dám do TLB
-* aktualizuju bity A a D (Access a Dirty) ve stránkovací tabulkce a TLB
-* dostanu fyzickou adresu slepením původního offsetu a rámce
+
+* Rozdělit adresu na offset a číslo stránky
+* Zkontrolovat TLB, jestli nemá mapování
+* Jinak projít celou stránkovací tabulku
+	* Rozdelím číslo stránky na tolik částí kolik mám úrovní
+	* Jdu do první úrovně, podívám se jestli je tam mapování pro další úroveň, jdu dál a takhle projdu všechny úrovně
+	* Z poslední úrovně dostanu číslo rámce (to si dám do TLB)
+* Aktualizuju příznaky A a D (Access a Dirty) ve stránkovací tabulkce a TLB
+	* Jsou to dva bity, které říkají jestli jsem do toho přistoupil a zda jsem to změnil
+* Dostanu fyzickou adresu slepením původního offsetu a rámce
 
 #### Výpadek stránky - co to vlastně je?
-* Handler musí zjistit kde ten problém se stránkováním nastal
-  * třeba je to neoprávněný zápis, čtení ze systémové paměti, ...
-  * zkoušela pracovat s pamětí mimo fyzickou
-* Systém se snaží zajistit, aby to mapování existovalo a prvně tedy najde rámec
-  * co když už ale není volná paměť?
-  * musím najít oběť
-  * přijde na řadu bit A a D, protože musíme Dirty stránky uložit a oddělat stránky z TLB
-  * na volný frame po oběti načtu obsah a přenastavím stránkovací tabulky
-* Vrátím to zpátky z Handleru a znovu zkusím instrukci
-
+ 
+* Handler musí zjistit kde ten problém se stránkováním nastal -- vím který proces teď běží
+	* Třeba je to neoprávněný zápis, čtení ze systémové paměti, neexistující fyzická adresa…
+* Systém se snaží zajistit, aby to mapování existovalo a prvně najde volný rámec
+	* Upravím stránkovací tabulku a klid
+	* Co když už ale není volná paměť? -- Musím najít oběť
+	* K nalezení se používají algoritmy na výměnu stránek
+	* Pak přijde na řadu bit A a D, protože musíme Dirty stránky uložit a oddělat stránky z TLB
+	* Na volný frame po oběti načtu obsah a přenastavím stránkovací tabulku
+* Vrátím to zpátky z handleru a znovu zkusím instrukci
+ 
 > 01.06.2021 - 14. Přednáška
 
->  U toho jak to popisujeme se může stát, že 2B na rozhrání můžou způsobit 4 výpadky stránky (vytvořit tabulku, stránku a znovu)
+>  U toho jak to popisujeme se může stát, že 2B na rozhrání rámců způsobí 4 výpadky stránky (vytvořit tabulku, stránku a znovu)
 
 #### Algoritmy na výměnu stránek
 
-V jakékoliv situaci, kde potřebujeme najít nějakou oběť a vyhodit ji při omezeném prostoru
+Použití v jakékoliv situaci, kde potřebujeme najít nějakou oběť a vyhodit ji při omezeném prostoru
 
-##### Algoritmus pro nalezení optimální stárnky (Optimal page algorithm)
+##### Optimal page algorithm
 
-Nahradím stránku, která bude nejdéle nepoužitá
+Nahradím stránku, která bude nejdéle nepoužitá \
+Je to jen teoreticky, protože to samozřejmně nedokážme říct a snažíme se k tomu přiblížit
 
-Je to ale teoreticky, protože to samozřejmně nedokážme říct
+##### Hodiny (Clock)
 
-###### Hodiny
 * Zoraginizuju si rámce do kruhu
 * Ručička ukazuje na další rámec k nahrazení
 * Pokud je A (Access) různý od nuly, tak A vynaluji a jdu dál
 	* Když to ale je nula, tak to vyberu
 
-###### NRU (Not Recently Used)
+##### NRU (Not Recently Used)
+
 * Příznaky A se nulují pravidelně
-* Rozdělím je do 4 tříd podle příznaků A a D (1 - 0 0; 2 - 0 1; ...)
+* Rozdělím je do 4 tříd podle příznaků A a D (1 ← A:0 D:0; 2 ← A:0 D:1; ...)
 * Vybírám pak od nejnižší třídy
 
-###### LRU (Least Recently Used)
+##### LRU (Least Recently Used)
+
 * Používám minulost pro předpovídání
 * Jinými slovy vyberu to nejdéle nepoužitou stránku
 * Implementuje se to HW
-	* Cache, ...
-* ALe i SW
+	* Cache, bit matrix
+* Ale i SW
 	* Nejjednoduší je zásobník, ale je to příliš neefektivní
-	* Řeší se to aproximací
+	* Řeší se to aproximací -- **NFU**
 	
-###### NFU (Not Frequently Used)
+##### NFU (Not Frequently Used)
+
 * Každý rámec má svoje počítadlo
-* Pravidelně nulují A a případně zvýšší počítadlo
-* Vybere se počítadlo s nejnižším počítadlem
-* Problém s vypadáváním nových stránek (dočasná ochrana) a nevypadáním starých (snižování počítadel - dělení 2)
+* Pravidelně nuluji A a když A==1, tak zvýšším počítadlo
+* Vybere se rámec s nejnižším počítadlem
+* Problém s vypadáváním nových stránek (dočasná ochrana na začátku) \
+ a nevypadáním starých (snižování počítadel -- dělení 2)
 
 #### Sdílená paměť
 
-Propojení více procesů tak aby si viděli navzájem do adresových prostorů
+Propojení více procesů tak aby si viděly navzájem do adresových prostorů
 
-Jiná adresace kvůli kolizi (hádám), takže se používá jen offset
+Dělá se to tak, že se vyrobí sdílená paměť, připojí se na to procesy\
+A potom se na různých místech namapují stránkovací tabulky, které ukazují na sdílené rámce
+
+Stránkovací tabylky mají ve VA jinou adresu \
+Nemůžeme používat ukazatele ve sdíleném adresovém prostoru, ale jenom offsety \
+Hodí se na to dvoúrovňové stránkování se společnou tabulkou druhé úrovně
 
 #### Paměťově-namapované soubory
+
+Anonymní paměť se zapisuje do SWAPu, existuje ale druhý způsob
 
 Stránky mapuji na obsah souboru
 
 Když nastane výpadek stránky, tak se můžou použít data ze souboru
 
-Problém s přidáváním dat
+Problém s přidáváním dat (dostanu se za namapovaný stránky) a velikostí souboru
 
 <br>
  
-# Virtualizace
+# Virtual machine
 
-	Přetížený pojem, teď už se budeme bavit o plné virtualizaci
+> Přetížený pojem, teď se budeme bavit o plné virtualizaci (ne VM procesu)
 
-V rámci (host) OS umožníme vyrobit chráněné prostředí, které umožní spustit jiný OS (s iluzí, že to běží na reálném HW)
+	V rámci OS umožníme vyrobit chráněné prostředí, které umožní spustit další OS (s iluzí, že to běží na reálném HW)
 
 V případě problému ten problém vypadne a musí se o to postarat host (není to naštěstí příliš časté)
 
 Výhody jsou
-* izolace (nelze se přes VM dostat ke zbytku počítače)
-* enkapsulace (mimo jiné VM snadno obnovím přes snapshoty)
-* kompatibilita (snadno se to přenáší na jiný HW)
+
+* Izolace (nelze se přes VM dostat ke zbytku počítače)
+* Enkapsulace (mimo jiné VM snadno obnovím přes snapshoty)
+* Kompatibilita (snadno se to přenáší na jiný HW)
 
 ## Kontejnery (Virtualizace na úrovni OS)
 
-Hodně zjednodušená virtualizace - používá se reálný HW a ne virtualizovaný
+Hodně zjednodušená virtualizace - používá se reálný HW a ne virtualizovaný \
+Sdílejí služby jádra, ale jsou to oddělené uživatelské prostory
 
 Musí to umět kernel
+
+> V prezentaci je pro představu jak to vypadá, virtualizační vrstva,…
 
 <br> 
 
 # Paralelní programování
 
-Procesy jsou vykonávané současně
+**Paralelní počítání**
 
-## Paralelní počítání
+	Používá se více jader - instrukce jsou vykonávané současně
 
-Používá se více jader
+**Concurrent počítání**
+	
+	 Počítá se na jediném jádru (mutltiasking na jednom procesru)
 
-## Concurrent počítání
-
-Počítá se na jediném jádru
-
+Jaké má problémy používání více vláken současně?
 
 ### Race condition
 
 Výsledek počítání závisí na naplánování vláken
 
-Různě naplánované vlákna změní například pořadí prvků ve spojovém seznamu
+Různě naplánované vlákna změní například pořadí prvků ve spojovém seznamu \
+Ještě horší je ale provádění zároveň (co dřív v případě konfilktu zásahu do paměti)
 
-Ještě horší je ale serializace (co procesor provede dřív v např. případě konfilktu zásadhu do paměti) - na přednášce ukázka nezařazení prvku do spojáku
+**Příklad** \
+Jeden sdílený spoják na dvou vláknech a každé chce vložit nový prvek \
+Které vlákno ale proběhe první? -- bude to v náhodném pořadí \
+Co když ale proběhnou zároveň? -- oba přidané prvky ukazují na následující a snažím se oba najednou do kořene…
 
 #### Kritická sekce
 
 Identifikuji kritickou sekci kódu, která může být vykonávána nejvýše jedním vláknem, aby nenastaly předchozí problémy
 
-<br> 
+Omezení na jedno vlákno se nazývá mutal exclusion
 
-# Synchronizace
+## Synchronizace
 
-Řeší se to také synchornizací
+Jak mutal exclusion udělat? (Zabránit rozbití integrity dat)
 
-Touto ochranou se ale zavedou další nepžíjemné jevy
-
-Buď se například zamyká kritikcá sekce a nebo se procesy něčím řídí
+Buď se zamyká kritikcá sekce a nebo se procesy něčím řídí
 
 Realizuje se pomocí **synchronizačních primitiv**
+
 * Aktivní
 	* Spotřebovávají čas procesoru (aktivní čekání)
-* Pasivní
+* Pasivní (blokující)
 	* V jádře OS je jednotka plánování zablokovaná do té doby než je přístup povolen
 	
-		Ty blokující ale nejsou vždy výhodné, jak by se mohl zdát, protože sys-calls jsou celkem drahé (desítky až stovky instrukcí)
+> Ty pasivní ale nejsou vždy výhodné, protože sys-calls na blokování jsou celkem drahé (desítky až stovky instrukcí)
 
-Implementuje také HW
+Aktivní musí implementovat HW
+
 * Atomické instrukce (Instrukce test-and-set nebo-li compare-and-swap)
-	* Musí se provést celá bez přerušení (zamkne se i paměť)
+	* Instrukce, která se provede celá bez přeršení (se zamklou pamětí) a buď se povede nebo nepovede
+	* Vím adresu paměti o kterou "bojuji", starou hodnotu a novou hodnotu
+	* Přečtu z paměti a porovnám s očekávanou starou hodnotu a podle toho to zapíšu
 
-### Spin-Lock
-* Aktivní čekání přes test-and-set
-* krátká latence (vhodné pro krátké čekání)
+### Spin-lock
+
+* Cyklus, který opakovaně zkouší atomickou intrukci do té doby než se povede
+* Krátká latence (vhodné pro krátké čekání)
 
 ### Semafor
-* chráněné počítadlo...
 
-Mutex
+* Chráněné počítadlo a fronta procesů
+* Je to blokující primitvum
+* Atomické operace UP a DOWN uvnitř OS
+	* DOWN (zamykání) -- pokud čítač není 0, tak se sníží, jinak jde do vlákno do fronty a zablokuju
+	* UP (odemykání) -- pokud je počítadlo 0 a neprázdná fronta, tak vezmu z fronty a odblokuju to, jinak zvednu čítač
+
+> Dám čítač na 1 a proces se začne provádět a sníží počítadlo, další přijde a zařadí se do fronty, až první odejde, tak jde další
+
+### Mutex
+
+Jenom LOCK a UNLOCK -- binární semafor
+
+### Bariéra
+
+Na bariéře se počká až se sejde určitý počet vláken
+
+### V programovacích jazycích
+
+**Monitor** -- v objektu je u instance i zámek
+
+Java má keyword `synchronized`
 
 ## Deadlock
 
 Nekonečný kruh čekání
 
-## Alegorie
+> Dvě vlákna, každé má zamklý jeden prostředek a obě potřebují oba prostředky aby to dokončily
+
+### Coffmanovy podmínky
+
+1. Prostředky mají ekluzivní režim (nejdou sdílet)
+2. Vlákno něco drží a žádá o další
+3. Nemůžu odebrat prostředky bez škody
+4. Vznikne kruh v modelovacím grafu
+
+## Alegorie klasických synchronizačních problémů
 
 ### Producer-consumer
 
-### Filozofové
+Sklad s omezenou kapacitou, výrobci se zbožím a konzumenti
+
+Problémy:
+
+* Co když přijedou výrobce a konzument současně
+* Co když se zaplní sklad zbytečným produktem
+	* bloknu producenta
+* Co když je sklad prázdný a přijede konzument
+	* bloknu konzumenta
+
+### Večeřící filozofové
+
+N filozofů v kruhu a každý má po pravé straně vidličku, potřebuje ale na jídlo dvě vidličky
+
+Jak realizovat synchronizaci tak, aby všichni filozofové někdy jedli?
+
+Když naivně vezmu pravou vidličku a pak si čekám na levou, tak deadlock \
+Zkusím ji teda zase rychle odložit a zkusím to znovu \
+Pořád běží, ale nenají se -- starvation
 
 <br>
 
@@ -1300,28 +1432,18 @@ Nekonečný kruh čekání
 
 > Zkouška bude jedna otázka
 
-1. ISA
-	* *Co si pod tím představit, co musíme mít, Call-Execute-Return, Ortogonalita* \
-&nbsp;
+1. ISA, co si pod tím představit, co musíme mít, Call-Execute-Return, Ortogonalita
 
-2. Disk scheduling algoritmy a jejich význam + něco o access time obecně
+2. Volací konvence, předávání parametrů funkcím, návratové hodnoty a pointery
 
-2. Předávání parametrů funkcím, návratové hodnoty a pointery
+3. Interrupty a jejich obsluha
 
-3. Volací konvence
+4. Disk scheduling algoritmy a jejich význam + něco o access time obecně (FFS, SCAN, … )
 
-7. Interrupty a jejich obsluha
+5. Segmentace
 
-4. Stránkování a algoritmy na výměnu stránek\
-	* *Proč se to dělá, že jde o VAS a PAS, že je nějaká TLB, vztah stránek a rámců, víceúrovňové stránkování, k čemu je stránkovací tabulka, jak se rozřeže VA na více částí*\
-&nbsp;
+6. Stránkování a algoritmy na výměnu stránek, VAS a PAS, TLB, vztah stránek a rámců, víceúrovňové stránkování, stránkovací tabulka, jak se rozřeže VA
 
-5. Synchronizace
-	* *Co je za problém (race condition/critical section), primitiva aktivní/pasivní+kdy je co lepší; jak funguje spinlock, TAS, dopodrobna semafor, atomičnost* \
-&nbsp;
+7. Synchronizace, co je problém (race condition/critical section), mutal exclusion, atommické instrukce, primitiva aktivní/pasivní, jak funguje spinlock, TAS, semafor
 
-6. Synchronizační primitiva, stačilo vysvětlit k čemu jsou (concurrent computing -> race condition -> mutual exclusion -> atomic instructions), popsat spinlock a semafor a říct, jestli jsou aktivní nebo pasivní.
-
-6. Segmentace
-
-6. Deadlock, příběh s filozofy a skladištěm
+8. Deadlock, příběh s filozofy a skladištěm
