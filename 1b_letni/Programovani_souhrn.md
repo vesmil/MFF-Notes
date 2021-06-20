@@ -189,11 +189,11 @@ To vede na dynamické programování - buď rekurze nebo tabulka
 
 Pak si uvědomím, že BÚNO můžu brát jen nejdelší koncerty v městě
 
-Rekuzi přeskočím, protože není tak hard si to představit a rovnou vytvořím 3D pole, kde jsou řádky města, sloupce dny a do hloubky počet kilometrů \
+Rekuzi přeskočím, protože není tak hard si to představit a rovnou vytvořím 3D pole, kde jsou řádky města, sloupce dny a do hloubky počet kilometrů.
 Jedna buňka je pak reprezentace toho, že jsem v danou chvíli na koncertu byl a je v ní maximální počet minut na tyhle souřadnice.
 
-Pak jsem tam hodil polemikou na téma, jestli se vyplatí pro všechny z 2000 možných množství kilometrů vlastní buňka, protože ze začátku to bude dost prázdné \
-Navíc když vezmu setřízenou strukturu jako AVL strom, tak můžu odřezávat slepé větve (zbývá míň kilometrů a mám menší množství minut) v rozumném čase \
+Pak jsem tam hodil polemikou na téma, jestli se vyplatí pro všechny z 2000 možných množství kilometrů vlastní buňka, protože ze začátku to bude dost prázdné A navíc když vezmu setřízenou strukturu jako AVL strom, tak můžu odřezávat slepé větve (zbývá míň kilometrů a mám menší množství minut) v rozumném čase
+
 *Stačílo jen zmínit, že neznám úplně praktickou použitelnost, protože jsem AVL ještě nikdy neimpletoval a měl jsem to jako otázku v druhé části xdddd*
 
 To 3D pole pak procházím po sloupcích, kde pro každou buňku projdu obsahy všech buněk v předchozím slupci (dni) a pokud je to možné, tak od ní odečtu vzdálenost a přičtu čas
