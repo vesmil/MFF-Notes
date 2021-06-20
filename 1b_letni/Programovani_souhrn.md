@@ -170,24 +170,34 @@ Na jednom koncerte <= 100 pesničiek \
 
 ### Moje řešení
 
-*BTW Nebudeme používat stringy, ale čísla (názvy měst, kapel, ...)*
-
 1. Floyd-Warshall na cesty mezi všemi městy
-2. Hešovací tabulka s klíčem zpěvák a název a hodnotou její čas
-3. Slovník koncertů s hodnotami jejich celková doba
+2. Hešovací tabulka s klíčem (zpěvák, název) a hodnotou odpovídající její délkce
+3. Předchozí krok využiji na vyrobení slovníku koncertů s jejich celkovými časy
 4. Core problém
+
+*Note 1: Nebudeme používat stringy, ale čísla (názvy měst, kapel, ...)*
+
+*Note 2: Můžu paralelně provést v jednom vláknu Floyda a v druhém časy skladeb a koncertů*
 
 #### Core problém
 
-Prvně si to představím jako orientovaný graf, kde jsou pomyslné sloupce dny a vrcholy koncerty. \
+Prvně si to představím jako orientovaný graf, kde jsou vrcholy koncerty, \
+uspořádám si to do pomyslných sloupců odpovídajících dnům a \
+z každého koncertu vede hrana do všech koncertů další den.
+
 To vede na dynamické programování - buď rekurze nebo tabulka
 
 Pak si uvědomím, že BÚNO můžu brát jen nejdelší koncerty v městě
 
-Rekuzi přeskočím, protože to není tak hard si to představit a rovnou vytvořím skoro 3D pole, kde jsou řádky města, sloupce dny a do hloubky počet kilometrů \
-Uvnitř je pak reprezentace toho, že jsem v danou chvíli na koncertu byl a maximální počet minut na tyhle souřadnice \
-To, že je skoro 3D souvisí s mojí polemikou na téma, jestli se vyplatí pro všechny z 2000 možných množství kilometrů vlastní buňka, protože ze začátku to bude prázdné \
-Navíc když vezmu setřízenou strukturu jako AVL strom, tak můžu odřezávat slepé větve (zbývá míň kilometrů a mám menší množství minut) \
-*Stačílo jen zmínit, že neznám konstanty, protože jsem AVL ještě nikdy neimpletoval a měl jsem to jako otázku v druhé části xdddd* \
-To 3D pole pak procházím po sloupcích, kde pro každou buňku projdu obsahy všech buněk v předchozím slupci a pokud možno, tak k nim přičtu pohodu a odečtu vzdálenost \
+Rekuzi přeskočím, protože není tak hard si to představit a rovnou vytvořím 3D pole, kde jsou řádky města, sloupce dny a do hloubky počet kilometrů \
+Jedna buňka je pak reprezentace toho, že jsem v danou chvíli na koncertu byl a je v ní maximální počet minut na tyhle souřadnice.
+
+Pak jsem tam hodil polemikou na téma, jestli se vyplatí pro všechny z 2000 možných množství kilometrů vlastní buňka, protože ze začátku to bude dost prázdné \
+Navíc když vezmu setřízenou strukturu jako AVL strom, tak můžu odřezávat slepé větve (zbývá míň kilometrů a mám menší množství minut) v rozumném čase \
+*Stačílo jen zmínit, že neznám úplně praktickou použitelnost, protože jsem AVL ještě nikdy neimpletoval a měl jsem to jako otázku v druhé části xdddd*
+
+To 3D pole pak procházím po sloupcích, kde pro každou buňku projdu obsahy všech buněk v předchozím slupci (dni) a pokud je to možné, tak od ní odečtu vzdálenost a přičtu čas
+
 Nakonec z posledního dne vypíšu max čas
+
+To, že to doběhne je triviální a snadno se vypočítá složitost a ukáže parciální správnost.
