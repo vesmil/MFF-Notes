@@ -1,4 +1,4 @@
-# Prvák zimní semestr
+# Zimní semestr v prváku
 
 Nic moc pdfka z Wordu :unamused:
 
