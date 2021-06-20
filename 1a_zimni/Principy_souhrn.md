@@ -1,13 +1,5 @@
 # **Poznámky z principů PC**
 
-## Sonic the hedgehog
-
-_Autor: Milan Veselý_
-
-Odkazy na přednášky jsou tajný, takže je nedám sem
-
-Ale na disku je ve stejný složce pdfko s odkazama
-
 # 1. Přednáška – Úvod (Harvard, druhy přenosů)
 
 # Harvardská architektura
@@ -76,11 +68,8 @@ Jak vůbec poznáme začátek přenosu?
 
 Zavedeme si idle stav
 
-Ten realizujeme buď fyzicky – floating state (Hi-Z)
-
-To ale není moc praktické
-
-Nebo si ho definujeme na základě toho co už máme
+Ten realizujeme buď fyzicky – floating state (Hi-Z) *To ale není moc praktické* \
+Nebo si ho definujeme na základě toho co už máme:
 
 Na začátku je idle (0) a přenos začne až po strat bitu
 
