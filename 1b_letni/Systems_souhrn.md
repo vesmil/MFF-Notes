@@ -1,3 +1,7 @@
+Kdyby chtěl někdo Markdown a nebo našel nějakou nepřesnost: [Odkaz na Github](https://github.com/vesmil/MFF-Notes/blob/main/1b_letni/Systems_souhrn.md)
+
+[Odkaz na light mode](./light.html) (až budu mít čas, tak to udělám normálně)
+
 # C a C++
 
 Známe z cvika a u zkoušky nebude
@@ -36,12 +40,14 @@ Zároveň jsou všechnu sběrnice peer to peer
 ### Co je ale architektura?
  
 * Instrukční sady (ISA) - jak se ten procesor má chovat podle instrukcí 
-	* například i64 (rozšíření x86)\
-	&nbsp; &nbsp; Ta je údajně extrémně špatná
+	* například i64 (rozšíření x86), MIPS, ARM, …
+
+> x86 je údajně extrémně špatná
+
 * Hardwarová architektura - třeba Skylake, Coffee Lake  … je to to jak výrobce implementoval ISA
 
-> Debata na téma proč jsou nové instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak problém s portováním a pomalý emulátor
-> 
+> Pak debata na téma proč jsou aktuální instrukční sady špatné - zbytečně moc bloat instrukcí, ale když se pokoušeli o něco nového (např. Itanium), tak problém s portováním a pomalý emulátor
+ 
 > Na mobilu je větší prostor pro zlepšení kvůli překladu při instalaci a častěji se tam zavádí nová architektura
 
 Hlavní úkol procesoru je vykonávat jednoduché instrukce
@@ -313,8 +319,7 @@ Síťové protokoly jsou BE, takže Intel musí převracet
 Předtím než program naběhne se vezme heap (neboli arena či pool)
 
 A pak při běhu alokujeme například při `new` v C# \
-Chvíli ho používáme\
-A pak ho zahodíme\
+Chvíli ho používáme a pak ho zahodíme\
 &nbsp; Bud explicitně a nebo Java a spol mají garbage collector
 
 Pozn. hodnoty a referance se mažou vždy (jsou lokální), ale musíme třeba mazat na co ukazovali
@@ -586,7 +591,6 @@ Tady je **frame pointer** - ukazatel na aktivační záznam
 > V prezentaci příklady mandlování \
 (Hlavně se tam v Céčku přidává velikost parametru a C++ to znetvoří)
 
-
 > 20.04.2021 - 8. Přednáška
 
 #### Call/return sequence (zodpovědnosti)
@@ -609,7 +613,7 @@ Předá se jen adresa \
 V C++ je to `&`
 
 Co jsou ale ukazatele? \
-&nbsp; V C reference chyběli a proto to tam low level přidali `*` \
+&nbsp; V C reference chyběly a proto to tam low level přidali `*` \
 &nbsp; Rozdíl je v tom, že to není fixní a taky musíme říct, že chceme měnit hodnotu reference
 
 ### Proměnné
@@ -836,15 +840,13 @@ Vyhrazené piny na CPU \
 Jde to ale zakázat a povolit (v případě choulostivých operací) -- jen v kernel módu
 
 **Exception (vyjímky)** \
-Neočekávaně vyvolané instrukcí -- nedefinovaná operace, …
+Neočekávaně vyvolané instrukcí -- nedefinovaná operace, … \
+Využití pro syscall softwarem
 
 Nějak předdefinovaná -- např. pevná adresa kam jít \
 Procesor starší generace tak může pomocí emulace použít novější instrukce a pak jít zpátky
 
 Dva druhy -- trap (hlásí se až po vykonání) nebo fault (není schopna doběhnout a pak se to musí vrátit před)
-
-**Software** \
-Speciální instrukce, které mohou být použité např. pro syscall
 
 #### Jak se to řeší
 
@@ -1051,7 +1053,7 @@ Jedna struktura se stará o volné bloky a pozici souborů
 Adresář je provozovaný jako speciální soubor \
 V něm sekvence položek s fixní velikostí a atributy -- v každé položce je uložený první blok souboru (pak spoják)
 
-Ten spoják mi ukazuje do pole (to začíná od dvojky) a v tom poli je kam dál (0 znamená prázdno a -1 konec)
+Ten blok mi ukazuje do pole (to začíná od dvojky) a v tom poli je kam dál (0 znamená prázdno a -1 konec)
 
 Na disku jsou tedy 
 
