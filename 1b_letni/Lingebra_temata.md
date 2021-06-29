@@ -158,8 +158,6 @@ BOOKMARK
 
 ---
 
-Tohle je viz. další dokument
-
 ### Bilineární forma
 
 ### Kvadratická forma – úvod a maticové vyjádření
