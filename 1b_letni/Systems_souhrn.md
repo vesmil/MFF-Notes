@@ -1418,7 +1418,7 @@ Problémy:
 * Co když je sklad prázdný a přijede konzument
 	* bloknu konzumenta
 
-### Večeřící filozofové
+### Stolující filozofové
 
 N filozofů v kruhu a každý má po pravé straně vidličku, potřebuje ale na jídlo dvě vidličky
 
