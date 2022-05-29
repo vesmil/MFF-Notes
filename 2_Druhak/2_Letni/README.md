@@ -1,0 +1,28 @@
+# Přehled
+
+## Rozvrh
+
+|      | 9:00 |                            10:40                             |                            12:20                             |                          14:00                          |                            15:40                             |                            17:20                             |                       18:15                        |
+| :--: | :--: | :----------------------------------------------------------: | :----------------------------------------------------------: | :-----------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------------------------------------------: |
+|  Po  |      |                                                              |                                                              | [Automaty](https://dl1.cuni.cz/course/view.php?id=5119) | [Pokročilý C#](https://d3s.mff.cuni.cz/legacy/teaching/advanced_dotnet/) | [SW inženýrství](https://cunicz-my.sharepoint.com/:x:/g/personal/11165798_cuni_cz/EYVu9SqPjN1KstQNw3Fys8IBKN0Ebm8LdcZhwI6ahblgcg) |                                                    |
+|  Út  |      |                                                              |                       Architektura PC                        |                      Pokročilý C#                       | [Pravděpodobnost](https://kam.mff.cuni.cz/owl/c/ls2022/past-rs/) |                       Automaty a gram                        |                                                    |
+|  St  |      | [SW inženýrství](https://cunicz-my.sharepoint.com/:f:/g/personal/11165798_cuni_cz/EgKI3IKkpt1AkqjQIHan22oBerY2NTJ6dihmmrLHf_3Izw) | [Návrhové vzory](https://www.ksi.mff.cuni.cz/teaching/nprg024-web/) |                                                         | [Pokročilé C++](https://www.ksi.mff.cuni.cz/teaching/nprg051-web/) |                          Ročníkový                           |                                                    |
+|  Čt  |      |                                                              |                                                              |                         Plavání                         | [SW inženýrství praxe](https://cunicz-my.sharepoint.com/:w:/g/personal/11165798_cuni_cz/EeO_kOdgkdVCuyDOEHS6WW0B627MnOQfA0XI5U-U3pX0yg?e=ChqBwN) |                                                              | [Fyzika](http://utf.mff.cuni.cz/seminare/filos.pl) |
+|  Pá  |      |                       Pravděpodobnost                        |                                                              |                                                         |                                                              |                                                              |                                                    |
+
+## Zápočty
+
+* Návrhové vzory - písemka
+* Programování C++ - úkoly 2/3 a program
+* Programování C# - úkoly (?/2) a program
+* Ročníkový projekt - realizace
+* Pravděpodobnost - test (0.75) + úkoly (alespoň 0.65) + úlohy (alespoň 0.4) > 1.8
+
+## Zkoušky
+
+* [Automaty](https://dl1.cuni.cz/course/view.php?id=5119)
+* [Pravděpodobnost](https://dl1.cuni.cz/course/view.php?id=12069)
+* [Angličtina](https://www.mff.cuni.cz/cs/kjp/vyuka-anglictiny/prubeh-zkousky-z-anglictiny)
+* [Programování C#](https://d3s.mff.cuni.cz/cz/teaching/nprg038/#informace-o-zkou%c5%a1ce)
+* Architektura počítačů
+* [Softwarové inženýrství](https://cunicz-my.sharepoint.com/personal/11165798_cuni_cz/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2F11165798%5Fcuni%5Fcz%2FDocuments%2FNSWI041%2Fmaterials)
