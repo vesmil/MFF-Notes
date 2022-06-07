@@ -140,3 +140,11 @@ Pokus od Intelu, nyní se pracuje na verzi 2
 
 
 
+> 13. Přednáška
+
+## Meta programování
+
+
+
+## SFINAE
+

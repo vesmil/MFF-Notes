@@ -8,25 +8,28 @@
 
 ### Factory Method
 
-*Interface pro vytváření objektů*
+*Interface pro vytváření objektů bez specifikace přesné třídy.*
 
 **Použití**
 
-Virtuální funkce místo `new`
-Máme třídy `Product`/`ConcreteProduct` a `Creator`/`ConcreteCreartor` (deklarace/implementace)
+Místo konstruktoru voláme metodu (buď inherited z interface a nebo implementovanou v base a následně přepsanou)
+Může to být statická metoda, ale pak je problém s overridem
 
-Příklad s vytvářením mobilů
+Účastníci jsou `Product`/`ConcreteProduct` a `Creator`/`ConcreteCreartor` (deklarace/implementace)
+Všechny produkty musí mít nějaký společný interface
 
-Není špatné, když je to statická metoda
+**Když:** předem nevíme přesné třídy (switch za runtime), delegace (rozhodnutí i výroby) na podtřídu
+
+Příklad s vytvářením mobilů... switch uvnitř
 
 **Výhody a nevýhody**
 
 * Rozšiřitelnost - odstranění vazby při vytváření, Single responsibility - ... , Open/Closed - přidávání nových produktů
-* Hodně přidaných tříd a dědičností
+* Hodně přidaných tříd a dědičností - velký kód
 
 **Vztahy**
 
-*Abstract factory* - využívá factory metody
+*Abstract factory* - často využívá factory metody
 *Template method* - factory metoda je specializace *template method*
 *Prototype* - podobné, ale *factory method* závisí na dědičnosti
 
@@ -38,17 +41,21 @@ Není špatné, když je to statická metoda
 
 ### Abstract Factory
 
-*Třída s rozhraním pro vytváření určité skupiny tříd*
+*Třída s rozhraním pro vytváření určité skupiny tříd bez specifikování přesných třid*
 
 **Použití**
 
-Definujeme rozhraní třídy, která nám dá objekt určitého druhu
+Definujeme interface `AbstractFactory`, která nám dá objekt splňující rozhraní `Product` (tedy nějaký `ConcreteProduct`)
+Po té implementujeme a inicializujeme konkrétní `Factory`
 
-Potřebujeme dále `Product` interfaces určitých typů s `ConcreteProducts` a pak implementujeme a inicializujeme konkrétní `Factory`
+**Když:** by měl být systém nezávislý na vytváření objektů
+Rodina určitých produktů je navržena tak, aby fungovali spolu
+
+Příklad: Gui factory na OsX a Windows...
 
 **Výhody a nevýhody**
 
-* Zaručená kompatibilita produktů, Single Responsibility, Open/Closed
+* Zaručená kompatibilita produktů, Single Responsibility - vytváření, Open/Closed - přidávání nových
 * Hodně nových interfaces a tříd
 
 **Vztahy**
@@ -65,27 +72,33 @@ Potřebujeme dále `Product` interfaces určitých typů s `ConcreteProducts` a 
 
 ### Builder
 
-*Oddělení vytváření a použití*
+*Oddělení vytváření a použití, výroba probíhá po krocích*
+
+...aby stejný konstrukční proces mohl nabídnout různé reprezentace
 
 **Použití**
 
 Vytvoření třídy, která `product` vytváří po krocích (opět `Concrete` a abstraktní `Builder`)
-Proces vytváření řídí `Director ` - ten má předvolby
+Volitelně proces vytváření řídí `Director ` - ten může mít i předvolby
 
-Příklad se sendvičem, jednořádkové použití (postupné vs plynulé)
+**Když:** vytváření komplexních objektů je nezávislé na částech a jak jsou vytvořeny (kamenný a dřevěný dům)
+Vyhnutí se teleskopickému konstruktoru (hodně volitelných parametrů)
 
-Dá se zajistit immutabilita pomocí vybuildění
+Jednořádkové použití (postupné vs plynulé)
+Dá se zajistit immutabilita pomocí *vybuildění* (`getResult()`)
 
-Hodí se když je dost parametrů volitelných
+Příklad se sendvičem...
+
+Příklad v praxi: Kendo UI
 
 **Výhody a nevýhody**
 
 * ThreadSafe, defaultní hodnoty, rozšiřitelnost, zbavení se ošklivých konstrktorů
-* Repetetivní kód
+* Repetetivní kód a vyšší komplexita
 
 **Vztahy**
 
-...
+*Abstract factory* - podoba
 *Composite* - *builder* může tvořit objekty podle *composite*
 *Bridge* - možné kombinovat
 *Singleton* -  může implementovat
@@ -98,27 +111,34 @@ Hodí se když je dost parametrů volitelných
 
 ### Prototype
 
-*Snadné klonování instancí*
+*Vytváření instancí pomocí klonování*
+
+...ne vždy je totiž možné kopírovat zvnějšku
 
 **Použití**
 
-Ne vždy je možné kopírovat zvnějšku
-Přidáme tedy objektu možnost se naklonovat
+Vytvoříme interface `Prototype` a potom `ConceretePrototypes`, které budeme klonovat
 
-Hodí se to pokud vyloženě nezávisí na třídách se kterými pracujeme
+**Když:** systém je nezávislý na tom jak jsou objekty vytvářeny a jaké konkrétní třídy používáme
+Specifikováno za runtime/vyhnutí se vytváření komplikované hierarchie/jenom pár různých kombinací
 
-Dá se využít i katalog prototypů
+Dá se využít i katalog prototypů - `PrototypeManager`
+
+Pozor na problém s shallow copy
+
+Příklad ve hrách...
 
 **Výhody a nevýhody**
 
 * Pomůže s odstraněním duplicit inicializace velkých objektů, alternativa k dědičnosti
-* Cirkulární reference, trochu overkill
+* Cirkulární reference, může být trochu overkill
 
 **Vztahy**
 
-*Abstract factory* - možnost implemetnace pomocí *prototypu*
+*Abstract factory* - možnost implemetnace pomocí *prototype*
 *Commands* - kopie do historie
 *Memento* - *prototype* je lehčí alternativa
+*Composite* a *Decorator* - mohou benefitovat
 
 **Přehled**
 
@@ -128,25 +148,25 @@ Dá se využít i katalog prototypů
 
 ### Singleton
 
-*Pouze jedna instance*
+*Zajištění pouze jediné globálně dostupné instance*
 
 **Použití**
 
-Třída která má vždy jen jednu instanci a je k ní možný globální přístup
-Defaultní konstruktor musí být private
+Třída která má zaručeně vždy jen jednu instanci a je k ní možný globální přístup
+Defaultní konstruktor musí být private a statická get metoda...
 
-Kontrola nad globálními proměnými
+Například v MVC...
+
+**Když:** Části programu mají sdílený objekt
 
 **Výhody a nevýhody**
 
-* Jednoduché použití pokud není nutné řešit závislosti, zámky, destrukci objektů, ...
+* Jednoduché použití pokud není nutné řešit závislosti, zámky a destrukci objektů, inicializace včas...
 * Porušení Single Reposonsibility, maskuje špatný návrh, více jader komplikované
 
 **Vztahy**
 
-*Facade* - Může implementovat *singletonem*
-*Flyweight* - Podobné, ale dva rozdíly
-*Abstract factories, builders, prototypes* - Může implementovat *singletonem*
+*Abstract factory, builder, prototype, facade* - Může být implementováno *singletonem*
 
 **Přehled**
 
@@ -158,27 +178,32 @@ Kontrola nad globálními proměnými
 
 ### Facade
 
-*Rozhraní pro snadné použití subsystémů*
+*Jednotné rozhraní pro snadné použití subsystémů*
 
 **Použití**
 
-Vytvoření zjednodušeného interface do subsystémů
+K nějakým `subsystems` si vytvoříme `facade` - tedy rozhraní, které pouze předá požadavek konkrétním subsystémům a potom nám vrátí výsledek
 
-Možné vrstvit
+Pokud je příliš velké, tak je potřeba ho rozvrstvit
 
-Klient ho nemusí být nucen použít
+Klient ho ale nemusí být nucen použít
+
+**Když:** zjednodušit komplexní ovládání subsystémů, například schování závislostí nebo zvrstvení
+
+Příklad s kompilátorem...
+Analogie s restaurací
 
 **Výhody a nevýhody**
 
-* Odstranění komplexnosti
+* Odstranění komplexnosti, počtu objektů o které se klient musí starat
 * Pozor na god object
 
 **Vztahy**
 
 *Facade*, *Adapter*, *Proxy*, *Decorator* - ...
-*Singleton* - ...
-*Abstract factory* - fasáda jen pro výrobu
-*Mediator* - subsystém si je vědom mediatoru a jinak nekomunikuje
+*Singleton* - implemntace...
+*Abstract factory* - fasáda ale jakože jen pro výrobu
+*Mediator* - subsystémy si jsou vědomy mediatoru a jinak nekomunikují
 
 **Přehled**
 
@@ -186,26 +211,31 @@ Klient ho nemusí být nucen použít
 
 ---
 
-
 ### Proxy
+
+> Also known as surrogate
 
 *Substituce za objekt*
 
 **Použití**
 
-Vytvoření třídy se stejným rozhraním
+Vytvoření třídy se stejným rozhraním (`proxy`,`subject`, `realSubject`)
 
-Umožní nám například kontrolovat přístup, cachovat, lazy inicializovat, logování, ...
+Různé účely - protection, caching, virtual, logging, remote...
+Ale také smart reference pro mazání nepotřebných objektů
+
+**Když:** chceme kontrolovat přístup, cachovat, lazy inicializovat, logování, ...
+
+Příklad s autem...
 
 **Výhody a nevýhody**
 
-* Bez zjištění klienta ovládat či měnit lifecycle, O/C
+* Výkon, bezpečnost, bez zjištění klienta, O/C
 * Rozšíření kódu, zpomalení odpovědi
 
 **Vztahy**
 
-*Adapter, Decorator* - ...
-*Facade* - ta ale rozhraní mění
+*Adapter, Facade, Decorator* - ...
 
 **Přehled**
 
@@ -215,55 +245,75 @@ Umožní nám například kontrolovat přístup, cachovat, lazy inicializovat, l
 
 ### Adapter
 
+> Also known as wrapper
+
 *Umožní dvě nekompatibilní interfaces spolupracovat*
 
 **Použití**
 
-Vytvoření třídy do které zabalím původní a má metody, které potřebuji
+Vytvoření třídy `adapter` s rozhraním `adaptee` do které zabalím původní `target`
+Dá se tak i přidat nová funkcionalita (pak velmi podobné decorator...)
 
-Dá se tak i přidat nová funkcionalita...
+Class adapter - vyžaduje mnohonásobnou dědičnost
+Object adapter - implementuje jednu a druhou zabalí (libovolný jazyk)
+
+**Když:** Potřeba použít existující objekt nebo něco přidat
+
+Příklad s geometrickými tvary...
 
 **Výhody a nevýhody**
 
-* SRP - separace konverze a logika, O/C
-* Komplexnost
+* SRP - separace konverze a logika, O/C - snadné přidání nových adaptérů
+* Přidaná komplexnost
 
 **Vztahy**
 
-*Bridge* - podobné, ten se ale většinou připraví předem
-*Facade* - definuje nové a pracuje s několika subsystémy
+*Bridge* - podobné, *bridge* se ale většinou připraví předem...
+*Facade* - definuje nové rozhraní a pracuje s několika subsystémy
 *Proxy* - zachovává rozhraní
-*Decorator* - pouze přidává a nemění
+*Decorator* - přidává rozhraní
 
 **Přehled**
 
 ![Structure of the Adapter design pattern (the object adapter)](README.assets/structure-object-adapter.png)
 
+...případně:
+
+![Adapter design pattern (class adapter)](README.assets/structure-class-adapter.png)
+
 ---
 
 ### Bridge
 
-*Umožní jednu třídu rozseknout na dvě spojené*
+> Also known as handle/body
+
+*Umožní jednu třídu rozseknout na abstrakci a implementaci*
 
 **Použití**
 
-Příklad s kvádry a kužely, které můžou být červené nebo modré - oddělení tvaru od barvy
+Příklad s kvádry a kužely, které můžou být červené nebo modré - oddělíme tvar od barvy
+
+Abstakce by neměla dělat žádnou reálnou práci a pouze delegovat na implementaci
 
 Rozseknutí monolitu nebo rozšíření tříd o nějakou dimenzi
-Abstrakce a implementace jsou spojené mostem, snazší managment změn
+Abstrakce a implementace jsou spojené "mostem", snazší managment změn
 
-Switchování za runtime - hodně podobné strategy pattern
+**Když:** je potřeba rozdělit velký monolit a vyhnout se harkódění implementace
+Rozšíření třídy o nějakou dimenzi (bojovník, zbraň, vzhled)
+Switchování implementace za runtime (hodně podobné strategy pattern)
+
+Příklad s ovladačem a rádiem či televizí...
 
 **Výhody a nevýhody**
 
-* SRP, O/C, Platform independent apps
+* SRP, O/C - představení nových nezávisle, Platform independent apps, schování technických detailů
 * Přidání kódu
 
 **Vztahy**
 
-*Adaptér* - bridge na dvě existující
+*Adapter* - ...
 *State*, *Strategy* - všechny delegují problémy na jinou třídu, ale za jiných situací 
-*Abstract factory* - pokud je ve *factory* potřeba něco dependant na implementaci
+*Abstract factory* - umí vytvořit nějaký konkrétní *bridge*
 
 **Přehled**
 
@@ -273,13 +323,16 @@ Switchování za runtime - hodně podobné strategy pattern
 
 ### Composite
 
-*Převedení objektů na stromovité struktury složených a základních*
+*Převedení objektů na stromovité struktury (složených a základních)*
 
 **Použití**
 
 Máme dva druhy tříd - list a kompozit
+Umožní nám to dát do stromové struktury - viz příklad s krabicí a produkty
 
-Umožní nám to dát do stromové struktury - viz příklad s krabicí
+Kde ale definovat operace - komponenta vs komposit... každé svoje výhody
+
+**Když:** je potřeba implementovat stromovou strukturu, je potřeba využít komplexní a jednoduché objekty stejně
 
 Rekurzivní operace
 
@@ -294,7 +347,7 @@ Rekurzivní operace
 *Iterator* - na průchod
 *Visitor* - na operace
 *Flyweight* - na uložení nodes
-*Chain of responsibility* - spolu často
+*Chain of responsibility* - spolu
 
 **Přehled**
 
@@ -304,27 +357,31 @@ Rekurzivní operace
 
 ### Decorator
 
+> Also known as Wrapper
+
 *Přidání nových vlastností zabalením třídy*
 
 **Použití**
 
 Využití agreagace a kompozice místo dědičnosti
 
-Wrapper zabalí třídu - opakovaně, má stejný interface
+Wrapper zabalí třídu - klidně opakovaně, má stejný interface
 
-Dá se použít na přidání dovedností za běhu a nebo když je dědičnost divná (příklad notifikace)
+**Když:** přidávání dovedností za runtime nebo dědičnost je divná (viz příklad notifikace)
+
+Příklad s vaflemi
 
 **Výhody a nevýhody**
 
-* Rozšíření objektů bez podtříd, kombinace objektů, SRP
-* Často závislé na pořadí, konfigurace je ošklivá
+* Rozšíření objektů bez podtříd, kombinace objektů, SRP - rozdělení monolitu
+* Často závislé na pořadí, konfigurace je ošklivá, mnoho malých tříd, zpomalení
 
 **Vztahy**
 
 * *Adaptér* - mění rozhraní, *Proxy* - zachovává, *Decorator* - zachovává a přidává
 * *Chain of Resp* - podobná struktura, CoR ale nezávislé operace
 * *Composite* - kdyby byl unární strom a nepřidával nové věci
-* *Strategy* - mění vnitřek
+* *Strategy* - mění vnitřek...
 
 **Přehled**
 
@@ -338,11 +395,14 @@ Dá se použít na přidání dovedností za běhu a nebo když je dědičnost d
 
 **Použití**
 
-Sdílení společné
+Sdílení společného pomocí kešované reference
 
-Příklad se střely ve hře
+Musí se zajistiti imutabilita objektu
+Hodí se vyrábět továrnou
 
-Musí se zajistiti imutabilita
+**Když:** má aplikace velké množství objektů, hodně stavů může být reprezentovaných vně, identita není důležitá
+
+Příklad se střely ve hře či znaky v editoru
 
 **Výhody a nevýhody**
 
@@ -351,8 +411,8 @@ Musí se zajistiti imutabilita
 
 **Vztahy**
 
-*Composite* - ...
-*Singleton* - ...
+*Composite* - využití flyweight k ušetření RAM
+*Singleton* - podoba
 
 **Přehled**
 
@@ -368,18 +428,24 @@ Musí se zajistiti imutabilita
 
 **Použití**
 
-Přechody mezi stavy, current state...
+Current state se dá konstruktoru, každý stav explicitně specifikuje přechod mezi stavy
+Blízko konceptu konečných automatů
+
+Stavy by měly být nested v contextu
+
+**Když:** často se mění stav, mnoho if podmínek, které mění chování podle stavu, ...
 
 Analogie s telefonem - odemčený, ...
+Příklad s grafickým editorem a nástroji
 
 **Výhody a nevýhody**
 
-* SRP, O/C, Simplify
+* SRP - stavy odpovídají třídám, O/C - snadné přidávání stavů, simplifikace a odstranění mohutných podmínek
 * Can be overkill
 
 **Vztahy**
 
-*Bridge, State, Strategy* - ... extension of strategy
+*Bridge, State, Strategy* - delegace práce na ostatní objekty (state je jen rozšíření *strategy*)
 
 **Přehled**
 
@@ -393,8 +459,10 @@ Analogie s telefonem - odemčený, ...
 
 **Použití**
 
-Přidáme dovnitř třídy funkci `GetSnapshot()`
-Možný caretaker
+Přidáme do `originator` třídy funkci `GetSnapshot() `a následně `restore(memento ...)`
+Možný `caretaker` pro správu a ukládání snapshotů (nikdy s nimi nepracuje)
+
+Wide a narrow interface
 
 **Když:** potřebujeme uložit snapsahot při jinak porušení enkapsulace
 
@@ -423,20 +491,23 @@ Možný caretaker
 
 **Použití**
 
-`GetIterator()` a následně `GetNext()`
+`GetIterator()` a následně `GetNext()` (dokud `hasMore()`)
 
-**Když:** komplexní datové struktury
+Verze tzv. kurusoru spravovaná kolekcí
+
+**Když:** procházet komplexní datové struktury bez odhalení implementace a případně je měnit za runtime
 odstranit duplicity při procházení
-procházení různých datových struktur
+
+Příklad třeba se stromem...
 
 **Výhody a nevýhody**
 
-* SRP, O/C, paralelní iterace, ...
-* Může být overkill, less efficient
+* SRP, O/C, paralelní iterace, odložení
+* Může být overkill, less efficient v některých případech
 
 **Vztahy**
 
-*Composite* - průchod iterátorem
+*Composite* - prochází se iterátorem
 *Factory method* - na výrobu
 *Memento* - spolu...
 *Visitor* - spolu...
@@ -449,22 +520,23 @@ procházení různých datových struktur
 
 ### Command
 
-*Změní požadavek v jednoduchý objekt*
+*Požadavek jako jednoduchý objekt*
 
 **Použití**
 
+Interface `command`, které zajistí metodu `execute()`
+Commands by měl vytvářet příjemce a sender by je měl spouštět
 
-
-Operace jako objekt
-Fronta operací
+**Když:** Operace jako objekt, který lze parametrizovat
+Fronta operací s opožděným provedením
 Vracení operací
 
-*Příklad* s buttons
+*Příklad* s buttons a přidělení jejich commands...
 
 **Výhody a nevýhody**
 
-* SRP, OC, Undo, fronta, komplexní
-* Komplikace
+* SRP - Oddělení tříd na provedení operací, OC - přidání nových, undo, fronta
+* Komplikace kódu
 
 **Vztahy**
 
@@ -486,19 +558,30 @@ Vracení operací
 
 **Použití**
 
+Máme problém, který lze vyjádřit větami
+Řešení - ten jazyk interpretujeme
 
+`Terminal` and `NoneTerminal` expression, které mají `Interpret`
+
+Příklad gramatika regulárního jazyka či postfix kalkulačka
+
+Neobsahuje parser pro konstrukci
 
 **Výhody a nevýhody**
 
-
+* Gramatiky bývají lehce rozšiřitelné a implementovatelné
+* Složitější jsou velmi nepřehlendé
 
 **Vztahy**
 
-
+*Composite* - implementace composite
+*Visitor* - operace na datech stromu
+*Iterator* - procházení
+*Flyweight* - vyhodnocení v compile time
 
 **Přehled**
 
-...
+...![image-20220606225019417](README.assets/image-20220606225019417.png)
 
 ---
 
@@ -508,19 +591,21 @@ Vracení operací
 
 **Použití**
 
+Odešleme požadavek a někdo ho zpracuje
+
 **Když:** různé requesty, ale stejné předem dané pořadí
 Změna handlerů za běhu
 
-GUI
+Příklad s vrstvenou architekturou, která může odmítnout - počítání mincí
 
 **Výhody a nevýhody**
 
-* Kontrola pořadí, SPR, OC
+* Kontrola pořadí, SPR - rozdělení zpracování a provádění, OC - přidání nových handlerů
 * Něco se nemusí vyřídit
 
 **Vztahy**
 
-*Command, mediator, observer* - ...
+*Command, mediator, observer* - spojují odesilatele a přijemce
 *Composite* - průchod z listu do kořene
 *Commands* - implementace pomocí
 *Decorator* - podobná struktura
@@ -537,13 +622,12 @@ GUI
 
 **Použití**
 
-Notifikace zákazníků o produktu
-
-Publisher a subscribers
-Pub. calls notifers
+Publisher calls subscribers, kteří si o notifikaci zažádali
 
 **Když:** Změna jednoho vyvolá změnu jiných
 Když se musí řídit jiným jen po určitý čas
+
+Analogie se zákazníků obchodu
 
 **Výhody a nevýhody**
 
@@ -567,24 +651,25 @@ Když se musí řídit jiným jen po určitý čas
 
 **Použití**
 
-Měnící se formulář - udělat komponenty nezávislé
-
-Compoenty a mediator
+Komponenty spolu nekomunikují přímo - využijí mediator
 
 **Když:** hodně tříd je úzce spjatých a jsou náročné na změnu
 Náročné znovu použít některé komponenty
 Mnoho subclasses pro změny v určitých případech
 
+Měnící se formulář - udělat komponenty nezávislé
+
 **Výhody a nevýhody**
 
-* SRP, OC, méně spojeného
+* SRP - komunikace, OC - přidání kompoentn, méně spojeného
 * God object
 
 **Vztahy**
 
-*CoR, Command, Observer* - ...
-*Mediator* - organizace (subsytém ale o fasádě neví)
-*Observer* - ...
+*CoR* - sekvenční komunikace
+*Command* - nepřímá komunikace
+*Facade* - organizace (subsytém ale o fasádě neví)
+*Observer* - může zuršit odběr
 
 **Přehled**
 
@@ -598,17 +683,22 @@ Mnoho subclasses pro změny v určitých případech
 
 **Použití**
 
-Mapy s různými způsoby dopravy
+Extrakce algoritmu do třídy
+Původní třída (context) má referenci na aktuální strategii
+Strategii vybírá klient
 
 **Když:** různé varianty algoritmů za runtime
 Podobné třídy s drobnými změny exekuce
 Izolace business logiky a implementace
 Obří switch
 
+Příklad s různými způsoby dopravy
+
+
 **Výhody a nevýhody**
 
-* Změna algoritmu za běhu, izolace implementace, OC
-* Pár algoritmů se komplikje, klientni musí znát rozdíly
+* Změna algoritmu za běhu, izolace implementace, OC - přidávání nových algoritmů
+* Když je jen pár algoritmů, klienti musí znát rozdíly, dnes máme anonymní funkce
 
 **Vztahy**
 
@@ -629,13 +719,17 @@ Obří switch
 
 **Použití**
 
+Máme nějaký algoritmus s kroky, které necháme na potomcích
+
 **Když** klient má rozšířit algoritmus
 Mnoho tříd skoro stejných
 
+Příklad se sbírkou, nápoji a platební bránou
+
 **Výhody a nevýhody**
 
-* Klienti můžou upravit algoritmus, duplicit se dá nahoru
-* Liskov substitution, limitace klientů
+* Klienti můžou upravit algoritmus, odstranění duplicit
+* Limitace klientů, nesouvislost algoritmu
 
 **Vztahy**
 
@@ -655,13 +749,20 @@ Mnoho tříd skoro stejných
 
 **Použití**
 
+Vrcholy nějaké komplexní struktury mají metodu `accept()` pro každého možného návštěvníka
+
+Visitor má vždycky `VisitOn(...)`
+A pak navštívíme všechny vrcholy...
+
 **Když:** operace na elementech komplexní struktury
 Pročistit business logiku
 Když chování dává smysl jen u některých tříd hierarchie
 
+Příklad s stromem aritmetického výrazu
+
 **Výhody a nevýhody**
 
-* OC, SRP, 
+* OC - dá se přidat nové chování, SRP - chování v oddělené třídě
 * Potřeba update všech visitorů při přidání třídy
 
 **Vztahy**
