@@ -53,7 +53,7 @@ Problém kolem 2004 s dodáváním a odváděním energie - **snížení napět�
 
 **Amdahlův zákon** o zrychlení celku po zlepšení pouze části
 
-Pro paralelismus je $n \in \N$ je počet jader a $B \in \langle 0,1\rangle$ je práce, která nejde paralelizovat
+Pro paralelismus je $n \in \mathbb{N}$ je počet jader a $B \in \langle 0,1\rangle$ je práce, která nejde paralelizovat
 $$
 \text{Speedup}(n) = \frac{1}{B + \frac{1}{n} (1 - B)}
 $$
