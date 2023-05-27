@@ -1105,7 +1105,7 @@ Víme, že $\exists 1$-univerzální systém
 
 Lemma: Nechť $\mathcal{H}$ je $c$-univerzální systém fcí z $\mathcal{U}$ do $[m]$, $x_1, \cdots, x_n \in \mathcal{U}$ navzájem různé a $y \in \mathcal{U}$. Potom
 
-$$\mathbb{E}_{h\in \mathcal{H}} [\# i:h(x_i)=h(y) \leq c \cdot \frac{n}{m} + 1]$$
+$$\mathbb{E}_{h\in \mathcal{H}} [\char"0023 i:h(x_i)=h(y) \leq c \cdot \frac{n}{m} + 1]$$
 
 V podstatě to říká, že obsazení přihrádky kam padlo $y$ je ve střední hodnotě celkem malé podle obsazenosti
 
@@ -1145,7 +1145,7 @@ Příklady:
 
 Věta: Pokud vyhl. posloupnosti jsou nezávislé plně náhodné permutace, pak:
 
-$$\mathbb{E}\ [\ \# \text{ přihrádek navštívených při neúspěšném Findu }] \leq \frac{1}{1-\alpha}$$
+$$\mathbb{E}\ [\ \char"0023 \text{ přihrádek navštívených při neúspěšném Findu }] \leq \frac{1}{1-\alpha}$$
 
 Důkaz: \
 &nbsp; Nechť $y\in \mathcal{U}$ hledáme $h_1, \cdots, h_m$ je jeho vyhled. posl. \
@@ -1154,7 +1154,7 @@ Důkaz: \
 &nbsp; $P_2 = \frac{n}{m} = \alpha$ -- pravděpodobnost, že první byla obsazená \
 &nbsp; $P_i = \frac{n}{m} \cdot	\frac{n - 1}{m - 1} \cdots \frac{n-i+1}{m-i+1}$ a jednotlivé zlomky jsou menší rovno $\frac{n}{m}$ a to celé je tedy $\leq \alpha^{i-1}$ \
 
-$$\mathbb{E}[\# \text{ navštívených přihrádek}] = \sum_{i\geq 1} i \cdot Pr[\text{navštíveno právě } i] $$
+$$\mathbb{E}[\char"0023 \text{ navštívených přihrádek}] = \sum_{i\geq 1} i \cdot Pr[\text{navštíveno právě } i] $$
 
 &nbsp; To je nějaká lineární kombinace $P_i$, takže my zkusíme zjistit kolikrát se $P_j$ započítalo
 
@@ -1336,16 +1336,16 @@ Nemám ale pod kontrolu to, jak velké ty části jsou -- jak dobrého pivota vy
 &nbsp; &nbsp; &nbsp; 3. pokud to není skoromedián, tak znovu
 
 &nbsp; Věta: v takovém případě je $\mathbb{E}[\text{čas. složitosti}] = \Theta(n)$ \
-&nbsp; &nbsp; K tomu nám stačí aby $\mathbb{E}[\# \text{ pokusů}] = \Theta(1)$
+&nbsp; &nbsp; K tomu nám stačí aby $\mathbb{E}[\char"0023 \text{ pokusů}] = \Theta(1)$
 
 &nbsp; &nbsp; Můžeme si všimnout, že pravděpodobnost toho, že pokus uspěje je $\geq \frac{1}{2}$
 
-&nbsp; &nbsp; Lemma (o džbánu): pokud pokusu uspěje s pravděpodobností $p$ pak $\mathbb{E}[\# \text{ pokusů do 1. úspěchu}] = \frac{1}{p}$ \
-&nbsp; &nbsp; A z toho plyne, že $\mathbb{E}[\# \text{ pokusů}] \leq 2$
+&nbsp; &nbsp; Lemma (o džbánu): pokud pokusu uspěje s pravděpodobností $p$ pak $\mathbb{E}[\char"0023 \text{ pokusů do 1. úspěchu}] = \frac{1}{p}$ \
+&nbsp; &nbsp; A z toho plyne, že $\mathbb{E}[\char"0023 \text{ pokusů}] \leq 2$
 
 Ještě dokážeme lemma o džbánu 
 
-$$\mathbb{E} = \sum_n n \cdot Pr[\# \text{ pokusů} = n] = \sum_n n \cdot (1-p)^{n-1} \cdot p$$
+$$\mathbb{E} = \sum_n n \cdot Pr[\char"0023 \text{ pokusů} = n] = \sum_n n \cdot (1-p)^{n-1} \cdot p$$
 
 Pravděpodobnost, že je $n$ pokusů je to samé jako, že $1-p$ pokusů neuspělo a poslední uspěl
 
