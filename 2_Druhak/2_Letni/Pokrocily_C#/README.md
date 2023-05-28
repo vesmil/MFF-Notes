@@ -123,10 +123,6 @@ Scope a životnost... nepříjemný overhead
 
 # 8. Přednáška
 
-https://www.youtube.com/watch?v=B_TBkxpN7Mk
-
-https://www.youtube.com/watch?v=NiWnxpDBBYM
-
 ### Raw string
 
 ## Namespaces
@@ -155,8 +151,6 @@ Prázdný enumerátor, úprava při procházení, ...
 
 # 9. Přednáška
 
-https://www.youtube.com/watch?v=oBzEvWgjb58&feature=youtu.be
-
 Enumerace na dvou kolekcích...
 
 `yield return ` - uchovává stav algoritmu
@@ -171,11 +165,6 @@ Chyba při implementaci enumerátorů - kontrola se hodí hned při inicializaci
 Lazy Enumerace...
 
 # 10. Přednáška
-
-https://youtu.be/7ed7U2BNr-c
-https://youtu.be/Xi0vzQ_RH08
-https://youtu.be/yZypNOymFqQ
-https://youtu.be/htVR_XaGzbI
 
 ## Anonymní třídy
 
@@ -205,8 +194,6 @@ Query expression se pak převede...
 Lazy evaluace, rozdíl při změně pořadí...
 
 # 11. Přednáška
-
-https://youtu.be/y9TmL-8qC_A
 
 ## Paralelismus
 
@@ -298,17 +285,12 @@ Obecně `Post()` - asynchronní, `Send()` - synchronní
 ---
 
 \* cast 2 - ThreadPool, Task:
-https://youtu.be/wwCAxRRJwTk
-https://youtu.be/t2Ul4EtnsBQ
 
 \* cast 3 - Task.Wait(), planovani Tasku do vlaken - TaskScheduler, stav
 Tasku vs. stav vlakna Thread vs. stav vlakna v OS,
 TaskScheduler.FromSynchronizationContext, Task<T> jako koncept "future",
 task continuations pomoci .ContinueWith(), TaskCompletionSource jako koncept
 "promise":
-https://youtu.be/Pk3-0-tr_ds
-https://youtu.be/dmqQAt86hy0
-https://youtu.be/FkarLl-Tbsk
 
 ---
 
