@@ -1,7 +1,3 @@
-Kdyby chtěl někdo Markdown a nebo našel nějakou nepřesnost: [Odkaz na Github](https://github.com/vesmil/MFF-Notes/blob/main/1b_letni/Systems_souhrn.md)
-
-[Odkaz na light mode](./light.html) (až budu mít čas, tak to udělám normálně)
-
 # C a C++
 
 Známe z cvika a u zkoušky nebude
