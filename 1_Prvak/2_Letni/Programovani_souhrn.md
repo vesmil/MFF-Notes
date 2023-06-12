@@ -1,7 +1,5 @@
 # Programování - recap před zkouškou
 
-Idc na co se vlastě budou ptát, jen jsem projel prezentace a vypsal pár věcí sem
-
 V druhým souboru jsou pak příklady
 
 EDIT: na zkoušce se prý ptají hlavně na dynamické programování, AVL stromy a virtuální metody
